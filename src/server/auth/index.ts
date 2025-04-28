@@ -16,10 +16,7 @@ export const auth = betterAuth({
   },
   rateLimit: {
     // https://www.better-auth.com/docs/reference/options#ratelimit
-    enabled: true,
-    window: 10,
-    max: 100,
-    storage: "memory",
+    storage: "database", // Use redis upstash memory later
   },
   plugins: [
     admin(), // Administration docs: https://www.better-auth.com/docs/plugins/admin
