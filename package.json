@@ -2,6 +2,27 @@
   "name": "cbl",
   "version": "0.1.0",
   "private": true,
+  "author": "MGSimard <mgsimard.dev@gmail.com> (https://mgsimard.dev)",
+  "description": "Community Ban List",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MGSimard/cbl.git"
+  },
+  "keywords": [
+    "cbl",
+    "community ban list",
+    "nextgen",
+    "next.js",
+    "typescript",
+    "better-auth",
+    "drizzle"
+  ],
+  "bugs": {
+    "url": "https://github.com/MGSimard/cbl/issues"
+  },
+  "homepage": "https://github.com/MGSimard/cbl#readme",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
@@ -36,5 +57,9 @@
     "eslint-plugin-drizzle": "^0.2.3",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.31.1"
+  },
+  "packageManager": "pnpm@10.9.0",
+  "engines": {
+    "node": ">=21.2.0"
   }
 }
