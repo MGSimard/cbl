@@ -2,7 +2,11 @@
 
 ## Task List
 
-- [ ] Finish scaffolding
+- [x] Finish scaffolding
+- [ ] The not annoying OAuth
+- [ ] Discord OAuth
+- [ ] Twitter OAuth
+- [ ] Microsoft OAuth
 - [ ] ...
 - [ ] Ratelimiting
 - [ ] ...
