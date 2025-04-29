@@ -37,7 +37,6 @@
   outline: 1px solid red;
 }
 html {
-  font-family: var(--fontText);
   font-size: 62.5%;
   background: var(--clrBg);
   scroll-behavior: smooth;
@@ -52,7 +51,7 @@ body {
   flex-direction: column;
   min-height: 100dvh;
   font-size: 1.6rem;
-  font-family: var(--font-geist-sans);
+  font-family: var(--fontText);
 }
 header,
 footer {
@@ -94,6 +93,7 @@ h5,
 h6 {
   font-family: var(--fontHeading);
   text-transform: uppercase;
+  color: var(--clrHeading);
 }
 img,
 svg {
@@ -176,3 +176,18 @@ button svg {
   z-index: 1;
 }
 /**/
+/* SUMMONER SEARCH FORM */
+#sum-search {
+  display: flex;
+  gap: 1rem;
+  background: gray;
+}
+#sum-search input {
+  font-family: var(--font);
+}
+#sum-search label span {
+  display: block;
+}
+#tag-container {
+  display: flex;
+}

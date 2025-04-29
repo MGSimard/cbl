@@ -1,4 +1,5 @@
 "use client";
+import SumSearch from "@/components/SumSearch";
 import { authClient } from "@/server/auth/auth-client";
 import { useRouter } from "next/navigation";
 
@@ -32,8 +33,9 @@ export default function PageHome() {
   return (
     <main id="hero" className="dot-pattern-overlay">
       <section>
-        <h1>Test</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+        <h1>COMMUNITY BAN LIST</h1>
+        <h2>SEARCH SUMMONER</h2>
+        <SumSearch />
       </section>
     </main>
   );
