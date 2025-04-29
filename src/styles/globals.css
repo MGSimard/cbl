@@ -97,6 +97,7 @@ button svg {
   border-radius: 999rem;
   background: hsla(from var(--clrBg) h s l / 0.5);
   cursor: pointer;
+  transition: border-color 0.2s ease-out;
   &:hover,
   &:focus-visible {
     border-color: var(--clrBorderGoldActive);
@@ -108,7 +109,7 @@ button svg {
     aspect-ratio: 1;
     background: var(--clrBorderGoldIdle);
     border-radius: 999rem;
-    transition: transform 0.2s ease-out;
+    transition: transform 0.2s ease-out, background 0.2s ease-out;
   }
   &:hover::before,
   &:focus-visible::before {
