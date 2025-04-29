@@ -25,7 +25,7 @@ export const beaufortForLol = localFont({
       style: "italic",
     },
     {
-      path: "../styles/fonts/BeaufortForLoL/BFL-medium.woff2",
+      path: "../styles/fonts/BeaufortForLOL/BFL-medium.woff2",
       weight: "500",
       style: "normal",
     },
