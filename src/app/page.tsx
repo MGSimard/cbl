@@ -31,7 +31,10 @@ export default function PageHome() {
 
   return (
     <main id="hero">
-      <h1>Test</h1>
+      <section>
+        <h1>Test</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+      </section>
     </main>
   );
 }

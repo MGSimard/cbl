@@ -32,7 +32,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* outline: 1px solid red; */
+  outline: 1px solid red;
 }
 html {
   font-family: var(--fontText);
@@ -58,6 +58,7 @@ footer {
 }
 main {
   flex-grow: 1;
+  padding: var(--sitePadding);
 }
 main#hero {
   background: linear-gradient(hsla(from var(--clrBg) h s l / 0.5), var(--clrBg)), url("/assets/header_4k.webp");
@@ -65,10 +66,18 @@ main#hero {
   background-position: center top;
   background-repeat: no-repeat;
 }
+section {
+  max-width: var(--siteMaxWidth);
+  margin: 0 auto;
+}
 footer {
   padding: var(--sitePadding);
   color: var(--clrTextMuted);
   text-align: center;
+}
+#footer-content {
+  max-width: var(--siteMaxWidth);
+  margin: 0 auto;
 }
 /**/
 /* NORMALIZE */
