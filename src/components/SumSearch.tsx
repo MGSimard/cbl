@@ -15,7 +15,6 @@ export default function SumSearch() {
 
   return (
     <form id="sum-search" onSubmit={handleSubmit}>
-      test
       <fieldset id="sum-search-inputs">
         <label htmlFor="region">
           <span>Region</span>
@@ -37,7 +36,9 @@ export default function SumSearch() {
           </div>
         </label>
       </fieldset>
-      <button type="submit">SEARCH</button>
+      <button type="submit">
+        <span>SEARCH</span>
+      </button>
     </form>
   );
 }
