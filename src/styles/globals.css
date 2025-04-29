@@ -127,6 +127,7 @@ button svg {
   border: 1px solid var(--clrBorderGoldIdle);
   border-radius: 999rem;
   background: hsla(from var(--clrBg) h s l / 0.5);
+  backdrop-filter: blur(0.15rem);
   cursor: pointer;
   transition: border-color 0.2s ease-out;
   &:hover,
