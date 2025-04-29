@@ -1,7 +1,8 @@
 "use client";
 import { authClient } from "@/server/auth/auth-client";
 import { useRouter } from "next/navigation";
-export default function Home() {
+
+export default function PageHome() {
   const router = useRouter();
 
   const signInGoogle = async () => {
