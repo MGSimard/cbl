@@ -17,6 +17,8 @@
   --clrBorderMuted: hsl(210, 14%, 14%);
   --clrBorderGoldIdle: hsl(42, 56%, 18%);
   --clrBorderGoldActive: hsl(41, 56%, 51%);
+
+  --clrInputBg: hsl(0, 0%, 0%);
 }
 :root[data-theme="light"] {
   --clrBg: hsl(0, 0%, 100%);
@@ -61,6 +63,9 @@ main {
   padding: var(--sitePadding);
 }
 main#hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: linear-gradient(hsla(from var(--clrBg) h s l / 0.5), var(--clrBg)), url("/assets/header_4k.webp");
   background-size: cover;
   background-position: center top;
@@ -145,3 +150,28 @@ button svg {
     transform: translateX(100%);
   }
 }
+/**/
+/* UTILITIES */
+.dot-pattern-overlay {
+  position: relative;
+}
+.dot-pattern-overlay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.5;
+  background-color: var(--clrBg);
+  -webkit-mask-image: url("/assets/dot-pattern.svg");
+  mask-image: url("/assets/dot-pattern.svg");
+  -webkit-mask-repeat: repeat;
+  mask-repeat: repeat;
+}
+.dot-pattern-overlay > * {
+  position: relative;
+  z-index: 1;
+}
+/**/

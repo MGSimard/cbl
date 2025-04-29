@@ -23,14 +23,14 @@ export default function PageHome() {
     await authClient.signOut({
       fetchOptions: {
         onSuccess: () => {
-          router.push("/login"); // redirect to login page
+          router.push("/");
         },
       },
     });
   };
 
   return (
-    <main id="hero">
+    <main id="hero" className="dot-pattern-overlay">
       <section>
         <h1>Test</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
