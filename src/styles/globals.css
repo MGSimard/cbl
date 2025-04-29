@@ -1,13 +1,25 @@
 /* THEME*/
 :root {
+  --siteMaxWidth: 1440px;
+  --sitePadding: 2rem;
+
   /* Fallbacks */
+  --clrText: hsl(45, 10%, 59%);
+  --clrHeading: hsl(40, 50%, 88%);
+  --clrSubheading: hsl(41, 56%, 51%);
+
   --clrBg: hsl(210, 90%, 4%);
+  --clrBorderMuted: hsl(210, 14%, 14%);
+  --clrBorderGoldIdle: hsl(42, 56%, 18%);
+  --clrBorderGoldActive: hsl(41, 56%, 51%);
 }
 :root[data-theme="light"] {
   --clrBg: hsl(0, 0%, 100%);
+  --clrBorder: "";
 }
 :root[data-theme="dark"] {
   --clrBg: hsl(210, 90%, 4%);
+  --clrBorder: "";
 }
 /**/
 /* CORE */
@@ -15,10 +27,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  outline: 1px solid red;
+  /* outline: 1px solid red; */
 }
 html {
   font-size: 62.5%;
+  background: var(--clrBg);
   scroll-behavior: smooth;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -41,12 +54,67 @@ main {
   flex-grow: 1;
 }
 main#hero {
-  background: linear-gradient(to bottom, transparent, var(--clrBg)), url("/assets/header_4k.webp");
+  background: linear-gradient(hsla(from var(--clrBg) h s l / 0.5), var(--clrBg)), url("/assets/header_4k.webp");
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
-  text-align: center;
+}
+footer {
+  padding: var(--sitePadding);
 }
 /**/
 /* NORMALIZE */
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+button {
+  font-family: inherit;
+  font-size: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  &:disabled {
+    cursor: default;
+  }
+}
+button svg {
+  width: 1em;
+  height: 1em;
+}
 /**/
+/* THEME TOGGLE */
+#theme-toggle {
+  all: unset;
+  position: fixed;
+  top: var(--sitePadding);
+  right: var(--sitePadding);
+  z-index: 100;
+  width: 4rem;
+  height: 2rem;
+  border: 1px solid var(--clrBorderGoldIdle);
+  border-radius: 999rem;
+  background: hsla(from var(--clrBg) h s l / 0.5);
+  cursor: pointer;
+  &:hover,
+  &:focus-visible {
+    border-color: var(--clrBorderGoldActive);
+  }
+  &::before {
+    display: inline-block;
+    content: "";
+    height: 100%;
+    aspect-ratio: 1;
+    background: var(--clrBorderGoldIdle);
+    border-radius: 999rem;
+    transition: transform 0.2s ease-out;
+  }
+  &:hover::before,
+  &:focus-visible::before {
+    background: var(--clrBorderGoldActive);
+  }
+  &:checked::before {
+    transform: translateX(100%);
+  }
+}
