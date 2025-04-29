@@ -35,7 +35,7 @@
   /* outline: 1px solid red; */
 }
 html {
-  font-family: var(--fontHeading);
+  font-family: var(--fontText);
   font-size: 62.5%;
   background: var(--clrBg);
   scroll-behavior: smooth;
@@ -78,6 +78,7 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: var(--fontHeading);
   text-transform: uppercase;
 }
 img,
