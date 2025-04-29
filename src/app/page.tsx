@@ -29,5 +29,9 @@ export default function PageHome() {
     });
   };
 
-  return <main id="hero"></main>;
+  return (
+    <main id="hero">
+      <h1>Test</h1>
+    </main>
+  );
 }

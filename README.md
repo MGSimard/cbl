@@ -4,6 +4,13 @@
 
 - [x] Finish scaffolding
 - [x] Basic OAuth
+- [ ] Color palettes (Dark & Light - Dark Default)
+- [x] Theme switch
+- [ ] ...
+- [ ] Implement fonts (BeaufortForLOL, Spiegel)
+- [ ] Font Preloads
+- [ ] ...
+- [ ] Background/Banner preload
 - [ ] ...
 - [ ] Ratelimiting
 - [ ] ...

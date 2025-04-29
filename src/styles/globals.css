@@ -3,6 +3,9 @@
   --siteMaxWidth: 1440px;
   --sitePadding: 2rem;
 
+  --fontHeading: "Beaufort For LOL";
+  --fontText: "Spiegel";
+
   /* Fallbacks */
   --clrText: hsl(45, 10%, 59%);
   --clrTextMuted: hsl(48, 3%, 35%);
@@ -31,6 +34,7 @@
   /* outline: 1px solid red; */
 }
 html {
+  font-family: var(--fontHeading);
   font-size: 62.5%;
   background: var(--clrBg);
   scroll-behavior: smooth;
@@ -67,6 +71,14 @@ footer {
 }
 /**/
 /* NORMALIZE */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-transform: uppercase;
+}
 img,
 svg {
   display: block;
