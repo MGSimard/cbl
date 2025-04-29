@@ -17,7 +17,7 @@ export default function SumSearch() {
     <form id="sum-search" onSubmit={handleSubmit}>
       <label htmlFor="region">
         <span>Region</span>
-        <select name="region" id="region" required>
+        <select name="region" id="region">
           <option value="na">NA</option>
           <option value="euw">EUW</option>
           <option value="kr">KR</option>
@@ -25,13 +25,13 @@ export default function SumSearch() {
       </label>
       <label htmlFor="name">
         <span>Name</span>
-        <input type="text" name="name" placeholder="Name..." required min={3} max={16} size={16} />
+        <input type="text" name="name" placeholder="Name..." />
       </label>
       <label htmlFor="tag">
         <span>Tag</span>
         <div id="tag-container">
           <span>#</span>
-          <input type="text" name="tag" placeholder="ABC" required min={3} max={5} size={5} />
+          <input type="text" name="tag" placeholder="Tag..." />
         </div>
       </label>
       <button type="submit">Search</button>
