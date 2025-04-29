@@ -1,6 +1,0 @@
-#theme-toggle {
-  position: fixed;
-  top: var(--sitePadding);
-  right: var(--sitePadding);
-  z-index: 100;
-}

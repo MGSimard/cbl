@@ -5,6 +5,7 @@
 
   /* Fallbacks */
   --clrText: hsl(45, 10%, 59%);
+  --clrTextMuted: hsl(48, 3%, 35%);
   --clrHeading: hsl(40, 50%, 88%);
   --clrSubheading: hsl(41, 56%, 51%);
 
@@ -61,6 +62,8 @@ main#hero {
 }
 footer {
   padding: var(--sitePadding);
+  color: var(--clrTextMuted);
+  text-align: center;
 }
 /**/
 /* NORMALIZE */
