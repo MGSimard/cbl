@@ -3,7 +3,7 @@
 ## Task List
 
 - [x] Finish scaffolding
-- [ ] Basic OAuth
+- [x] Basic OAuth
 - [ ] ...
 - [ ] Ratelimiting
 - [ ] ...
