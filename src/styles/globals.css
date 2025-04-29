@@ -1,9 +1,13 @@
 /* THEME*/
 :root {
+  /* Fallbacks */
+  --clrBg: hsl(210, 90%, 4%);
 }
 :root[data-theme="light"] {
+  --clrBg: hsl(0, 0%, 100%);
 }
 :root[data-theme="dark"] {
+  --clrBg: hsl(210, 90%, 4%);
 }
 /**/
 /* CORE */
@@ -11,6 +15,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  outline: 1px solid red;
 }
 html {
   font-size: 62.5%;
@@ -22,8 +27,25 @@ html {
   }
 }
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
   font-size: 1.6rem;
   font-family: var(--font-geist-sans);
+}
+header,
+footer {
+  flex-shrink: 0;
+}
+main {
+  flex-grow: 1;
+}
+main#hero {
+  background: linear-gradient(to bottom, transparent, var(--clrBg)), url("/assets/header_4k.webp");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  text-align: center;
 }
 /**/
 /* NORMALIZE */

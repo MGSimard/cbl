@@ -29,18 +29,5 @@ export default function PageHome() {
     });
   };
 
-  return (
-    <div>
-      <h1>Hello World</h1>
-      <button type="button" onClick={signInGoogle}>
-        Test Google OAuth
-      </button>
-      <button type="button" onClick={signInDiscord}>
-        Test Discord OAuth
-      </button>
-      <button type="button" onClick={signout}>
-        Sign Out
-      </button>
-    </div>
-  );
+  return <main id="hero"></main>;
 }
