@@ -5,22 +5,22 @@ export const beaufortForLol = localFont({
   fallback: ["Times New Roman", "Georgia", "Garamond", "Times", "serif"],
   src: [
     {
-      path: "../styles/fonts/BeaufortForLoL/BFL-light.woff2",
+      path: "../styles/fonts/BeaufortForLOL/BFL-light.woff2",
       weight: "200",
       style: "normal",
     },
     {
-      path: "../styles/fonts/BeaufortForLoL/BFL-light-italic.woff2",
+      path: "../styles/fonts/BeaufortForLOL/BFL-light-italic.woff2",
       weight: "200",
       style: "italic",
     },
     {
-      path: "../styles/fonts/BeaufortForLoL/BFL-regular.woff2",
+      path: "../styles/fonts/BeaufortForLOL/BFL-regular.woff2",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../styles/fonts/BeaufortForLoL/BFL-regular-italic.woff2",
+      path: "../styles/fonts/BeaufortForLOL/BFL-regular-italic.woff2",
       weight: "400",
       style: "italic",
     },
@@ -30,27 +30,27 @@ export const beaufortForLol = localFont({
       style: "normal",
     },
     {
-      path: "../styles/fonts/BeaufortForLoL/BFL-medium-italic.woff2",
+      path: "../styles/fonts/BeaufortForLOL/BFL-medium-italic.woff2",
       weight: "500",
       style: "italic",
     },
     {
-      path: "../styles/fonts/BeaufortForLoL/BFL-bold.woff2",
+      path: "../styles/fonts/BeaufortForLOL/BFL-bold.woff2",
       weight: "700",
       style: "normal",
     },
     {
-      path: "../styles/fonts/BeaufortForLoL/BFL-bold-italic.woff2",
+      path: "../styles/fonts/BeaufortForLOL/BFL-bold-italic.woff2",
       weight: "700",
       style: "italic",
     },
     {
-      path: "../styles/fonts/BeaufortForLoL/BFL-heavy.woff2",
+      path: "../styles/fonts/BeaufortForLOL/BFL-heavy.woff2",
       weight: "800",
       style: "normal",
     },
     {
-      path: "../styles/fonts/BeaufortForLoL/BFL-heavy-italic.woff2",
+      path: "../styles/fonts/BeaufortForLOL/BFL-heavy-italic.woff2",
       weight: "800",
       style: "italic",
     },
