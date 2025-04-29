@@ -3,9 +3,9 @@
   --siteMaxWidth: 1440px;
   --sitePadding: 2rem;
 
-  --fontHeading: "Beaufort For LOL", "Times New Roman", Georgia, Garamond, Times, serif;
+  /* --fontHeading: "Beaufort For LOL", "Times New Roman", Georgia, Garamond, Times, serif;
   --fontText: "Spiegel", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica,
-    Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    Cantarell, Ubuntu, roboto, noto, arial, sans-serif; */
 
   /* Fallbacks */
   --clrText: hsl(45, 10%, 59%);
@@ -34,7 +34,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  outline: 1px solid red;
+  /* outline: 1px solid red; */
 }
 html {
   font-size: 62.5%;
@@ -74,6 +74,12 @@ section {
   max-width: var(--siteMaxWidth);
   margin: 0 auto;
 }
+main#hero section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 footer {
   padding: var(--sitePadding);
   color: var(--clrTextMuted);
@@ -92,8 +98,9 @@ h4,
 h5,
 h6 {
   font-family: var(--fontHeading);
-  text-transform: uppercase;
+  font-weight: 700;
   color: var(--clrHeading);
+  text-transform: uppercase;
 }
 img,
 svg {
@@ -113,6 +120,9 @@ button {
 button svg {
   width: 1em;
   height: 1em;
+}
+fieldset {
+  border: none;
 }
 /**/
 /* THEME TOGGLE */
@@ -179,15 +189,40 @@ button svg {
 /* SUMMONER SEARCH FORM */
 #sum-search {
   display: flex;
+  flex-direction: column;
   gap: 1rem;
-  background: gray;
+  width: fit-content;
+  padding: 1rem;
+  background: black;
 }
-#sum-search input {
+#sum-search-inputs {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+#sum-search input,
+#sum-search select {
+  padding: 0.5rem;
+  outline: none;
+  border: 1px solid var(--clrBorderGoldIdle);
   font-family: var(--font);
+}
+#sum-search input:focus,
+#sum-search select:focus {
+  border-color: var(--clrBorderGoldActive);
 }
 #sum-search label span {
   display: block;
 }
 #tag-container {
   display: flex;
+  align-items: center;
+}
+#sum-search button {
+  padding: 1rem 4rem;
+  text-transform: uppercase;
+  font-family: var(--fontHeading);
+  font-weight: 700;
+  outline: 1px solid red;
 }
