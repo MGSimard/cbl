@@ -3,14 +3,13 @@
 ## Task List
 
 - [x] Finish scaffolding
-- [ ] The not annoying OAuth
-- [ ] Discord OAuth
-- [ ] Twitter OAuth
-- [ ] Microsoft OAuth
+- [ ] Basic OAuth
 - [ ] ...
 - [ ] Ratelimiting
 - [ ] ...
 - [ ] Branding (Name, Domain, Logo)
+- [ ] Twitter OAuth
+- [ ] Microsoft OAuth
 - [ ] Metadata
 - [ ] Deploy
 - [ ] Adjust OAuth vars & callback URLs
