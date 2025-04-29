@@ -5,7 +5,6 @@ Medium: 500
 Bold: 700
 Heavy: 800
 */
-
 @font-face {
   font-family: "Beaufort For LOL";
   src: url("/fonts/BeaufortForLOL/BFL-light.woff2") format("woff2");
@@ -91,5 +90,42 @@ Bold: 700
   src: url("/fonts/Spiegel/spiegel-regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Spiegel";
+  src: url("/fonts/Spiegel/spiegel-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Spiegel";
+  src: url("/fonts/Spiegel/spiegel-semibold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Spiegel";
+  src: url("/fonts/Spiegel/spiegel-semibold-italic.woff2") format("woff2");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Spiegel";
+  src: url("/fonts/Spiegel/spiegel-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Spiegel";
+  src: url("/fonts/Spiegel/spiegel-bold-italic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
   font-display: swap;
 }
