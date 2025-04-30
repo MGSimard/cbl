@@ -8,6 +8,7 @@
 - [x] Theme switch
 - [x] Implement fonts (BeaufortForLOL, Spiegel)
 - [x] Font Preloads
+- [ ] Better decorators/dividers (SVG)
 - [ ] ...
 - [ ] Background/Banner preload
 - [ ] ...
