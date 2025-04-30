@@ -38,10 +38,10 @@
   --clrBorderGoldIdle: var(--clrGold6);
   --clrBorderGoldActive: var(--clrGold4);
 
-  --clrMainActionBg: linear-gradient(to bottom, hsl(220, 60%, 10%), hsl(187, 97%, 34%));
-  --clrMainActionBorder: linear-gradient(to bottom, hsl(187, 97%, 34%), hsl(175, 90%, 41%));
-  --clrMainActionInnerGlow: hsl(187, 97%, 44%);
-  --clrMainActionActive: hsl(192, 71%, 14%);
+  --clrMainActionBg: linear-gradient(to bottom, var(--clrBlue7), var(--clrBlue3));
+  --clrMainActionBorder: linear-gradient(to bottom, var(--clrBlue3), var(--clrBlue2));
+  --clrMainActionInnerGlow: hsl(from var(--clrBlue3) h s calc(l + 10));
+  --clrMainActionActive: var(--clrBlue5);
 }
 :root[data-theme="light"] {
   --clrText: hsl(220, 60%, 10%);
@@ -52,19 +52,7 @@
   --clrBorder: "";
 }
 :root[data-theme="dark"] {
-  --clrText: hsl(45, 10%, 59%);
-  --clrTextMuted: hsl(48, 3%, 35%);
-  --clrHeading: hsl(40, 50%, 88%);
-  --clrSubheading: hsl(41, 56%, 51%);
-
-  --clrBg: hsl(210, 90%, 4%);
-  --clrBorderMuted: hsl(210, 14%, 14%);
-  --clrBorderGoldIdle: hsl(42, 56%, 18%);
-  --clrBorderGoldActive: hsl(41, 56%, 51%);
-
-  --clrInputBg: hsl(0, 0%, 0%);
-  --clrMainActionBg: linear-gradient(to bottom, hsl(220, 60%, 10%), hsl(187, 97%, 34%));
-  --clrMainActionBorder: linear-gradient(to bottom, hsl(187, 97%, 34%), hsl(175, 90%, 41%));
+  /* Already handled by :root default fallback */
 }
 /**/
 /* CORE */
