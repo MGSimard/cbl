@@ -293,6 +293,10 @@ input {
   text-transform: uppercase;
   background: var(--clrMainActionBorder);
   clip-path: polygon(0 0, calc(100% - 2rem) 0, 100% calc(50%), calc(100% - 2rem) 100%, 0 100%);
+
+  &:disabled {
+    filter: grayscale(1) brightness(0.5);
+  }
 }
 #sum-search-submit span {
   display: block;
