@@ -1,26 +1,47 @@
-/* THEME*/
+/* THEME */
 :root {
   --siteMaxWidth: 1440px;
   --sitePadding: 2rem;
 
-  /* --fontBeaufort: "Beaufort For LOL", "Times New Roman", Georgia, Garamond, Times, serif;
-  --fontSpiegel: "Spiegel", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica,
-    Cantarell, Ubuntu, roboto, noto, arial, sans-serif; */
+  /* Palette */
+  --clrBlue1: hsl(180, 82%, 89%);
+  --clrBlue2: hsl(175, 90%, 41%);
+  --clrBlue3: hsl(187, 97%, 34%);
+  --clrBlue4: hsl(198, 100%, 25%);
+  --clrBlue5: hsl(192, 71%, 14%);
+  --clrBlue6: hsl(219, 63%, 10%);
+  --clrBlue7: hsl(220, 60%, 10%);
 
-  /* Fallbacks */
-  --clrText: hsl(45, 10%, 59%);
-  --clrTextMuted: hsl(48, 3%, 35%);
-  --clrHeading: hsl(40, 50%, 88%);
-  --clrSubheading: hsl(41, 56%, 51%);
+  --clrGold1: hsl(40, 50%, 88%);
+  --clrGold2: hsl(40, 45%, 61%);
+  --clrGold3: hsl(40, 45%, 61%);
+  --clrGold4: hsl(41, 56%, 51%);
+  --clrGold5: hsl(38, 50%, 31%);
+  --clrGold6: hsl(42, 56%, 18%);
+  --clrGold7: hsl(30, 25%, 16%);
 
-  --clrBg: hsl(210, 90%, 4%);
-  --clrBorderMuted: hsl(210, 14%, 14%);
-  --clrBorderGoldIdle: hsl(42, 56%, 18%);
-  --clrBorderGoldActive: hsl(41, 56%, 51%);
+  --clrGrey1: hsl(45, 10%, 59%);
+  --clrGrey1p5: hsl(48, 3%, 35%);
+  --clrGrey2: hsl(240, 4%, 25%);
+  --clrGrey3: hsl(210, 14%, 14%);
+  --clrGreyCool: hsl(200, 20%, 15%);
+  --clrHextechBlack: hsl(210, 90%, 4%);
 
-  --clrInputBg: hsl(0, 0%, 0%);
+  /* Fallbacks (Default Dark) */
+  --clrText: var(--clrGrey1);
+  --clrTextMuted: var(--clrGrey1p5);
+  --clrHeading: var(--clrGold1);
+  --clrSubheading: var(--clrGold4);
+
+  --clrBg: var(--clrHextechBlack);
+  --clrBorderMuted: var(--clrGrey3);
+  --clrBorderGoldIdle: var(--clrGold6);
+  --clrBorderGoldActive: var(--clrGold4);
+
   --clrMainActionBg: linear-gradient(to bottom, hsl(220, 60%, 10%), hsl(187, 97%, 34%));
   --clrMainActionBorder: linear-gradient(to bottom, hsl(187, 97%, 34%), hsl(175, 90%, 41%));
+  --clrMainActionInnerGlow: hsl(187, 97%, 44%);
+  --clrMainActionActive: hsl(192, 71%, 14%);
 }
 :root[data-theme="light"] {
   --clrText: hsl(220, 60%, 10%);
@@ -302,19 +323,42 @@ input {
   color: var(--clrTextMuted);
 }
 #sum-search-submit {
+  position: relative;
   align-self: stretch;
   margin-left: 1rem;
-  padding: 0.2rem;
   font-family: var(--fontBeaufort);
   font-weight: 700;
   color: white;
   text-transform: uppercase;
   text-align: center;
-  background: var(--clrMainActionBorder);
-  clip-path: polygon(0 0, calc(100% - 2rem) 0, 100% calc(50%), calc(100% - 2rem) 100%, 0 100%);
+  padding: 0.2rem;
+  transition: filter 0.2s ease, color 0.2s ease;
   &:disabled {
     filter: grayscale(1) brightness(0.5);
   }
+  &:not(:disabled) {
+    &:hover {
+      filter: drop-shadow(0 0 0.3rem white);
+    }
+    &:active {
+      color: var(--clrMainActionActive);
+      filter: none;
+    }
+  }
+}
+#sum-search-submit::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--clrMainActionBorder);
+  clip-path: polygon(0 0, calc(100% - 2rem) 0, 100% calc(50%), calc(100% - 2rem) 100%, 0 100%);
+  transition: background 0.2s ease;
+}
+#sum-search-submit:not(:disabled):hover::before {
+  background: linear-gradient(to bottom, hsl(187, 97%, 90%), hsl(175, 90%, 97%));
+}
+#sum-search-submit:not(:disabled):active::before {
+  background: var(--clrMainActionActive);
 }
 #sum-search-submit span {
   display: flex;
@@ -324,4 +368,12 @@ input {
   height: 100%;
   background: var(--clrMainActionBg);
   clip-path: polygon(0 0, calc(100% - 1.9rem) 0, 100% calc(50%), calc(100% - 1.9rem) 100%, 0 100%);
+  transition: box-shadow 0.2s ease;
+}
+#sum-search-submit:not(:disabled):hover span {
+  box-shadow: inset 0 -0.5rem 2rem 0.2rem var(--clrMainActionInnerGlow);
+}
+#sum-search-submit:not(:disabled):active span {
+  box-shadow: none;
+  background: var(--clrBg);
 }
