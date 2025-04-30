@@ -56,6 +56,7 @@ body {
   font-family: var(--fontSpiegel);
   font-size: 1.6rem;
   color: var(--clrText);
+  overflow-x: hidden;
 }
 header,
 footer {
@@ -233,10 +234,7 @@ input {
 /* SUMMONER SEARCH FORM */
 #sum-search {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
+  align-items: flex-end;
 }
 #sum-search-inputs {
   display: flex;
@@ -285,24 +283,26 @@ input {
   color: var(--clrTextMuted);
 }
 #sum-search-submit {
-  width: 100%;
+  height: 3.6rem;
+  margin-left: 1rem;
   padding: 0.2rem;
   font-family: var(--fontBeaufort);
   font-weight: 700;
   color: white;
   text-transform: uppercase;
+  text-align: center;
   background: var(--clrMainActionBorder);
   clip-path: polygon(0 0, calc(100% - 2rem) 0, 100% calc(50%), calc(100% - 2rem) 100%, 0 100%);
-
   &:disabled {
     filter: grayscale(1) brightness(0.5);
   }
 }
 #sum-search-submit span {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4rem;
+  height: 100%;
   background: var(--clrMainActionBg);
-  padding: 1rem 8rem;
-  position: relative;
   clip-path: polygon(0 0, calc(100% - 1.9rem) 0, 100% calc(50%), calc(100% - 1.9rem) 100%, 0 100%);
-  z-index: 1;
 }
