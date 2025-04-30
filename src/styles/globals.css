@@ -3,8 +3,8 @@
   --siteMaxWidth: 1440px;
   --sitePadding: 2rem;
 
-  /* --fontHeading: "Beaufort For LOL", "Times New Roman", Georgia, Garamond, Times, serif;
-  --fontText: "Spiegel", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica,
+  /* --fontBeaufort: "Beaufort For LOL", "Times New Roman", Georgia, Garamond, Times, serif;
+  --fontSpiegel: "Spiegel", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica,
     Cantarell, Ubuntu, roboto, noto, arial, sans-serif; */
 
   /* Fallbacks */
@@ -53,7 +53,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100dvh;
-  font-family: var(--fontText);
+  font-family: var(--fontSpiegel);
   font-size: 1.6rem;
   color: var(--clrText);
 }
@@ -102,24 +102,29 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--fontHeading);
+  font-family: var(--fontBeaufort);
   font-weight: 700;
   color: var(--clrHeading);
   text-transform: uppercase;
 }
 h1 {
   font-size: 6rem;
+  letter-spacing: -0.01em;
+  line-height: 1.08;
 }
 h2 {
   font-size: 4rem;
+  letter-spacing: 0.05em;
 }
 h3 {
-  font-size: 2rem;
+  font-size: 3rem;
+  letter-spacing: 0.05em;
 }
 h4,
 h5,
 h6 {
-  font-size: 1.6rem;
+  font-size: 2rem;
+  letter-spacing: 0.05em;
 }
 img,
 svg {
@@ -143,6 +148,11 @@ button svg {
 }
 fieldset {
   border: none;
+}
+input {
+  background: none;
+  border: none;
+  outline: none;
 }
 /**/
 /* UTILITIES */
@@ -217,21 +227,21 @@ fieldset {
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  padding: 1rem;
-  /* background: black; */
 }
 #sum-search-inputs {
   display: flex;
-  gap: 1rem;
   align-items: center;
-  justify-content: space-between;
+}
+.vis-target {
+  padding: 0.5rem;
+  border: 1px solid var(--clrBorderGoldIdle);
+  background: var(--clrBg);
 }
 #sum-search input,
 #sum-search select {
-  padding: 0.5rem;
-  font-family: var(--font);
+  font-family: var(--fontSpiegel);
+  font-size: 2rem;
   color: inherit;
-  border: 1px solid var(--clrBorderGoldIdle);
   outline: none;
   &::placeholder {
     color: var(--clrTextMuted);
@@ -240,25 +250,41 @@ fieldset {
     border-color: var(--clrBorderGoldActive);
   }
 }
-#sum-search label span {
+#sum-search label > span {
   display: block;
+  font-family: var(--fontBeaufort);
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--clrSubheading);
+}
+#region-label {
+  margin-right: 1rem;
 }
 #tag-container {
   display: flex;
   align-items: center;
+  &:focus-within {
+    border-color: var(--clrBorderGoldActive);
+  }
 }
-#sum-search button {
+#tag-container span {
+  font-size: 2rem;
+  color: var(--clrTextMuted);
+}
+#sum-search-submit {
   width: 100%;
   padding: 0.2rem;
-  font-family: var(--fontHeading);
+  font-family: var(--fontBeaufort);
   font-weight: 700;
   color: white;
   text-transform: uppercase;
   background: var(--clrMainActionBorder);
-  /* outline: 1px solid red; */
   clip-path: polygon(0 0, calc(100% - 2rem) 0, 100% calc(50%), calc(100% - 2rem) 100%, 0 100%);
 }
-#sum-search button span {
+#sum-search-submit span {
   display: block;
   background: var(--clrMainActionBg);
   padding: 1rem 8rem;

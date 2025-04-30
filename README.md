@@ -6,15 +6,15 @@
 - [x] Basic OAuth
 - [ ] Color palettes (Dark & Light - Dark Default)
 - [x] Theme switch
-- [ ] ...
-- [ ] Implement fonts (BeaufortForLOL, Spiegel)
-- [ ] Font Preloads
+- [x] Implement fonts (BeaufortForLOL, Spiegel)
+- [x] Font Preloads
 - [ ] ...
 - [ ] Background/Banner preload
 - [ ] ...
 - [ ] Ratelimiting
 - [ ] ...
 - [ ] Branding (Name, Domain, Logo)
+- [ ] Custom cursor(s)
 - [ ] Twitter OAuth
 - [ ] Microsoft OAuth
 - [ ] Metadata

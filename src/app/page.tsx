@@ -35,7 +35,6 @@ export default function PageHome() {
       <section>
         <h1>COMMUNITY BAN LIST</h1>
         <img className="decorator-hr-lg" src="/assets/decorator-hr-lg.png" alt="" />
-        <h2>SEARCH SUMMONER</h2>
         <SumSearch />
       </section>
     </main>

@@ -1,7 +1,7 @@
 import localFont from "next/font/local";
 
 export const beaufortForLol = localFont({
-  variable: "--fontHeading",
+  variable: "--fontBeaufort",
   fallback: ["Times New Roman", "Georgia", "Garamond", "Times", "serif"],
   src: [
     {
@@ -58,7 +58,7 @@ export const beaufortForLol = localFont({
 });
 
 export const spiegel = localFont({
-  variable: "--fontText",
+  variable: "--fontSpiegel",
   fallback: [
     "-apple-system",
     "BlinkMacSystemFont",
