@@ -43,16 +43,19 @@
   --clrMainActionInnerGlow: hsl(from var(--clrBlue3) h s calc(l + 10));
   --clrMainActionActive: var(--clrBlue5);
 }
-:root[data-theme="light"] {
-  --clrText: hsl(220, 60%, 10%);
-  --clrTextMuted: hsl(45, 10%, 59%);
-  --clrHeading: hsl(220, 60%, 10%);
-
-  --clrBg: hsl(0, 0%, 100%);
-  --clrBorder: "";
-}
 :root[data-theme="dark"] {
   /* Already handled by :root default fallback */
+}
+:root[data-theme="light"] {
+  --clrTextLight: hsl(220, 60%, 10%);
+
+  --clrText: var(--clrTextLight);
+  --clrTextMuted: var(--clrGrey1);
+  --clrHeading: var(--clrTextLight);
+  --clrSubheading: var(--clrTextLight);
+
+  --clrBg: hsl(0, 0%, 100%);
+  --clrBorderMuted: var(--clrGrey3);
 }
 /**/
 /* CORE */
@@ -215,7 +218,7 @@ input {
 .decorator-hr-lg {
   width: 100%;
   max-width: 60rem;
-  color: var(--clrBorderGoldActive);
+  color: var(--clrSubheading);
   margin-bottom: 4rem;
 }
 /**/
