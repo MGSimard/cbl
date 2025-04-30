@@ -62,7 +62,6 @@ export default function SumSearch() {
           />
         </div>
       </label>
-
       <button type="submit" id="sum-search-submit" disabled={!isFormValid}>
         <span>SEARCH</span>
       </button>
