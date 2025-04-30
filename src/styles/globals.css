@@ -126,6 +126,11 @@ h6 {
   font-size: 2rem;
   letter-spacing: 0.05em;
 }
+p {
+  font-size: 1.6rem;
+  line-height: 1.26;
+  letter-spacing: 0.02em;
+}
 img,
 svg {
   display: block;
@@ -153,6 +158,11 @@ input {
   background: none;
   border: none;
   outline: none;
+}
+/**/
+/* CORE */
+#footer-content p {
+  font-size: 1.4rem;
 }
 /**/
 /* UTILITIES */
