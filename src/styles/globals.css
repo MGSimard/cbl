@@ -207,6 +207,7 @@ input {
   width: 100%;
   max-width: 60rem;
   color: var(--clrBorderGoldActive);
+  margin-bottom: 4rem;
 }
 /**/
 /* THEME TOGGLE */

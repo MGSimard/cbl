@@ -48,10 +48,6 @@ export default function PageHome() {
           </g>
         </svg>
         <SumSearch />
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Amet consectetur adipisicing elit.
-          Quisquam, quos.
-        </p>
       </section>
     </main>
   );
