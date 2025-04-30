@@ -55,7 +55,7 @@
   --clrSubheading: var(--clrTextLight);
 
   --clrBg: hsl(0, 0%, 100%);
-  --clrBorderMuted: var(--clrGrey3);
+  --clrBorderMuted: var(--clrGrey1p5);
 }
 /**/
 /* CORE */
