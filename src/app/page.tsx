@@ -36,6 +36,10 @@ export default function PageHome() {
         <h1>COMMUNITY BAN LIST</h1>
         <img className="decorator-hr-lg" src="/assets/decorator-hr-lg.png" alt="" />
         <SumSearch />
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Amet consectetur adipisicing elit.
+          Quisquam, quos.
+        </p>
       </section>
     </main>
   );

@@ -24,6 +24,10 @@
   --clrMainActionBorder: linear-gradient(to bottom, hsl(187, 97%, 34%), hsl(175, 90%, 41%));
 }
 :root[data-theme="light"] {
+  --clrText: hsl(210, 90%, 4%);
+  --clrTextMuted: hsl(45, 10%, 59%);
+  --clrHeading: hsl(41, 56%, 51%);
+
   --clrBg: hsl(0, 0%, 100%);
   --clrBorder: "";
 }
@@ -234,11 +238,26 @@ input {
 /* SUMMONER SEARCH FORM */
 #sum-search {
   display: flex;
-  align-items: flex-end;
-}
-#sum-search-inputs {
-  display: flex;
   align-items: center;
+}
+#sum-search label {
+  position: relative;
+}
+#sum-search label > span {
+  position: absolute;
+  top: -1em;
+  left: 0;
+  display: block;
+  font-family: var(--fontBeaufort);
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--clrSubheading);
+}
+#region-label {
+  margin-right: 1rem;
 }
 .vis-target {
   padding: 0.5rem;
@@ -258,19 +277,6 @@ input {
     border-color: var(--clrBorderGoldActive);
   }
 }
-#sum-search label > span {
-  display: block;
-  font-family: var(--fontBeaufort);
-  font-weight: 700;
-  font-size: 1.2rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  line-height: 1;
-  color: var(--clrSubheading);
-}
-#region-label {
-  margin-right: 1rem;
-}
 #tag-container {
   display: flex;
   align-items: center;
@@ -283,7 +289,7 @@ input {
   color: var(--clrTextMuted);
 }
 #sum-search-submit {
-  height: 3.6rem;
+  align-self: stretch;
   margin-left: 1rem;
   padding: 0.2rem;
   font-family: var(--fontBeaufort);
