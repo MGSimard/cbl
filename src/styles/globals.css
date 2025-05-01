@@ -257,9 +257,11 @@ input {
 }
 #hero-logo {
   position: absolute;
-  max-width: 40rem;
-  color: var(--clrSubheading);
+  max-width: 60rem;
+  color: var(--clrText);
   mix-blend-mode: color-dodge;
+  opacity: 0.5;
+  /* Overlay, color-dodge, saturation, color*/
 }
 #hero section {
   display: flex;
