@@ -1,7 +1,9 @@
 "use client";
-import SumSearch from "@/components/SumSearch";
-import { authClient } from "@/server/auth/auth-client";
 import { useRouter } from "next/navigation";
+import { authClient } from "@/server/auth/auth-client";
+import { reddit } from "better-auth/social-providers";
+import SumSearch from "@/components/SumSearch";
+import { IconCBL } from "@/components/Icons";
 
 export default function PageHome() {
   const router = useRouter();
@@ -33,6 +35,7 @@ export default function PageHome() {
   return (
     <main id="hero" className="dot-pattern-overlay">
       <section>
+        <IconCBL id="hero-logo" />
         <h1>COMMUNITY BAN LIST</h1>
         <svg
           className="decorator-hr-lg"
@@ -47,6 +50,8 @@ export default function PageHome() {
             />
           </g>
         </svg>
+      </section>
+      <section>
         <SumSearch />
       </section>
     </main>
