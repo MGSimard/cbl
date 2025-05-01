@@ -10,12 +10,14 @@
 - [x] Font Preloads
 - [ ] Better decorators/dividers (SVG)
 - [ ] Animate the decorator line on render/in-view (left and right expand, clip-path?)
+- [x] Branding
+- [ ] Opengraph & Twitter images
 - [ ] ...
 - [ ] Background/Banner preload
 - [ ] ...
 - [ ] Ratelimiting
 - [ ] ...
-- [ ] Branding (Name, Domain, Logo)
+- [ ] Reserve domain
 - [ ] Custom cursor(s)
 - [ ] Twitter OAuth
 - [ ] Microsoft OAuth
