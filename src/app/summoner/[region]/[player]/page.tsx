@@ -1,3 +1,10 @@
 export default function PageSummoner() {
-  return <div>Summoner Page</div>;
+  return (
+    <main>
+      <section>
+        <h1>Summoner Page</h1>
+        Wee Woo
+      </section>
+    </main>
+  );
 }
