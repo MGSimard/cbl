@@ -273,6 +273,9 @@ input {
 #hero .decorator-hr-lg {
   z-index: 1;
 }
+#hero h1 {
+  text-align: center;
+}
 /**/
 /* SUMMONER SEARCH FORM */
 #sum-search {
