@@ -24,7 +24,7 @@ export const siteMetadata: Metadata = {
   },
   openGraph: {
     title: "Community Ban List",
-    description: "CBL: A community-driven effort to identify and track disruptive players in League of Legenss.",
+    description: "CBL: A community-driven effort to identify and track disruptive players in League of Legends.",
     url: "https://cbl.nexus",
     type: "website",
     siteName: "Community Ban List",
