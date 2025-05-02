@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "author": "MGSimard <mgsimard.dev@gmail.com> (https://mgsimard.dev)",
-  "description": "Community Ban List",
+  "description": "CBL: A community-driven effort to identify and track disruptive players in League of Legends.",
   "license": "MIT",
   "type": "module",
   "repository": {

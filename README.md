@@ -11,8 +11,7 @@
 - [ ] Better decorators/dividers (SVG)
 - [ ] Animate the decorator line on render/in-view (left and right expand, clip-path?)
 - [x] Branding
-- [ ] Opengraph & Twitter images
-- [ ] Metadata description (webmanifest, package, meta etc)
+- [x] Metadata, icons, social media images etc
 - [ ] 404 & error pages
 - [ ] ...
 - [ ] Background/Banner preload

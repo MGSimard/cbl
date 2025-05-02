@@ -1,7 +1,7 @@
 {
   "name": "Community Ban List",
   "short_name": "CBL",
-  "description": "DESC",
+  "description": "CBL: A community-driven effort to identify and track disruptive players in League of Legends.",
   "icons": [
     {
       "src": "/metadata/favicon.ico",

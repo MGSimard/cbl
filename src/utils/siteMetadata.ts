@@ -9,7 +9,7 @@ export const siteMetadata: Metadata = {
     default: "Community Ban List",
     template: "CBL | %s",
   },
-  description: "DESC",
+  description: "CBL: A community-driven effort to identify and track disruptive players in League of Legends.",
   manifest: "/metadata/manifest.webmanifest",
   icons: [
     { rel: "shortcut icon", url: "/metadata/favicon.ico" },
