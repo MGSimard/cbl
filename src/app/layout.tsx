@@ -6,6 +6,8 @@ import { ThemeProvider } from "next-themes";
 import { beaufortForLol, spiegel } from "@/utils/localFonts";
 import "@/styles/globals.css";
 
+import Head from "next/head";
+
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
@@ -21,6 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className={`${beaufortForLol.variable} ${spiegel.variable}`}>
+      <Head>
+        <link rel="preload" href="/assets/header_4k.webp" as="image" type="image/webp" />
+      </Head>
       <body>
         <ThemeProvider defaultTheme="dark" enableSystem={false}>
           <ThemeToggle />
