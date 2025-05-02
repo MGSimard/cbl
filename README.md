@@ -13,6 +13,7 @@
 - [x] Branding
 - [ ] Opengraph & Twitter images
 - [ ] Metadata description (webmanifest, package, meta etc)
+- [ ] 404 & error pages
 - [ ] ...
 - [ ] Background/Banner preload
 - [ ] ...
