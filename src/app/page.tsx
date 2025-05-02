@@ -33,7 +33,7 @@ export default function PageHome() {
   };
 
   return (
-    <main id="hero" className="dot-pattern-overlay">
+    <main className="hero dot-pattern-overlay">
       <section>
         <IconCBL id="hero-logo" />
         <h1>COMMUNITY BAN LIST</h1>
