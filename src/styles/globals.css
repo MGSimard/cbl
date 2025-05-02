@@ -87,10 +87,18 @@ body {
   font-size: 1.6rem;
   color: var(--clrText);
   background: linear-gradient(hsla(from var(--clrBg) h s l / 0.5), var(--clrBg)), url("/assets/header_4k.webp");
-  background-size: cover;
+  background-size: auto 100dvh;
   background-position: center top;
   background-repeat: no-repeat;
   overflow-x: hidden;
+}
+@media (min-aspect-ratio: 16/9) {
+  /* BG Image 100dvh tall, however if leads to image not filling viewport width (ie ultrawide), make width the commanding dimension */
+  /* This avoids bg image growing too tall if content is taller than 100dvh*/
+  /* TLDR: Clamp 100dvh height unless image needs to grow in width to fill viewport*/
+  body {
+    background-size: 100vw auto;
+  }
 }
 body::before {
   content: "";
@@ -201,27 +209,6 @@ a {
 }
 /**/
 /* UTILITIES */
-.dot-pattern-overlay {
-  position: relative;
-}
-.dot-pattern-overlay::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  opacity: 0.5;
-  background-color: var(--clrBg);
-  -webkit-mask-image: url("/assets/dot-pattern.svg");
-  mask-image: url("/assets/dot-pattern.svg");
-  -webkit-mask-repeat: repeat;
-  mask-repeat: repeat;
-}
-.dot-pattern-overlay > * {
-  position: relative;
-}
 .decorator-hr-lg {
   width: 100%;
   max-width: 60rem;
