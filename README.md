@@ -13,6 +13,7 @@
 - [x] Branding
 - [x] Metadata, icons, social media images etc
 - [ ] 404 & error pages
+- [ ] Figure out proper image preloading for background img in this dogshit framework
 - [ ] ...
 - [ ] Background/Banner preload
 - [ ] ...
