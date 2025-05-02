@@ -416,7 +416,7 @@ a.btn-primary-action {
 #not-found h1 {
   position: relative;
 }
-#not-found h1 span {
+#nf-one {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -429,7 +429,9 @@ a.btn-primary-action {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  z-index: -1;
+}
+#nf-two {
+  position: relative;
 }
 #not-found a.btn-primary-action::before {
   clip-path: polygon(1.9rem 0, 100% 0, 100% 100%, 1.9rem 100%, 0 50%);
