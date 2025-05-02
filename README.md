@@ -18,10 +18,21 @@
 - [ ] ...
 - [ ] Background/Banner preload
 - [ ] ...
+- [ ] Player profiles
+- [ ] Identifiers (Past usernames later, pull from reports)
+- [ ] Account status (Placeholder)
+- [ ] Stats
+- [ ] Match history
 - [ ] Ratelimiting
+- [ ] Reporting feature (File upload, file scanning/sanitization)
+- [ ] Evidence panel
+- [ ] ...
+- [ ] RBAC
+- [ ] Admin dashboard
+- [ ] Profile status appeal system
 - [ ] ...
 - [ ] Reserve domain
-- [ ] Custom cursor(s)
+- [ ] Custom cursor(s)?
 - [ ] Twitter OAuth
 - [ ] Microsoft OAuth
 - [ ] Metadata
