@@ -119,21 +119,26 @@ body > * {
   position: relative; /* To escape the dot pattern overlay on body BG */
 }
 header,
+main,
 footer {
-  flex-shrink: 0;
-}
-main {
-  flex-grow: 1;
   max-width: var(--siteMaxWidth);
   width: 100%;
   margin: 0 auto;
+}
+header,
+footer {
+  flex-shrink: 0;
+}
+header {
+  padding: 4rem 0;
+}
+main {
+  flex-grow: 1;
   padding: 4rem 0;
 }
 section {
 }
 footer {
-  max-width: var(--siteMaxWidth);
-  margin: 0 auto;
   padding: 2rem 0;
   font-size: 1.2rem;
   color: var(--clrTextMuted);
@@ -282,6 +287,9 @@ a {
   opacity: 0.5;
   pointer-events: none;
   /* Overlay, color-dodge, saturation, color*/
+}
+#hero > *:not(#hero-logo) {
+  z-index: 1;
 }
 /**/
 /* SUMMONER SEARCH FORM */
@@ -441,3 +449,4 @@ a.btn-primary-action {
   clip-path: polygon(1.9rem 0, 100% 0, 100% 100%, 1.9rem 100%, 0 50%);
 }
 /**/
+/* SUMMONER PROFILE */
