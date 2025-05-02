@@ -17,6 +17,11 @@ export const siteMetadata: Metadata = {
     { rel: "icon", type: "image/svg+xml", url: "/metadata/icon.svg" },
     { rel: "apple-touch-icon", sizes: "180x180", url: "/metadata/apple-icon.png" },
   ],
+  appleWebApp: {
+    title: "Community Ban List",
+    statusBarStyle: "black-translucent",
+    startupImage: "/metadata/apple-icon.png",
+  },
   openGraph: {
     title: "Community Ban List",
     description: "DESC",
