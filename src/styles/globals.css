@@ -91,7 +91,7 @@ footer {
 }
 main {
   flex-grow: 1;
-  padding: var(--sitePadding);
+  padding: 4rem var(--sitePadding);
 }
 section {
   max-width: var(--siteMaxWidth);
