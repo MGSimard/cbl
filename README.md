@@ -12,6 +12,7 @@
 - [ ] Animate the decorator line on render/in-view (left and right expand, clip-path?)
 - [x] Branding
 - [ ] Opengraph & Twitter images
+- [ ] Metadata description (webmanifest, package, meta etc)
 - [ ] ...
 - [ ] Background/Banner preload
 - [ ] ...
