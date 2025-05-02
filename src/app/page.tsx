@@ -35,7 +35,7 @@ export default function PageHome() {
   return (
     <main className="hero dot-pattern-overlay">
       <section>
-        <IconCBL id="hero-logo" />
+        <IconCBL id="hero-logo" className="no-select" />
         <h1>COMMUNITY BAN LIST</h1>
         <svg
           className="decorator-hr-lg"
