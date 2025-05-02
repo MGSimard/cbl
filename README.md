@@ -12,7 +12,8 @@
 - [ ] Animate the decorator line on render/in-view (left and right expand, clip-path?)
 - [x] Branding
 - [x] Metadata, icons, social media images etc
-- [ ] 404 & error pages
+- [x] 404
+- [ ] error page
 - [ ] Figure out proper image preloading for background img in this dogshit framework
 - [ ] Subtle animations
 - [ ] ...
@@ -26,6 +27,7 @@
 - [ ] Ratelimiting
 - [ ] Reporting feature (File upload, file scanning/sanitization)
 - [ ] Evidence panel
+- [ ] Search by UUID (Homepage)
 - [ ] ...
 - [ ] RBAC
 - [ ] Admin dashboard
