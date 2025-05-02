@@ -411,6 +411,7 @@ a.btn-primary-action {
   align-items: center;
   justify-content: center;
   text-align: center;
+  gap: 2rem;
 }
 #not-found h1 {
   position: relative;
@@ -437,3 +438,4 @@ a.btn-primary-action {
   padding: 0.5rem 3.2rem 0.5rem 4rem;
   clip-path: polygon(1.9rem 0, 100% 0, 100% 100%, 1.9rem 100%, 0 50%);
 }
+/**/
