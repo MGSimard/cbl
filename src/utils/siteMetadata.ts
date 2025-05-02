@@ -28,7 +28,8 @@ export const siteMetadata: Metadata = {
     url: "https://cbl.nexus",
     type: "website",
     siteName: "Community Ban List",
-    images: [{ url: "/metadata/opengraph-image.png", width: 1200, height: 600 }],
+    images: [{ url: "http://localhost:3000/metadata/opengraph-image.png", width: 1200, height: 600 }],
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
