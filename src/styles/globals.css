@@ -134,7 +134,7 @@ section {
 footer {
   max-width: var(--siteMaxWidth);
   margin: 0 auto;
-  padding: var(--sitePadding);
+  padding: 2rem 0;
   font-size: 1.2rem;
   color: var(--clrTextMuted);
   text-align: center;
