@@ -20,7 +20,6 @@ interface GetPlayerDataReturnType {
   };
   message: string;
 }
-
 export async function getPlayerData(regionPrefix: string, summoner: string): Promise<GetPlayerDataReturnType> {
   try {
     const [shard, cluster, fullRegion] = regionDictionary(regionPrefix); // e.g. ["NA1", "americas", "North America"]
@@ -74,7 +73,6 @@ interface GetMatchesDataReturnType {
   data?: MatchV5ByMatchId[];
   message: string;
 }
-
 export async function getMatchesData(matchIds: string[], regionPrefix: string): Promise<GetMatchesDataReturnType> {
   try {
     const [_, cluster, __] = regionDictionary(regionPrefix);
