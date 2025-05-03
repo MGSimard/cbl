@@ -9,7 +9,7 @@ export default async function PageSummoner({ params }: { params: Promise<{ regio
   }
 
   console.log(data);
-  const { summonerName, summonerTag, puuid, profileIconId, level, profileIconUrl } = data;
+  const { identity, profile, rank, matches, region } = data;
 
   return (
     <>
