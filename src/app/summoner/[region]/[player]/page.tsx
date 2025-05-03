@@ -1,4 +1,16 @@
-export default function PageSummoner() {
+import { getPlayerData } from "@/server/actions";
+
+export default async function PageSummoner({ params }: { params: Promise<{ region: string; player: string }> }) {
+  const { region: regionPrefix, player: summoner } = await params;
+  const { data, message } = await getPlayerData(regionPrefix, summoner);
+
+  if (!data) {
+    return <div>{message}</div>;
+  }
+
+  console.log(data);
+  const { summonerName, summonerTag, puuid, profileIconId, level, profileIconUrl } = data;
+
   return (
     <>
       <header>
