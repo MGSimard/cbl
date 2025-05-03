@@ -82,7 +82,7 @@ export async function getMatchesData(matchIds: string[], regionPrefix: string): 
         matchIds.map((matchId) =>
           fetch(`https://${cluster}.api.riotgames.com/lol/match/v5/matches/${matchId}?api_key=${API_KEY}`).then(
             async (res) => {
-              if (!res.ok) throw new Error(`FETCH ERROR: MATCH ${matchId}. STATUS: ${res.status}`);
+              if (!res.ok) throw new Error(`FETCH ERROR (MATCH-V5, MATCH ID: ${matchId}): ${res.status}`);
               return (await res.json()) as MatchV5ByMatchId;
             }
           )
@@ -94,7 +94,7 @@ export async function getMatchesData(matchIds: string[], regionPrefix: string): 
 
     return {
       data: matchesData,
-      message: `Successfully fetched ${matchesData.length} of ${matchIds.length} matches.`,
+      message: `SUCCESS: Fetched ${matchesData.length}/${matchIds.length} matches.`,
     };
   } catch (err: unknown) {
     return { message: err instanceof Error ? err.message : "UNKNOWN ERROR." };
