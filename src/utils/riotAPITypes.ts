@@ -4,7 +4,7 @@ export interface AccountV1ByPUUID {
   tagLine: string | null; // 	This field may be excluded from the response if the account doesn't have a tagLine.
 }
 
-export interface AccountV1ByRiotId {
+export interface AccountV1ByRiotID {
   puuid: string;
   gameName: string;
   tagLine: string;

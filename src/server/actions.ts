@@ -1,12 +1,12 @@
 "use server";
 import { regionDictionary } from "@/utils/helpers";
-import { AccountV1ByRiotId, LeagueV4ByPUUID, MatchV5ByPUUID, SummonerV4ByPUUID } from "@/utils/riotAPITypes";
+import { AccountV1ByRiotID, LeagueV4ByPUUID, MatchV5ByPUUID, SummonerV4ByPUUID } from "@/utils/riotAPITypes";
 
 const API_KEY = process.env.RIOT_DEV_KEY;
 
 interface GetPlayerDataReturnType {
   data?: {
-    identity: AccountV1ByRiotId;
+    identity: AccountV1ByRiotID;
     profile: SummonerV4ByPUUID;
     rank: LeagueV4ByPUUID;
     matches: MatchV5ByPUUID;
@@ -24,7 +24,7 @@ export async function getPlayerData(regionPrefix: string, summoner: string): Pro
       `https://${cluster}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${summonerName}/${summonerTag}?api_key=${API_KEY}`
     ).then(async (res) => {
       if (!res.ok) throw new Error(`FETCH ERROR (ACCOUNT-V1): ${res.status}`);
-      return (await res.json()) as AccountV1ByRiotId;
+      return (await res.json()) as AccountV1ByRiotID;
     });
 
     const [targetProfile, matchIdList] = await Promise.all([
