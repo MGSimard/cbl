@@ -42,7 +42,7 @@ export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
       <div className="champ-icon">
         {/* TODO: If return is null, render the placeholder src instead (not yet made) */}
         <img src={`${champImgLink(championId)}`} alt={`cId:${championId}`} />
-        <span>cLvl{champLevel}</span>
+        <span>{champLevel}</span>
       </div>
       <div className="match-context">
         <div>{win ? "Win" : "Loss"}</div>

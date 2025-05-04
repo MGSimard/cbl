@@ -50,7 +50,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  outline: 1px solid red;
+  /* outline: 1px solid red; */
 }
 html {
   font-size: 62.5%;
@@ -598,3 +598,35 @@ a.btn-primary-action {
   padding: 0 1rem;
 }
 /* MATCH HISTORY */
+/* TODO: Match card hover effect? */
+.match-card {
+  display: flex;
+}
+.champ-icon {
+  flex-shrink: 0;
+  position: relative;
+  width: 6rem;
+  height: 6rem;
+  padding: 0.2rem;
+  border-radius: 999rem;
+  background: var(--clrBorderRadial);
+}
+.champ-icon img {
+  border-radius: 999rem;
+}
+.champ-icon span {
+  position: absolute;
+  bottom: 0;
+  right: -0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fontBeaufort);
+  font-weight: 700;
+  font-size: 1.2rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  background: var(--clrBg);
+  border-radius: 999rem;
+  border: 1px solid var(--clrBorderGoldActive);
+}
