@@ -22,13 +22,19 @@ export default async function PageSummoner({ params }: { params: Promise<{ regio
                 alt="Icon"
                 src={`https://ddragon.leagueoflegends.com/cdn/13.1.1/img/profileicon/${profile.profileIconId}.png`}
               />
-              <span>{profile.summonerLevel}</span>
+              <span id="sum-card-level">
+                <span>{profile.summonerLevel}</span>
+              </span>
             </div>
-            <h1>
-              {identity.gameName}
-              <span>#{identity.tagLine}</span>
-            </h1>
-            <span>{rankFormatter(rank)} </span>
+            <div id="sum-card-meta">
+              <h1 title={`${identity.gameName}#${identity.tagLine}`}>
+                {identity.gameName}
+                <span>#{identity.tagLine}</span>
+              </h1>
+              <span id="sum-card-rank" title={rankFormatter(rank)}>
+                {rankFormatter(rank)}
+              </span>
+            </div>
           </div>
           {/* <table id="id-table">
             <tbody>
