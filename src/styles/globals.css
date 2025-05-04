@@ -636,8 +636,8 @@ a.btn-primary-action {
   text-transform: uppercase;
 }
 .match-outcome.match-win {
-  color: var(--clrBlue3);
+  color: hsl(187, 92%, 47%);
 }
 .match-outcome.match-loss {
-  color: var(--clrRed);
+  color: hsl(351, 100%, 57%);
 }
