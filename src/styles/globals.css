@@ -558,8 +558,11 @@ a.btn-primary-action {
   font-weight: 700;
   text-transform: uppercase;
   text-align: left;
-  &:hover {
+  &:not(:disabled):hover {
     background: var(--clrGreyCool);
+  }
+  &:disabled {
+    color: var(--clrTextMuted);
   }
 }
 .sum-accordion > div {
