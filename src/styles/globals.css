@@ -542,6 +542,7 @@ a.btn-primary-action {
 #id-table tr {
   display: flex;
   flex-direction: column;
+  padding: 0 1rem;
 }
 #id-table th {
   font-family: var(--fontBeaufort);
