@@ -40,7 +40,7 @@ export function champImgUrl(champId: number): URL | null {
 }
 
 const BASE_ITEM_URL = `https://ddragon.leagueoflegends.com/cdn/${latestPatch}/img/item/`;
-export function itemImgUrl(itemId: number): URL | string | null {
+export function getItemImgUrl(itemId: number): URL | string | null {
   // TODO: placeholder item asset.webp (or svg)
   if (itemId === 0) return null;
   const itemInfo = dsItems[itemId.toString() as keyof typeof dsItems];
@@ -58,7 +58,7 @@ export function itemImgUrl(itemId: number): URL | string | null {
   }
 }
 
-export function itemName(itemId: number): string {
+export function getItemName(itemId: number): string {
   if (itemId === 0) return "Empty";
   const itemInfo = dsItems[itemId.toString() as keyof typeof dsItems];
   if (itemInfo) {

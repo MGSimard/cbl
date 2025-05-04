@@ -9,7 +9,7 @@ interface MatchHistoryProps {
 
 export async function MatchHistory({ matchIds, currentPlayer, regionPrefix }: MatchHistoryProps) {
   const { data, message } = await getMatchesData(matchIds, regionPrefix);
-  console.log(data);
+
   if (!data) {
     return <main>{message}</main>;
   }

@@ -50,7 +50,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  outline: 1px solid red;
+  /* outline: 1px solid red; */
 }
 html {
   font-size: 62.5%;
@@ -649,4 +649,9 @@ a.btn-primary-action {
 .items li {
   width: 4rem;
   height: 4rem;
+  background: var(--clrBg);
+  border: 1px solid red;
+}
+.items li:not(:first-child) {
+  border-left: none;
 }

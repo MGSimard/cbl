@@ -1,5 +1,5 @@
 import type { MatchV5ByMatchId } from "@/utils/riotApiTypes";
-import { champImgUrl, itemImgUrl, itemName, modeDictionary } from "@/utils/helpers";
+import { champImgUrl, getItemImgUrl, getItemName, modeDictionary } from "@/utils/helpers";
 
 /** ELEMENTS
  * - Summoner Spells
@@ -49,11 +49,12 @@ export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
         <ul className="items">
           {ITEM_KEYS.map((itemKey) => {
             const itemId = targetPlayerData[itemKey as keyof typeof targetPlayerData] as number;
-            return itemId === 0 ? (
-              <li key={itemKey} aria-label="Empty item slot"></li>
-            ) : (
-              <li key={itemKey}>
-                <img src={`${itemImgUrl(itemId)}`} alt={itemName(itemId)} />
+
+            const itemName = getItemName(itemId);
+
+            return (
+              <li key={itemKey} aria-label={itemName}>
+                {itemId !== 0 && <img src={`${getItemImgUrl(itemId)}`} alt="" />}
               </li>
             );
           })}
