@@ -50,7 +50,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  outline: 1px solid red;
+  /* outline: 1px solid red; */
 }
 html {
   font-size: 62.5%;
@@ -552,6 +552,9 @@ a.btn-primary-action {
   overflow: hidden;
 }
 .sum-accordion > button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   width: 100%;
   padding: 0.5rem 1rem;
   font-family: var(--fontBeaufort);
@@ -564,6 +567,14 @@ a.btn-primary-action {
   &:disabled {
     color: var(--clrTextMuted);
   }
+}
+.sum-accordion > button span {
+  display: inline-block;
+  font-size: 0.6em;
+  transition: transform 0.2s ease;
+}
+.sum-accordion > button[aria-expanded="true"] span {
+  transform: rotate(90deg);
 }
 .sum-accordion > div {
   position: relative;

@@ -51,34 +51,25 @@ export function SumSidebar({ identity, profile, rank }: SumSidebarProps) {
           </tbody>
         </table>
       </div>
-      <SumAccordion label="Aliases" count={3}>
+      <SumAccordion label="Aliases" count={1}>
         <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
+          <li>Alias 1</li>
         </ul>
       </SumAccordion>
       <SumAccordion label="Reports" count={2}>
         <ul>
-          <li>1</li>
-          <li>2</li>
+          <li>Report 1</li>
+          <li>Report 2</li>
         </ul>
       </SumAccordion>
-      <SumAccordion label="Recent Players" count={12}>
+      <SumAccordion label="Recent Players" count={3}>
         <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-          <li>5</li>
-          <li>6</li>
-          <li>7</li>
-          <li>8</li>
-          <li>9</li>
-          <li>10</li>
+          <li>Recent Player 1</li>
+          <li>Recent Player 2</li>
+          <li>Recent Player 3</li>
         </ul>
       </SumAccordion>
-      <SumAccordion label="Disabled Test"></SumAccordion>
+      <SumAccordion label="Disabled Test" count={0}></SumAccordion>
     </section>
   );
 }
