@@ -26,6 +26,7 @@
 - [ ] Account status (Placeholder)
 - [ ] Stats
 - [ ] Match history
+- [ ] Validation
 - [ ] Ratelimiting
 - [ ] Reporting feature (File upload, file scanning/sanitization)
 - [ ] Evidence panel
