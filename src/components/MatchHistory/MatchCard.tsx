@@ -1,4 +1,4 @@
-import { champImgLink } from "@/utils/helpers";
+import { champImgLink, modeDictionary } from "@/utils/helpers";
 import { MatchV5ByMatchId } from "@/utils/riotApiTypes";
 
 /** ELEMENTS
@@ -45,8 +45,8 @@ export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
         <span>{champLevel}</span>
       </div>
       <div className="match-context">
-        <div>{win ? "Win" : "Loss"}</div>
-        <div>{queueId}</div>
+        <div className="match-outcome">{win ? "Victory" : "Defeat"}</div>
+        <div className="match-mode">{modeDictionary(queueId)}</div>
       </div>
       <div className="match-stats">
         <ul className="stats-up">
