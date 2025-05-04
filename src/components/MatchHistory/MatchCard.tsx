@@ -1,3 +1,4 @@
+import type { MatchV5ByMatchId } from "@/utils/riotApiTypes";
 import { champImgLink, modeDictionary } from "@/utils/helpers";
 
 /** ELEMENTS

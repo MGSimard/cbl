@@ -1,4 +1,4 @@
-import { LeagueV4ByPuuid } from "@/utils/riotApiTypes";
+import type { LeagueV4ByPuuid } from "@/utils/riotApiTypes";
 import versionsJson from "@/datasets/versions.json";
 import championsJson from "@/datasets/champion.json";
 

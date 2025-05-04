@@ -1,12 +1,12 @@
 "use server";
-import { regionDictionary } from "@/utils/helpers";
-import {
+import type {
   AccountV1ByRiotId,
   LeagueV4ByPuuid,
   MatchV5ByPuuid,
   SummonerV4ByPuuid,
   MatchV5ByMatchId,
 } from "@/utils/riotApiTypes";
+import { regionDictionary } from "@/utils/helpers";
 
 const API_KEY = process.env.RIOT_API_SECRET;
 
