@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { ReactScan } from "@/components/ReactScan";
 import { siteMetadata } from "@/utils/siteMetadata";
 import { Footer } from "@/components/Footer";
 import { beaufortForLol, spiegel } from "@/utils/localFonts";
@@ -19,6 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${beaufortForLol.variable} ${spiegel.variable}`}>
+      <ReactScan />
       <body>
         {children}
         <Footer />
