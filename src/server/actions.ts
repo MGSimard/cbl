@@ -8,7 +8,7 @@ import {
   MatchV5ByMatchId,
 } from "@/utils/riotAPITypes";
 
-const API_KEY = process.env.RIOT_DEV_KEY;
+const API_KEY = process.env.RIOT_API_SECRET;
 
 interface GetPlayerDataReturnType {
   data?: {
