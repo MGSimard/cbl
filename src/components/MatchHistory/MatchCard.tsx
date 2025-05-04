@@ -1,3 +1,4 @@
+import { champImgLink } from "@/utils/helpers";
 import { MatchV5ByMatchId } from "@/utils/riotApiTypes";
 
 /** ELEMENTS
@@ -39,7 +40,8 @@ export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
   return (
     <li className="match-card">
       <div className="champ-icon">
-        <img alt={`cId:${championId}`} />
+        {/* TODO: If return is null, render the placeholder src instead (not yet made) */}
+        <img src={`${champImgLink(championId)}`} alt={`cId:${championId}`} />
         <span>cLvl{champLevel}</span>
       </div>
       <div className="match-context">

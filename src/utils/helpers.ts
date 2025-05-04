@@ -1,7 +1,11 @@
 import { LeagueV4ByPuuid } from "@/utils/riotApiTypes";
+import versionsJson from "@/datasets/versions.json";
+import championsJson from "@/datasets/champion.json";
+
+const latestPatch = versionsJson[0];
+const dsChampions = championsJson.data;
 
 type RegionInfo = [string, string, string]; // [shard, cluster, fullName]
-
 const REGIONS: Record<string, RegionInfo> = {
   // AMERICAS
   na: ["NA1", "americas", "North America"],
@@ -28,7 +32,6 @@ const REGIONS: Record<string, RegionInfo> = {
   tw: ["TW2", "sea", "Taiwan"],
   vn: ["VN2", "sea", "Vietnam"],
 };
-
 export function regionDictionary(regionPrefix: string): RegionInfo {
   const region = regionPrefix.toLowerCase();
   const regionInfo = REGIONS[region];
@@ -42,12 +45,26 @@ export function rankFormatter(rankData: LeagueV4ByPuuid) {
     const { tier, rank, leaguePoints } = soloQueueRank;
     return `${tier} ${rank} ${leaguePoints}LP (SOLO)`;
   }
-
   const flexQueueRank = rankData.find((r) => r.queueType === "RANKED_FLEX_SR");
   if (flexQueueRank) {
     const { tier, rank, leaguePoints } = flexQueueRank;
     return `${tier} ${rank} ${leaguePoints}LP (FLEX)`;
   }
-
   return "UNRANKED";
+}
+
+const BASE_CHAMP_URL = `https://ddragon.leagueoflegends.com/cdn/${latestPatch}/img/champion/`;
+export function champImgLink(champId: number): URL | null {
+  // Consider pre-processing into a Map instead for micro optimization
+  const championInfo = Object.values(dsChampions).find((info) => info.key === champId.toString());
+  if (championInfo) {
+    const fileName = championInfo.image.full;
+    try {
+      return new URL(`${BASE_CHAMP_URL}${fileName}`);
+    } catch (error) {
+      console.error(`ERROR: Could not create URL for champId ${champId} (${fileName}):`, error);
+      return null;
+    }
+  }
+  return null;
 }

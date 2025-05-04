@@ -446,6 +446,7 @@ a.btn-primary-action {
   display: grid;
   grid-template-columns: 30rem auto;
 }
+/* SUMMONER INFO SIDEBAR */
 #sum-info {
   display: flex;
   flex-direction: column;
@@ -596,3 +597,4 @@ a.btn-primary-action {
 .sum-accordion li {
   padding: 0 1rem;
 }
+/* MATCH HISTORY */
