@@ -1,15 +1,10 @@
 import type { MatchV5ByMatchId } from "@/utils/riotApiTypes";
-import { champImgUrl, itemImgUrl, modeDictionary } from "@/utils/helpers";
+import { champImgUrl, itemImgUrl, itemName, modeDictionary } from "@/utils/helpers";
 
 /** ELEMENTS
- * - Champion Icon
- * - Level
- * - Outcome
- * - Mode
  * - Summoner Spells
  * - Runes
  *
- * - Items
  * - KDA
  * - CS
  * - Gold
@@ -26,6 +21,8 @@ interface MatchCardProps {
   matchData: MatchV5ByMatchId;
 }
 
+const ITEM_KEYS = ["item0", "item1", "item2", "item3", "item4", "item5", "item6"] as const;
+
 export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
   const { gameDuration, gameStartTimestamp, participants, platformId, queueId, mapId } = matchData.info;
   const targetPlayerData = participants.find((player) => player.puuid === currentPlayer);
@@ -36,7 +33,7 @@ export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
   }
 
   const { championId, champLevel, totalMinionsKilled, goldEarned, kills, deaths, assists, win } = targetPlayerData;
-  console.log(targetPlayerData.item2);
+
   return (
     <li className="match-card">
       <div className="champ-icon">
@@ -50,27 +47,16 @@ export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
       </div>
       <div className="match-stats">
         <ul className="items">
-          <li>
-            <img src={`${itemImgUrl(targetPlayerData.item0)}`} alt={`iId:${targetPlayerData.item0}`} />
-          </li>
-          <li>
-            <img src={`${itemImgUrl(targetPlayerData.item1)}`} alt={`iId:${targetPlayerData.item1}`} />
-          </li>
-          <li>
-            <img src={`${itemImgUrl(targetPlayerData.item2)}`} alt={`iId:${targetPlayerData.item2}`} />
-          </li>
-          <li>
-            <img src={`${itemImgUrl(targetPlayerData.item3)}`} alt={`iId:${targetPlayerData.item3}`} />
-          </li>
-          <li>
-            <img src={`${itemImgUrl(targetPlayerData.item4)}`} alt={`iId:${targetPlayerData.item4}`} />
-          </li>
-          <li>
-            <img src={`${itemImgUrl(targetPlayerData.item5)}`} alt={`iId:${targetPlayerData.item5}`} />
-          </li>
-          <li>
-            <img src={`${itemImgUrl(targetPlayerData.item6)}`} alt={`iId:${targetPlayerData.item6}`} />
-          </li>
+          {ITEM_KEYS.map((itemKey) => {
+            const itemId = targetPlayerData[itemKey as keyof typeof targetPlayerData] as number;
+            return itemId === 0 ? (
+              <li key={itemKey} aria-label="Empty item slot"></li>
+            ) : (
+              <li key={itemKey}>
+                <img src={`${itemImgUrl(itemId)}`} alt={itemName(itemId)} />
+              </li>
+            );
+          })}
         </ul>
         <div className="stats">
           <div>

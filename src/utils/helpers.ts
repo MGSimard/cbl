@@ -30,17 +30,18 @@ export function champImgUrl(champId: number): URL | null {
     try {
       return new URL(`${BASE_CHAMP_URL}${fileName}`);
     } catch (error) {
-      console.error(`ERROR: Could not create URL for champId ${champId} (${fileName}):`, error);
+      console.log(`ERROR: Could not create URL for champId ${champId} (${fileName}):`, error);
       return null;
     }
   } else {
-    console.error(`ERROR: Could not find champion with id ${champId}.`);
+    console.log(`ERROR: Could not find champion with id ${champId}.`);
     return null;
   }
 }
 
 const BASE_ITEM_URL = `https://ddragon.leagueoflegends.com/cdn/${latestPatch}/img/item/`;
-export function itemImgUrl(itemId: number): URL | null {
+export function itemImgUrl(itemId: number): URL | string | null {
+  // TODO: placeholder item asset.webp (or svg)
   if (itemId === 0) return null;
   const itemInfo = dsItems[itemId.toString() as keyof typeof dsItems];
   if (itemInfo) {
@@ -48,13 +49,22 @@ export function itemImgUrl(itemId: number): URL | null {
     try {
       return new URL(`${BASE_ITEM_URL}${itemImage}`);
     } catch (error) {
-      console.error(`ERROR: Could not create URL for itemId ${itemId} (${itemImage}):`, error);
-      return null;
+      console.log(`ERROR: Could not create URL for itemId ${itemId} (${itemImage}):`, error);
+      return "/assets/placeholder-item.webp";
     }
   } else {
-    console.error(`ERROR: Could not find item with id ${itemId}.`);
-    return null;
+    console.log(`ERROR: Could not find item with id ${itemId}.`);
+    return "/assets/placeholder-item.webp";
   }
+}
+
+export function itemName(itemId: number): string {
+  if (itemId === 0) return "Empty";
+  const itemInfo = dsItems[itemId.toString() as keyof typeof dsItems];
+  if (itemInfo) {
+    return itemInfo.name;
+  }
+  return "Unknown Item";
 }
 
 type RegionInfo = [string, string, string]; // [shard, cluster, fullName]
