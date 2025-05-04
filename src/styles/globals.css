@@ -50,7 +50,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* outline: 1px solid red; */
+  outline: 1px solid red;
 }
 html {
   font-size: 62.5%;
@@ -538,6 +538,7 @@ a.btn-primary-action {
   table-layout: fixed;
   font-size: 1.4rem;
   white-space: nowrap;
+  text-align: left;
 }
 #id-table tr {
   display: flex;
