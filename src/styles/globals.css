@@ -601,6 +601,7 @@ a.btn-primary-action {
 /* TODO: Match card hover effect? */
 .match-card {
   display: flex;
+  background: var(--clrBg);
 }
 .champ-icon {
   flex-shrink: 0;

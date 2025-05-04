@@ -1,5 +1,4 @@
 import { champImgLink, modeDictionary } from "@/utils/helpers";
-import { MatchV5ByMatchId } from "@/utils/riotApiTypes";
 
 /** ELEMENTS
  * - Champion Icon
