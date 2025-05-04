@@ -19,5 +19,9 @@
  *  */
 
 export function MatchCard() {
-  return <li>MatchCard</li>;
+  return (
+    <li className="match-card">
+      <div></div>
+    </li>
+  );
 }
