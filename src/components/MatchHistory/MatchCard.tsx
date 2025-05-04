@@ -1,5 +1,5 @@
 import { champImgLink, modeDictionary } from "@/utils/helpers";
-import { MatchV5ByMatchId } from "@/utils/riotApiTypes";
+import { MatchV5ByMatchId } from "verceldeploymenthastroublewithcasechangeIneedtowipecache";
 
 /** ELEMENTS
  * - Champion Icon
@@ -45,7 +45,7 @@ export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
         <span>{champLevel}</span>
       </div>
       <div className="match-context">
-        <div className="match-outcome">{win ? "Victory" : "Defeat"}</div>
+        <div className={`match-outcome ${win ? "match-win" : "match-loss"}`}>{win ? "Victory" : "Defeat"}</div>
         <div className="match-mode">{modeDictionary(queueId)}</div>
       </div>
       <div className="match-stats">
