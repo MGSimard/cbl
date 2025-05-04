@@ -6,7 +6,7 @@ import {
   MatchV5ByPuuid,
   SummonerV4ByPuuid,
   MatchV5ByMatchId,
-} from "@/utils/riotAPITypes";
+} from "@/utils/riotApiTypes";
 
 const API_KEY = process.env.RIOT_API_SECRET;
 

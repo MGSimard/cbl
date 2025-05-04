@@ -1,4 +1,4 @@
-import { MatchV5ByMatchId } from "@/utils/riotAPITypes";
+import { MatchV5ByMatchId } from "@/utils/riotApiTypes";
 
 /** ELEMENTS
  * - Champion Icon

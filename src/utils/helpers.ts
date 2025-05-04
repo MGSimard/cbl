@@ -1,4 +1,4 @@
-import { LeagueV4ByPuuid } from "@/utils/riotAPITypes";
+import { LeagueV4ByPuuid } from "@/utils/riotApiTypes";
 
 type RegionInfo = [string, string, string]; // [shard, cluster, fullName]
 
