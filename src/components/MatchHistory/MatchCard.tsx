@@ -22,30 +22,54 @@ import { MatchV5ByMatchId } from "@/utils/riotAPITypes";
 
 interface MatchCardProps {
   currentPlayer: string;
-  match: MatchV5ByMatchId;
+  matchData: MatchV5ByMatchId;
 }
 
-export function MatchCard({ currentPlayer, match }: MatchCardProps) {
+export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
+  const { gameDuration, gameStartTimestamp, participants, platformId, queueId, mapId } = matchData.info;
+  const targetPlayerData = participants.find((player) => player.puuid === currentPlayer);
+
+  if (!targetPlayerData) {
+    /* TODO: HANDLE ERROR */
+    return null;
+  }
+
+  const { championId, champLevel, totalMinionsKilled, goldEarned, kills, deaths, assists, win } = targetPlayerData;
+
   return (
     <li className="match-card">
       <div className="champ-icon">
-        <img alt="Champ" />
-        <span>lvl</span>
+        <img alt={`cId:${championId}`} />
+        <span>cLvl{champLevel}</span>
       </div>
-      <div className="match-context"></div>
+      <div className="match-context">
+        <div>{win ? "Win" : "Loss"}</div>
+        <div>{queueId}</div>
+      </div>
       <div className="match-stats">
         <ul className="stats-up">
-          <li>I1</li>
-          <li>I2</li>
-          <li>I3</li>
-          <li>I4</li>
-          <li>I5</li>
-          <li>I6</li>
-          <li>I7</li>
+          <li>item{targetPlayerData.item0}</li>
+          <li>item{targetPlayerData.item1}</li>
+          <li>item{targetPlayerData.item2}</li>
+          <li>item{targetPlayerData.item3}</li>
+          <li>item{targetPlayerData.item4}</li>
+          <li>item{targetPlayerData.item5}</li>
+          <li>item{targetPlayerData.item6}</li>
         </ul>
-        <div className="stats-down"></div>
+        <div className="stats-down">
+          <div>
+            {kills}/{deaths}/{assists}
+          </div>
+          <div>{totalMinionsKilled}cs</div>
+          <div>{goldEarned}g</div>
+        </div>
       </div>
-      <div className="match-metadata"></div>
+      <div className="match-metadata">
+        <div>map{mapId}</div>
+        <div>
+          {gameDuration} - {gameStartTimestamp}
+        </div>
+      </div>
     </li>
   );
 }
