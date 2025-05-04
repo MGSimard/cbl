@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const siteMetadata: Metadata = {
   authors: [{ name: "MGSimard", url: "https://mgsimard.dev" }],
   applicationName: "Community Ban List",
-  metadataBase: new URL("https://cbl.nexus"),
+  metadataBase: new URL("https://cbl-ten.vercel.app/"),
   title: {
     default: "Community Ban List",
     template: "CBL | %s",
@@ -25,7 +25,7 @@ export const siteMetadata: Metadata = {
   openGraph: {
     title: "Community Ban List",
     description: "CBL: A community-driven effort to identify and track disruptive players in League of Legends.",
-    url: "https://cbl.nexus",
+    url: "https://cbl-ten.vercel.app/",
     type: "website",
     siteName: "Community Ban List",
     images: [{ url: "http://localhost:3000/metadata/opengraph-image.png", width: 1200, height: 600 }],
