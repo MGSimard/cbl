@@ -1,5 +1,5 @@
 import type { MatchV5ByMatchId } from "@/utils/riotApiTypes";
-import { champImgLink, modeDictionary } from "@/utils/helpers";
+import { champImgUrl, itemImgUrl, modeDictionary } from "@/utils/helpers";
 
 /** ELEMENTS
  * - Champion Icon
@@ -36,12 +36,12 @@ export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
   }
 
   const { championId, champLevel, totalMinionsKilled, goldEarned, kills, deaths, assists, win } = targetPlayerData;
-
+  console.log(targetPlayerData.item2);
   return (
     <li className="match-card">
       <div className="champ-icon">
         {/* TODO: If return is null, render the placeholder src instead (not yet made) */}
-        <img src={`${champImgLink(championId)}`} alt={`cId:${championId}`} />
+        <img src={`${champImgUrl(championId)}`} alt={`cId:${championId}`} />
         <span>{champLevel}</span>
       </div>
       <div className="match-context">
@@ -49,16 +49,30 @@ export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
         <div className="match-mode">{modeDictionary(queueId)}</div>
       </div>
       <div className="match-stats">
-        <ul className="stats-up">
-          <li>item{targetPlayerData.item0}</li>
-          <li>item{targetPlayerData.item1}</li>
-          <li>item{targetPlayerData.item2}</li>
-          <li>item{targetPlayerData.item3}</li>
-          <li>item{targetPlayerData.item4}</li>
-          <li>item{targetPlayerData.item5}</li>
-          <li>item{targetPlayerData.item6}</li>
+        <ul className="items">
+          <li>
+            <img src={`${itemImgUrl(targetPlayerData.item0)}`} alt={`iId:${targetPlayerData.item0}`} />
+          </li>
+          <li>
+            <img src={`${itemImgUrl(targetPlayerData.item1)}`} alt={`iId:${targetPlayerData.item1}`} />
+          </li>
+          <li>
+            <img src={`${itemImgUrl(targetPlayerData.item2)}`} alt={`iId:${targetPlayerData.item2}`} />
+          </li>
+          <li>
+            <img src={`${itemImgUrl(targetPlayerData.item3)}`} alt={`iId:${targetPlayerData.item3}`} />
+          </li>
+          <li>
+            <img src={`${itemImgUrl(targetPlayerData.item4)}`} alt={`iId:${targetPlayerData.item4}`} />
+          </li>
+          <li>
+            <img src={`${itemImgUrl(targetPlayerData.item5)}`} alt={`iId:${targetPlayerData.item5}`} />
+          </li>
+          <li>
+            <img src={`${itemImgUrl(targetPlayerData.item6)}`} alt={`iId:${targetPlayerData.item6}`} />
+          </li>
         </ul>
-        <div className="stats-down">
+        <div className="stats">
           <div>
             {kills}/{deaths}/{assists}
           </div>

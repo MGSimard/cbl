@@ -1,9 +1,61 @@
 import type { LeagueV4ByPuuid } from "@/utils/riotApiTypes";
 import versionsJson from "@/datasets/versions.json";
 import championsJson from "@/datasets/champion.json";
+import itemsJson from "@/datasets/item.json";
 
 const latestPatch = versionsJson[0];
 const dsChampions = championsJson.data;
+const dsItems = itemsJson.data;
+
+export function rankFormatter(rankData: LeagueV4ByPuuid): string {
+  const soloQueueRank = rankData.find((r) => r.queueType === "RANKED_SOLO_5x5");
+  if (soloQueueRank) {
+    const { tier, rank, leaguePoints } = soloQueueRank;
+    return `${tier} ${rank} ${leaguePoints}LP (SOLO)`;
+  }
+  const flexQueueRank = rankData.find((r) => r.queueType === "RANKED_FLEX_SR");
+  if (flexQueueRank) {
+    const { tier, rank, leaguePoints } = flexQueueRank;
+    return `${tier} ${rank} ${leaguePoints}LP (FLEX)`;
+  }
+  return "UNRANKED";
+}
+
+const BASE_CHAMP_URL = `https://ddragon.leagueoflegends.com/cdn/${latestPatch}/img/champion/`;
+export function champImgUrl(champId: number): URL | null {
+  // Consider pre-processing into a Map instead for micro optimization
+  const championInfo = Object.values(dsChampions).find((info) => info.key === champId.toString());
+  if (championInfo) {
+    const fileName = championInfo.image.full;
+    try {
+      return new URL(`${BASE_CHAMP_URL}${fileName}`);
+    } catch (error) {
+      console.error(`ERROR: Could not create URL for champId ${champId} (${fileName}):`, error);
+      return null;
+    }
+  } else {
+    console.error(`ERROR: Could not find champion with id ${champId}.`);
+    return null;
+  }
+}
+
+const BASE_ITEM_URL = `https://ddragon.leagueoflegends.com/cdn/${latestPatch}/img/item/`;
+export function itemImgUrl(itemId: number): URL | null {
+  if (itemId === 0) return null;
+  const itemInfo = dsItems[itemId.toString() as keyof typeof dsItems];
+  if (itemInfo) {
+    const itemImage = itemInfo.image.full;
+    try {
+      return new URL(`${BASE_ITEM_URL}${itemImage}`);
+    } catch (error) {
+      console.error(`ERROR: Could not create URL for itemId ${itemId} (${itemImage}):`, error);
+      return null;
+    }
+  } else {
+    console.error(`ERROR: Could not find item with id ${itemId}.`);
+    return null;
+  }
+}
 
 type RegionInfo = [string, string, string]; // [shard, cluster, fullName]
 const REGIONS: Record<string, RegionInfo> = {
@@ -37,38 +89,6 @@ export function regionDictionary(regionPrefix: string): RegionInfo {
   const regionInfo = REGIONS[region];
   if (!regionInfo) throw new Error(`Invalid region: ${regionPrefix}`);
   return regionInfo;
-}
-
-export function rankFormatter(rankData: LeagueV4ByPuuid): string {
-  const soloQueueRank = rankData.find((r) => r.queueType === "RANKED_SOLO_5x5");
-  if (soloQueueRank) {
-    const { tier, rank, leaguePoints } = soloQueueRank;
-    return `${tier} ${rank} ${leaguePoints}LP (SOLO)`;
-  }
-  const flexQueueRank = rankData.find((r) => r.queueType === "RANKED_FLEX_SR");
-  if (flexQueueRank) {
-    const { tier, rank, leaguePoints } = flexQueueRank;
-    return `${tier} ${rank} ${leaguePoints}LP (FLEX)`;
-  }
-  return "UNRANKED";
-}
-
-const BASE_CHAMP_URL = `https://ddragon.leagueoflegends.com/cdn/${latestPatch}/img/champion/`;
-export function champImgLink(champId: number): URL | null {
-  // Consider pre-processing into a Map instead for micro optimization
-  const championInfo = Object.values(dsChampions).find((info) => info.key === champId.toString());
-  if (championInfo) {
-    const fileName = championInfo.image.full;
-    try {
-      return new URL(`${BASE_CHAMP_URL}${fileName}`);
-    } catch (error) {
-      console.error(`ERROR: Could not create URL for champId ${champId} (${fileName}):`, error);
-      return null;
-    }
-  } else {
-    console.error(`ERROR: Could not find champion with id ${champId}.`);
-    return null;
-  }
 }
 
 export function modeDictionary(queueId: number): string {
