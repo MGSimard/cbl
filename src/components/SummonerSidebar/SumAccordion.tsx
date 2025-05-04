@@ -20,7 +20,7 @@ export function SumAccordion({ label, count, children }: SumAccordionProps) {
         disabled={!children}>
         <span>&#9658;</span>
         {label}
-        {count && ` (${count})`}
+        {` (${count})`}
       </button>
       {children && (
         <div id={`ss-${label}`} inert={!isOpen}>
