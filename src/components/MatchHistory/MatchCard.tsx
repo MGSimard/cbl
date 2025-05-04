@@ -1,3 +1,5 @@
+import { MatchV5ByMatchId } from "@/utils/riotAPITypes";
+
 /** ELEMENTS
  * - Champion Icon
  * - Level
@@ -18,7 +20,12 @@
  * - Player list (Both teams)
  *  */
 
-export function MatchCard() {
+interface MatchCardProps {
+  currentPlayer: string;
+  match: MatchV5ByMatchId;
+}
+
+export function MatchCard({ currentPlayer, match }: MatchCardProps) {
   return (
     <li className="match-card">
       <div className="champ-icon">

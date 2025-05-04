@@ -18,12 +18,11 @@ export default async function PageSummoner({ params }: { params: Promise<{ regio
   }
 
   const { identity, profile, rank, matches, region } = data;
-  console.log(matches);
 
   return (
     <main id="sum-main">
       <SumSidebar identity={identity} profile={profile} rank={rank} />
-      <MatchHistory />
+      <MatchHistory matchIds={matches} currentPlayer={profile.puuid} regionPrefix={regionPrefix} />
     </main>
   );
 }

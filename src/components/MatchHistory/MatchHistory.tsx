@@ -1,18 +1,26 @@
 import { MatchCard } from "@/components/MatchHistory/MatchCard";
+import { getMatchesData } from "@/server/actions";
 
-export function MatchHistory() {
-  //NA1_5279974740
+interface MatchHistoryProps {
+  matchIds: string[];
+  currentPlayer: string;
+  regionPrefix: string;
+}
+
+export async function MatchHistory({ matchIds, currentPlayer, regionPrefix }: MatchHistoryProps) {
+  const { data, message } = await getMatchesData(matchIds, regionPrefix);
+  console.log(data);
+  if (!data) {
+    return <main>{message}</main>;
+  }
+
   return (
     <section>
-      <h2>Match History (Last N played)</h2>
+      <h2>Match History (Last {data.length} played)</h2>
       <ul>
-        <MatchCard />
-        <MatchCard />
-        <MatchCard />
-        <MatchCard />
-        <MatchCard />
-        <MatchCard />
-        <MatchCard />
+        {data.map((match) => (
+          <MatchCard key={match.metadata.matchId} currentPlayer={currentPlayer} match={match} />
+        ))}
       </ul>
     </section>
   );
