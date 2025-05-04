@@ -16,6 +16,7 @@
 - [ ] error page
 - [ ] Figure out proper image preloading for background img in this dogshit framework
 - [ ] Subtle animations
+- [ ] Version dataset for images and stuff, unless I get my own assets instead of ddragon/cdragon links
 - [ ] ...
 - [ ] Background/Banner preload
 - [ ] ...

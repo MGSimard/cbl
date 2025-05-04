@@ -1,8 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { siteMetadata } from "@/utils/siteMetadata";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { Footer } from "@/components/Footer";
-import { ThemeProvider } from "next-themes";
 import { beaufortForLol, spiegel } from "@/utils/localFonts";
 import "@/styles/globals.css";
 
@@ -20,13 +18,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${beaufortForLol.variable} ${spiegel.variable}`}>
+    <html lang="en" className={`${beaufortForLol.variable} ${spiegel.variable}`}>
       <body>
-        <ThemeProvider defaultTheme="dark" enableSystem={false}>
-          <ThemeToggle />
-          {children}
-          <Footer />
-        </ThemeProvider>
+        {children}
+        <Footer />
       </body>
     </html>
   );

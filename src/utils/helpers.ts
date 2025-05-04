@@ -1,3 +1,5 @@
+import { LeagueV4ByPuuid } from "@/utils/riotAPITypes";
+
 type RegionInfo = [string, string, string]; // [shard, cluster, fullName]
 
 const REGIONS: Record<string, RegionInfo> = {
@@ -30,10 +32,22 @@ const REGIONS: Record<string, RegionInfo> = {
 export function regionDictionary(regionPrefix: string): RegionInfo {
   const region = regionPrefix.toLowerCase();
   const regionInfo = REGIONS[region];
+  if (!regionInfo) throw new Error(`Invalid region: ${regionPrefix}`);
+  return regionInfo;
+}
 
-  if (!regionInfo) {
-    throw new Error(`Invalid region: ${regionPrefix}`);
+export function rankFormatter(rankData: LeagueV4ByPuuid) {
+  const soloQueueRank = rankData.find((r) => r.queueType === "RANKED_SOLO_5x5");
+  if (soloQueueRank) {
+    const { tier, rank, leaguePoints } = soloQueueRank;
+    return `${tier} ${rank} ${leaguePoints}LP (SOLO)`;
   }
 
-  return regionInfo;
+  const flexQueueRank = rankData.find((r) => r.queueType === "RANKED_FLEX_SR");
+  if (flexQueueRank) {
+    const { tier, rank, leaguePoints } = flexQueueRank;
+    return `${tier} ${rank} ${leaguePoints}LP (FLEX)`;
+  }
+
+  return "UNRANKED";
 }
