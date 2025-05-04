@@ -22,7 +22,7 @@
 - [ ] ...
 - [ ] Player profiles
 - [ ] Copy icon on profile IDs
-- [ ] Identifiers (Past usernames later, pull from reports)
+- [x] Identifiers (Past usernames later, pull from reports)
 - [ ] Account status (Placeholder)
 - [ ] Stats
 - [ ] Match history

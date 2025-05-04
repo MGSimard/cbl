@@ -1,7 +1,7 @@
 export interface AccountV1ByPuuid {
   puuid: string;
   gameName: string | null; // This field may be excluded from the response if the account doesn't have a gameName.
-  tagLine: string | null; // 	This field may be excluded from the response if the account doesn't have a tagLine.
+  tagLine: string | null; // This field may be excluded from the response if the account doesn't have a tagLine.
 }
 
 export interface AccountV1ByRiotId {
