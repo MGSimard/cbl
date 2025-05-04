@@ -4,6 +4,7 @@
  * - Outcome
  * - Mode
  * - Summoner Spells
+ * - Runes
  *
  * - Items
  * - KDA
