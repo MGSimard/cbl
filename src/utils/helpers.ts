@@ -65,6 +65,8 @@ export function champImgLink(champId: number): URL | null {
       console.error(`ERROR: Could not create URL for champId ${champId} (${fileName}):`, error);
       return null;
     }
+  } else {
+    console.error(`ERROR: Could not find champion with id ${champId}.`);
+    return null;
   }
-  return null;
 }
