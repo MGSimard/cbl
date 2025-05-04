@@ -455,7 +455,7 @@ a.btn-primary-action {
 /* SUMMONER PROFILE */
 #summoner-main {
   display: grid;
-  grid-template-columns: 30rem auto;
+  grid-template-columns: minmax(30rem, 1fr) auto;
 }
 #summoner-info {
   display: flex;
