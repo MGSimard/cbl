@@ -134,7 +134,7 @@ header {
 }
 main {
   flex-grow: 1;
-  padding: 4rem 0;
+  padding: 6rem 0;
 }
 section {
 }
@@ -211,6 +211,9 @@ input {
 a {
   color: inherit;
   text-decoration: none;
+}
+table {
+  border-collapse: collapse;
 }
 /**/
 /* UTILITIES */
@@ -450,3 +453,66 @@ a.btn-primary-action {
 }
 /**/
 /* SUMMONER PROFILE */
+#summoner-main {
+  display: grid;
+  grid-template-columns: 30rem auto;
+}
+#summoner-info {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2rem;
+}
+#summoner-card {
+  position: relative;
+  width: 20rem;
+  height: 20rem;
+  margin: 0 auto;
+  outline: 1px solid cyan;
+  background: var(--clrHextechBlack);
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 1rem 1rem rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+#summoner-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mask-image: linear-gradient(to top, transparent 4rem, white 12rem);
+  -webkit-mask-image: linear-gradient(to top, transparent 4rem, white 12rem);
+}
+#summoner-card h1 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  padding: 2rem 1rem 1rem 1rem;
+  font-size: 1.8rem;
+  color: var(--clrGold1);
+  text-transform: unset;
+  text-align: center;
+}
+#summoner-card h1 span {
+  display: block;
+  font-size: 0.8em;
+  color: var(--clrGrey1);
+}
+#id-table {
+  width: 100%;
+  table-layout: fixed;
+  white-space: nowrap;
+}
+#id-table tr {
+  display: flex;
+  flex-direction: column;
+}
+#id-table td {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
