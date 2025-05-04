@@ -16,7 +16,7 @@ export function SumSidebar({ identity, profile, rank }: SumSidebarProps) {
           <div id="sum-avatar">
             <img
               alt="Icon"
-              src={`https://ddragon.leagueoflegends.com/cdn/13.1.1/img/profileicon/${profile.profileIconId}.png`}
+              src={`https://ddragon.leagueoflegends.com/cdn/15.9.1/img/profileicon/${profile.profileIconId}.png`}
             />
             <span id="sum-level">
               <span>{profile.summonerLevel}</span>
