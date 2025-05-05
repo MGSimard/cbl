@@ -675,9 +675,6 @@ a.btn-primary-action {
   font-weight: 700;
   text-transform: uppercase;
 }
-.stats > div:last-child {
-  text-align: right;
-}
 .stats-minions,
 .stats-gold {
   display: flex;
@@ -687,6 +684,10 @@ a.btn-primary-action {
 .stats svg {
   width: 0.8em;
   height: 0.8em;
+}
+.stats-gold {
+  justify-content: flex-end;
+  text-align: right;
 }
 .match-metadata {
   font-size: 1.2rem;
