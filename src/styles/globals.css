@@ -642,7 +642,6 @@ a.btn-primary-action {
 }
 .match-context {
   width: 10rem;
-  outline: 1px solid blue;
 }
 .match-outcome {
   font-family: var(--fontBeaufort);
@@ -670,6 +669,11 @@ a.btn-primary-action {
 }
 .items li:not(:last-child) {
   border-right: 1px solid var(--clrBorderGoldIdle);
+}
+.items img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .stats {
   display: grid;

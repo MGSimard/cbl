@@ -43,7 +43,6 @@ export function champImgUrl(champId: number): URL | null {
 
 const BASE_ITEM_URL = `https://ddragon.leagueoflegends.com/cdn/${latestPatch}/img/item/`;
 export function getItemImgUrl(itemId: number): URL | string | null {
-  // TODO: placeholder item asset.webp (or svg)
   if (itemId === 0) return null;
   const itemInfo = dsItems[itemId.toString() as keyof typeof dsItems];
   if (itemInfo) {
@@ -52,11 +51,11 @@ export function getItemImgUrl(itemId: number): URL | string | null {
       return new URL(`${BASE_ITEM_URL}${itemImage}`);
     } catch (error) {
       console.log(`ERROR: Could not create URL for itemId ${itemId} (${itemImage}):`, error);
-      return "/assets/placeholder-item.webp";
+      return "/assets/test.svg";
     }
   } else {
     console.log(`ERROR: Could not find item with id ${itemId}.`);
-    return "/assets/placeholder-item.webp";
+    return "/assets/test.svg";
   }
 }
 

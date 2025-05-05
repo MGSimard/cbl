@@ -54,7 +54,7 @@ export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
             const itemId = targetPlayerData[itemKey as keyof typeof targetPlayerData] as number;
             const itemName = getItemName(itemId);
             return (
-              <li key={itemKey} aria-label={itemName}>
+              <li key={itemKey} aria-label={itemName} title={itemName}>
                 {itemId !== 0 && <img src={`${getItemImgUrl(itemId)}`} alt="" />}
               </li>
             );
