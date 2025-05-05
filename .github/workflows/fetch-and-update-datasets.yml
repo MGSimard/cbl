@@ -44,6 +44,8 @@ jobs:
           curl -fs "https://ddragon.leagueoflegends.com/cdn/${patchVer}/data/en_US/item.json" | jq '.' > src/datasets/item.json
           echo "Fetching queues dataset..."
           curl -fs "https://static.developer.riotgames.com/docs/lol/queues.json" | jq '.' > src/datasets/queues.json
+          echo "Fetching maps dataset..."
+          curl -fs "https://static.developer.riotgames.com/docs/lol/maps.json" | jq '.' > src/datasets/maps.json
           echo "Fetching arena dataset..."
           curl -fs "https://raw.communitydragon.org/latest/cdragon/arena/en_us.json" | jq '.' > src/datasets/arena.json
 
