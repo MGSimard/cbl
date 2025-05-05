@@ -12,25 +12,23 @@ export function SumSidebar({ identity, profile, rank }: SumSidebarProps) {
   return (
     <section id="sum-info">
       <div id="sum-info-header">
-        <div id="sum-card">
-          <div id="sum-avatar">
-            <img
-              alt="Icon"
-              src={`https://ddragon.leagueoflegends.com/cdn/15.9.1/img/profileicon/${profile.profileIconId}.png`}
-            />
-            <span id="sum-level">
-              <span>{profile.summonerLevel}</span>
-            </span>
-          </div>
-          <div id="sum-identity">
-            <h1 title={`${identity.gameName}#${identity.tagLine}`}>
-              {identity.gameName}
-              <span>#{identity.tagLine}</span>
-            </h1>
-            <span id="sum-rank" title={rankFormatter(rank)}>
-              {rankFormatter(rank)}
-            </span>
-          </div>
+        <div id="sum-avatar">
+          <img
+            alt="Icon"
+            src={`https://ddragon.leagueoflegends.com/cdn/15.9.1/img/profileicon/${profile.profileIconId}.png`}
+          />
+          <span id="sum-level">
+            <span>{profile.summonerLevel}</span>
+          </span>
+        </div>
+        <div id="sum-identity">
+          <h1 title={`${identity.gameName}#${identity.tagLine}`}>
+            {identity.gameName}
+            <span>#{identity.tagLine}</span>
+          </h1>
+          <span id="sum-rank" title={rankFormatter(rank)}>
+            {rankFormatter(rank)}
+          </span>
         </div>
       </div>
       <div id="sum-info-content">

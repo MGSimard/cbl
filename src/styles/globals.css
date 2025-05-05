@@ -453,13 +453,11 @@ a.btn-primary-action {
   background: linear-gradient(var(--clrHextechBlack), var(--clrBlue6) 18%, var(--clrHextechBlack));
 }
 #sum-info-header {
+  display: flex;
+  gap: 1rem;
   padding: 1rem;
   white-space: nowrap;
   border-bottom: 1px solid var(--clrBorderMuted);
-}
-#sum-card {
-  display: flex;
-  gap: 1rem;
 }
 #sum-avatar {
   --borderWidth: 0.2rem;
