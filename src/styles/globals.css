@@ -695,3 +695,35 @@ a.btn-primary-action {
 .dot {
   color: var(--clrTextMuted);
 }
+.match-players {
+  --colWidth: 10rem;
+  --colGap: 1rem;
+  display: flex;
+  margin-left: auto;
+  gap: var(--colGap);
+}
+.match-players a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.match-players img {
+  flex-shrink: 0;
+}
+.match-players span {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.match-players > ul.player-list-standard {
+  width: var(--colWidth);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.match-players > ul.player-list-arena {
+  display: grid;
+  grid-template-columns: repeat(2, var(--colWidth));
+  grid-column-gap: var(--colGap);
+}

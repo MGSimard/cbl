@@ -8,12 +8,12 @@ export function PlayerListStandard({ players, platformId }: { players: Participa
 
   return (
     <>
-      <ul className="teamsStandard">
+      <ul className="player-list-standard">
         {teamOne.map((plr) => (
           <PlayerItem key={plr.summonerId} player={plr} platformId={platformId} />
         ))}
       </ul>
-      <ul className="teamsStandard">
+      <ul className="player-list-standard">
         {teamTwo.map((plr) => (
           <PlayerItem key={plr.summonerId} player={plr} platformId={platformId} />
         ))}
@@ -24,9 +24,8 @@ export function PlayerListStandard({ players, platformId }: { players: Participa
 
 export function PlayerListArena({ players, platformId }: { players: ParticipantDto[]; platformId: string }) {
   const orderedPlayers = [...players].sort((a, b) => a.placement - b.placement);
-
   return (
-    <ul className="teamsArena">
+    <ul className="player-list-arena">
       {orderedPlayers.map((plr) => (
         <PlayerItem key={plr.summonerId} player={plr} platformId={platformId} />
       ))}
