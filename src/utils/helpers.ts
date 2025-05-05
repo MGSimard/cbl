@@ -2,10 +2,12 @@ import type { LeagueV4ByPuuid } from "@/utils/riotApiTypes";
 import versionsJson from "@/datasets/versions.json";
 import championsJson from "@/datasets/champion.json";
 import itemsJson from "@/datasets/item.json";
+import mapsJson from "@/datasets/maps.json";
 
 const latestPatch = versionsJson[0];
 const dsChampions = championsJson.data;
 const dsItems = itemsJson.data;
+const dsMaps = mapsJson;
 
 export function rankFormatter(rankData: LeagueV4ByPuuid): string {
   const soloQueueRank = rankData.find((r) => r.queueType === "RANKED_SOLO_5x5");
@@ -65,6 +67,14 @@ export function getItemName(itemId: number): string {
     return itemInfo.name;
   }
   return "Unknown Item";
+}
+
+export function getMapName(mapId: number): string {
+  const mapInfo = dsMaps.find((map) => map.mapId === mapId);
+  if (mapInfo) {
+    return mapInfo.mapName;
+  }
+  return "Unknown Map";
 }
 
 type RegionInfo = [string, string, string]; // [shard, cluster, fullName]

@@ -1,5 +1,5 @@
 import type { MatchV5ByMatchId } from "@/utils/riotApiTypes";
-import { champImgUrl, getItemImgUrl, getItemName, modeDictionary } from "@/utils/helpers";
+import { champImgUrl, getItemImgUrl, getItemName, getMapName, modeDictionary } from "@/utils/helpers";
 import { IconMinion } from "@/components/Icons";
 
 /** ELEMENTS
@@ -74,7 +74,7 @@ export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
         </div>
       </div>
       <div className="match-metadata">
-        <div>map{mapId}</div>
+        <div>{getMapName(mapId)}</div>
         <div>
           {gameDuration} - {gameStartTimestamp}
         </div>
