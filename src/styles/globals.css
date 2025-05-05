@@ -603,7 +603,6 @@ a.btn-primary-action {
   padding: 1.5rem 3rem;
   background: var(--clrBg);
   outline: 1px solid red;
-  background: cyan;
 }
 .champ-icon {
   flex-shrink: 0;
@@ -700,15 +699,16 @@ a.btn-primary-action {
   --colWidth: 10rem;
   --colGap: 1rem;
   display: flex;
-  margin-left: auto;
   gap: var(--colGap);
+  margin-left: auto;
+  font-size: 1.2rem;
 }
 .match-players a {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  overflow: hidden;
   white-space: nowrap;
+  overflow: hidden;
 }
 .list-img-wrapper {
   flex-shrink: 0;
@@ -729,9 +729,6 @@ a.btn-primary-action {
 }
 .match-players > ul.player-list-standard {
   width: var(--colWidth);
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
 }
 .match-players > ul.player-list-arena {
   display: grid;
