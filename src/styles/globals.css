@@ -666,3 +666,13 @@ a.btn-primary-action {
 .stats > div:last-child {
   text-align: right;
 }
+.stats-minions,
+.stats-gold {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.stats svg {
+  width: 0.8em;
+  height: 0.8em;
+}
