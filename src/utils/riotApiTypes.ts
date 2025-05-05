@@ -65,7 +65,7 @@ interface InfoDto {
   teams: TeamDto[];
   tournamentCode: string; // Tournament code used to generate the match. This field was added to match-v5 in patch 11.13 on June 23rd, 2021.
 }
-interface ParticipantDto {
+export interface ParticipantDto {
   allInPings: number; // Yellow crossed swords.
   assistMePings: number; // Green flag.
   assists: number;

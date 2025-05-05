@@ -145,6 +145,16 @@ export function regionDictionary(regionPrefix: string): RegionInfo {
   return regionInfo;
 }
 
+const REVERSE_REGIONS: Record<string, string> = Object.fromEntries(
+  Object.entries(REGIONS).map(([prefix, [shard]]) => [shard.toLowerCase(), prefix])
+);
+export function reverseRegionDictionary(platformId: string): string {
+  const lowerPlatformId = platformId.toLowerCase();
+  const regionPrefix = REVERSE_REGIONS[lowerPlatformId];
+  if (!regionPrefix) throw new Error(`Invalid Platform ID: ${platformId}`);
+  return regionPrefix;
+}
+
 export function modeDictionary(queueId: number): string {
   // Queue IDs: src/datasets/queues.json (from https://static.developer.riotgames.com/docs/lol/queues.json)
   // Making our own dictionary because the dataset mode titles are very "dev-y"

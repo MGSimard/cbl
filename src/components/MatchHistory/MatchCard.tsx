@@ -1,3 +1,4 @@
+import { PlayerListStandard, PlayerListArena } from "@/components/MatchHistory/PlayerList";
 import type { MatchV5ByMatchId } from "@/utils/riotApiTypes";
 import {
   calcDuration,
@@ -13,12 +14,6 @@ import { IconGold, IconMinion } from "@/components/Icons";
 /** ELEMENTS
  * - Summoner Spells
  * - Runes
- *
- * - Gold
- *
- * - Length
- * - Date (Or N minutes/hours/days/months ago)
- *
  * - Player list (Both teams)
  *  */
 
@@ -57,9 +52,7 @@ export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
         <ul className="items">
           {ITEM_KEYS.map((itemKey) => {
             const itemId = targetPlayerData[itemKey as keyof typeof targetPlayerData] as number;
-
             const itemName = getItemName(itemId);
-
             return (
               <li key={itemKey} aria-label={itemName}>
                 {itemId !== 0 && <img src={`${getItemImgUrl(itemId)}`} alt="" />}
@@ -88,9 +81,13 @@ export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
           {timeSince(gameStartTimestamp, gameDuration)}
         </div>
       </div>
-      <button type="button" aria-label="View Match Details">
-        v
-      </button>
+      <div className="match-players">
+        {queueId === 1700 || queueId === 1710 ? (
+          <PlayerListArena players={participants} platformId={platformId} />
+        ) : (
+          <PlayerListStandard players={participants} platformId={platformId} />
+        )}
+      </div>
     </li>
   );
 }
