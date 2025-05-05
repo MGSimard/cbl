@@ -645,13 +645,18 @@ a.btn-primary-action {
 .items {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
+  border: 1px solid var(--clrBorderGoldIdle);
 }
 .items li {
   width: 4rem;
   height: 4rem;
   background: var(--clrBg);
-  border: 1px solid red;
 }
-.items li:not(:first-child) {
-  border-left: none;
+.items li:not(:last-child) {
+  border-right: 1px solid var(--clrBorderGoldIdle);
+}
+.stats {
+  font-family: var(--fontBeaufort);
+  font-weight: 700;
+  text-transform: uppercase;
 }

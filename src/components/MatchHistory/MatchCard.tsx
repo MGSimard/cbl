@@ -63,8 +63,8 @@ export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
           <div>
             {kills}/{deaths}/{assists}
           </div>
-          <div>{totalMinionsKilled}cs</div>
-          <div>{goldEarned}g</div>
+          <div>{totalMinionsKilled.toLocaleString()}cs</div>
+          <div>{goldEarned.toLocaleString()}g</div>
         </div>
       </div>
       <div className="match-metadata">
