@@ -77,6 +77,12 @@ export function getMapName(mapId: number): string {
   return "Unknown Map";
 }
 
+export function calcDuration(gameLength: number): string {
+  const minutes = Math.floor(gameLength / 60);
+  const seconds = gameLength % 60;
+  return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+}
+
 type RegionInfo = [string, string, string]; // [shard, cluster, fullName]
 const REGIONS: Record<string, RegionInfo> = {
   // AMERICAS
