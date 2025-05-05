@@ -602,7 +602,7 @@ a.btn-primary-action {
 .match-card {
   display: flex;
   gap: 1.5rem;
-  padding: 2rem 4rem;
+  padding: 1.5rem 3rem;
   background: var(--clrBg);
   outline: 1px solid red;
 }
