@@ -604,7 +604,7 @@ a.btn-primary-action {
   background: var(--clrBg);
   outline: 1px solid red;
 }
-.champ-icon {
+.match-champ {
   flex-shrink: 0;
   position: relative;
   width: 6rem;
@@ -624,7 +624,7 @@ a.btn-primary-action {
   transform: scale(1.15);
   object-fit: cover;
 }
-.champ-icon span {
+.match-champ span {
   position: absolute;
   bottom: 0;
   right: -0.5rem;

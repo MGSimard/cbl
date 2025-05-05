@@ -37,7 +37,7 @@ export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
 
   return (
     <li className="match-card">
-      <div className="champ-icon">
+      <div className="match-champ">
         {/* TODO: If return is null, render the placeholder src instead (not yet made) */}
         <div className="champ-icon-bandaid">
           <img src={`${champImgUrl(championId)}`} alt={`cId:${championId}`} />
