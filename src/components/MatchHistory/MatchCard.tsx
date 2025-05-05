@@ -39,7 +39,9 @@ export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
     <li className="match-card">
       <div className="champ-icon">
         {/* TODO: If return is null, render the placeholder src instead (not yet made) */}
-        <img src={`${champImgUrl(championId)}`} alt={`cId:${championId}`} />
+        <div className="champ-icon-bandaid">
+          <img src={`${champImgUrl(championId)}`} alt={`cId:${championId}`} />
+        </div>
         <span>{champLevel}</span>
       </div>
       <div className="match-context">
@@ -77,6 +79,9 @@ export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
           {gameDuration} - {gameStartTimestamp}
         </div>
       </div>
+      <button type="button" aria-label="View Match Details">
+        v
+      </button>
     </li>
   );
 }
