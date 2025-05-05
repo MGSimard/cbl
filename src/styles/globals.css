@@ -692,3 +692,6 @@ a.btn-primary-action {
 .match-metadata {
   font-size: 1.2rem;
 }
+.dot {
+  color: var(--clrTextMuted);
+}

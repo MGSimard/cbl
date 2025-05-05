@@ -1,5 +1,13 @@
 import type { MatchV5ByMatchId } from "@/utils/riotApiTypes";
-import { calcDuration, champImgUrl, getItemImgUrl, getItemName, getMapName, modeDictionary } from "@/utils/helpers";
+import {
+  calcDuration,
+  champImgUrl,
+  getItemImgUrl,
+  getItemName,
+  getMapName,
+  modeDictionary,
+  timeSince,
+} from "@/utils/helpers";
 import { IconGold, IconMinion } from "@/components/Icons";
 
 /** ELEMENTS
@@ -76,7 +84,8 @@ export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
       <div className="match-metadata">
         <div>{getMapName(mapId)}</div>
         <div>
-          {calcDuration(gameDuration)} - {gameStartTimestamp}
+          {calcDuration(gameDuration)} <span className="dot">&#x2022;</span>{" "}
+          {timeSince(gameStartTimestamp, gameDuration)}
         </div>
       </div>
       <button type="button" aria-label="View Match Details">

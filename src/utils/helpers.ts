@@ -83,6 +83,37 @@ export function calcDuration(gameLength: number): string {
   return `${minutes}:${seconds.toString().padStart(2, "0")}`;
 }
 
+const SECOND = 1;
+const MINUTE = 60 * SECOND;
+const HOUR = 60 * MINUTE;
+const DAY = 24 * HOUR;
+const WEEK = 7 * DAY;
+const MONTH = 30 * DAY;
+const YEAR = 12 * MONTH;
+
+const timeUnits: { threshold: number; singular: string; plural: string }[] = [
+  { threshold: YEAR, singular: "year", plural: "years" },
+  { threshold: MONTH, singular: "month", plural: "months" },
+  { threshold: WEEK, singular: "week", plural: "weeks" },
+  { threshold: DAY, singular: "day", plural: "days" },
+  { threshold: HOUR, singular: "hour", plural: "hours" },
+  { threshold: MINUTE, singular: "minute", plural: "minutes" },
+];
+
+export function timeSince(startUnix: number, gameLength: number): string {
+  const currentUnix = Math.floor(new Date().getTime() / 1000);
+  const gameStartUnix = Math.floor(startUnix / 1000);
+  const gameEndUnix = gameStartUnix + gameLength;
+  const timeSinceEnd = Math.max(0, currentUnix - gameEndUnix);
+  for (const unit of timeUnits) {
+    if (timeSinceEnd >= unit.threshold) {
+      const value = Math.floor(timeSinceEnd / unit.threshold);
+      return `${value} ${value === 1 ? unit.singular : unit.plural} ago`;
+    }
+  }
+  return `${timeSinceEnd} seconds ago`;
+}
+
 type RegionInfo = [string, string, string]; // [shard, cluster, fullName]
 const REGIONS: Record<string, RegionInfo> = {
   // AMERICAS
@@ -90,18 +121,15 @@ const REGIONS: Record<string, RegionInfo> = {
   br: ["BR1", "americas", "Brazil"],
   lan: ["LA1", "americas", "Latin America North"],
   las: ["LA2", "americas", "Latin America South"],
-
   // ASIA
   kr: ["KR", "asia", "Korea"],
   jp: ["JP1", "asia", "Japan"],
-
   // EUROPE
   euw: ["EUW1", "europe", "Europe West"],
   eun: ["EUN1", "europe", "Europe Nordic & East"],
   me: ["ME1", "europe", "Middle East"],
   tr: ["TR1", "europe", "Türkiye"],
   ru: ["RU", "europe", "Russia"],
-
   // SEA
   oce: ["OC1", "sea", "Oceania"],
   sg: ["SG2", "sea", "Singapore"],
