@@ -640,6 +640,10 @@ a.btn-primary-action {
   border-radius: 999rem;
   border: 1px solid var(--clrBorderGoldActive);
 }
+.match-context {
+  width: 10rem;
+  outline: 1px solid blue;
+}
 .match-outcome {
   font-family: var(--fontBeaufort);
   font-weight: 700;
