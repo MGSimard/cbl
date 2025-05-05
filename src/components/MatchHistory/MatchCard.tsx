@@ -1,6 +1,6 @@
 import type { MatchV5ByMatchId } from "@/utils/riotApiTypes";
 import { calcDuration, champImgUrl, getItemImgUrl, getItemName, getMapName, modeDictionary } from "@/utils/helpers";
-import { IconMinion } from "@/components/Icons";
+import { IconGold, IconMinion } from "@/components/Icons";
 
 /** ELEMENTS
  * - Summoner Spells
@@ -67,7 +67,10 @@ export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
             {totalMinionsKilled.toLocaleString()}
             <IconMinion />
           </div>
-          <div className="stats-gold">{goldEarned.toLocaleString()}</div>
+          <div className="stats-gold">
+            {goldEarned.toLocaleString()}
+            <IconGold />
+          </div>
         </div>
       </div>
       <div className="match-metadata">
