@@ -656,7 +656,13 @@ a.btn-primary-action {
   border-right: 1px solid var(--clrBorderGoldIdle);
 }
 .stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
   font-family: var(--fontBeaufort);
   font-weight: 700;
   text-transform: uppercase;
+}
+.stats > div:last-child {
+  text-align: right;
 }
