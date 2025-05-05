@@ -698,6 +698,7 @@ a.btn-primary-action {
 .match-players {
   --colWidth: 10rem;
   --colGap: 1rem;
+  --rowGap: 0.25rem;
   display: flex;
   gap: var(--colGap);
   margin-left: auto;
@@ -729,9 +730,13 @@ a.btn-primary-action {
 }
 .match-players > ul.player-list-standard {
   width: var(--colWidth);
+  display: flex;
+  flex-direction: column;
+  gap: var(--rowGap);
 }
 .match-players > ul.player-list-arena {
   display: grid;
   grid-template-columns: repeat(2, var(--colWidth));
   grid-column-gap: var(--colGap);
+  grid-row-gap: var(--rowGap);
 }
