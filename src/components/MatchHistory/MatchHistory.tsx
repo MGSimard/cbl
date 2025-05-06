@@ -15,9 +15,9 @@ export async function MatchHistory({ matchIds, currentPlayer, regionPrefix }: Ma
   }
 
   return (
-    <section>
-      <h2>Match History (Last {data.length} played)</h2>
-      <ul id="match-history">
+    <section id="match-history">
+      <h2>Recent games (Last {data.length} played)</h2>
+      <ul>
         {data.map((match) => (
           <MatchCard key={match.metadata.matchId} currentPlayer={currentPlayer} matchData={match} />
         ))}

@@ -40,7 +40,7 @@ export async function getPlayerData(regionPrefix: string, summoner: string): Pro
         return (await res.json()) as SummonerV4ByPuuid;
       }),
       fetch(
-        `https://${cluster}.api.riotgames.com/lol/match/v5/matches/by-puuid/${targetIdentity.puuid}/ids?start=0&count=3&api_key=${API_KEY}`
+        `https://${cluster}.api.riotgames.com/lol/match/v5/matches/by-puuid/${targetIdentity.puuid}/ids?start=0&count=20&api_key=${API_KEY}`
       ).then(async (res) => {
         if (!res.ok) throw new Error(`FETCH ERROR (MATCH-V5): ${res.status}`);
         return (await res.json()) as MatchV5ByPuuid;
