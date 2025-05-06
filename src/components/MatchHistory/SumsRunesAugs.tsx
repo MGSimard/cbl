@@ -1,0 +1,34 @@
+import { getSumSpells } from "@/utils/helpers";
+import { getRunes } from "@/utils/helpers";
+import { getAugments } from "@/utils/helpers";
+import { ParticipantDto } from "@/utils/riotApiTypes";
+
+interface SumsRunesAugsProps {
+  queueId: number;
+  targetPlayerData: ParticipantDto;
+}
+export function SumsRunesAugs({ queueId, targetPlayerData }: SumsRunesAugsProps) {
+  const isArena = queueId === 1700 || queueId === 1710;
+
+  const slot1 = isArena ? getAugments(1, targetPlayerData) : getSumSpells(1, targetPlayerData);
+  const slot2 = isArena ? getAugments(2, targetPlayerData) : getSumSpells(2, targetPlayerData);
+  const slot3 = isArena ? getAugments(3, targetPlayerData) : getRunes(1, targetPlayerData);
+  const slot4 = isArena ? getAugments(4, targetPlayerData) : getRunes(2, targetPlayerData);
+
+  return (
+    <div className="player-sumsRunesAugs">
+      <div className="slot">
+        <img src={`${slot1}`} alt="" />
+      </div>
+      <div className="slot">
+        <img src={`${slot2}`} alt="" />
+      </div>
+      <div className="slot">
+        <img src={`${slot3}`} alt="" />
+      </div>
+      <div className={`slot${isArena ? "" : " rune-minor"}`}>
+        <img src={`${slot4}`} alt="" />
+      </div>
+    </div>
+  );
+}

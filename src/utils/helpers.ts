@@ -70,26 +70,30 @@ export function getMapName(mapId: number): string {
   return mapInfo;
 }
 
-const BASE_URL_AUGMENTS = "https://raw.communitydragon.org/latest/game/";
 const BASE_URL_SUMS = `https://ddragon.leagueoflegends.com/cdn/${latestPatch}/img/spell/`;
+export function getSumSpells(order: 1 | 2, targetPlayerData: ParticipantDto): string | null {
+  if (order !== 1 && order !== 2) {
+    console.log(`ERROR: Invalid order: ${order}`);
+    return null;
+  }
+  const sumSpellId = targetPlayerData[`summoner${order}Id` as keyof ParticipantDto];
+  const sumSpellFilename = Object.values(dsSumSpells).find((spell) => spell.key === sumSpellId.toString())?.image?.full;
+  if (!sumSpellFilename) {
+    console.log(`ERROR: Summoner Spell ID ${sumSpellId}  or its image is missing/empty.`);
+    // TODO: Placeholder spell image
+    return "/assets/placeholder-spell.svg";
+  }
+  return `${BASE_URL_SUMS}${sumSpellFilename}`;
+}
+
 const BASE_URL_RUNES = "https://ddragon.canisback.com/img/";
-export function getSumsRunesAugments(slot: number, queueId: number, targetPlayerData: ParticipantDto): string | null {
-  // Merging Summoners, Runes, Augments into a single function
-  // We have 4 slots (2 Summoner Spells, 2 Rune Pages)
-  // But in Arena, all 4 slots are Augments (Don't care about Summoner Spells there, no Runes)
-  // If Arena (queueId 1700, 1710) provide matching slot augment image URL
-  if (queueId === 1700 || queueId === 1710) {
-    const augId = targetPlayerData[`playerAugment${slot}` as keyof ParticipantDto];
-    const augFilename = dsArena.find((aug) => aug.id === augId)?.iconSmall;
-    if (!augFilename) {
-      console.log(`ERROR: Augment ID ${augId} or its image is missing/empty.`);
-      // TODO: Placeholder augment image
-      return null;
-    }
-    return `${BASE_URL_AUGMENTS}${augFilename}`;
+export function getRunes(order: 1 | 2, targetPlayerData: ParticipantDto): string | null {
+  if (order !== 1 && order !== 2) {
+    console.log(`ERROR: Invalid order: ${order}`);
+    return null;
   }
   // Keystone
-  if (slot === 1) {
+  if (order === 1) {
     const keystoneId = targetPlayerData.perks?.styles?.[0]?.selections?.[0]?.perk;
     for (const runeTree of dsRunes) {
       const iconPath = runeTree.slots?.[0]?.runes?.find((r) => r.id === keystoneId)?.icon;
@@ -98,9 +102,8 @@ export function getSumsRunesAugments(slot: number, queueId: number, targetPlayer
     console.log(`ERROR: Keystone ID ${keystoneId} or its image is missing/empty.`);
     // TODO: Placeholder keystone image
     return null;
-  }
-  // Secondary Style
-  if (slot === 3) {
+  } else {
+    // Secondary Style
     const styleId = targetPlayerData.perks.styles[1]?.style;
     const styleFilename = dsRunes.find((style) => style.id === styleId)?.icon;
     if (!styleFilename) {
@@ -110,20 +113,18 @@ export function getSumsRunesAugments(slot: number, queueId: number, targetPlayer
     }
     return `${BASE_URL_RUNES}${styleFilename}`;
   }
-  // Summoner Spells
-  if (slot === 2 || slot === 4) {
-    const sumSpellId = targetPlayerData[`summoner${slot / 2}Id` as keyof ParticipantDto];
-    const sumSpellFilename = Object.values(dsSumSpells).find((spell) => spell.key === sumSpellId.toString())?.image
-      ?.full;
-    if (!sumSpellFilename) {
-      console.log(`ERROR: Summoner Spell ID ${sumSpellId}  or its image is missing/empty.`);
-      // TODO: Placeholder spell image
-      return null;
-    }
-    return `${BASE_URL_SUMS}${sumSpellFilename}`;
+}
+
+const BASE_URL_AUGMENTS = "https://raw.communitydragon.org/latest/game/";
+export function getAugments(slot: 1 | 2 | 3 | 4, targetPlayerData: ParticipantDto): string | null {
+  const augId = targetPlayerData[`playerAugment${slot}` as keyof ParticipantDto];
+  const augFilename = dsArena.find((aug) => aug.id === augId)?.iconSmall;
+  if (!augFilename) {
+    console.log(`ERROR: Augment ID ${augId} or its image is missing/empty.`);
+    // TODO: Placeholder augment image
+    return null;
   }
-  console.log(`ERROR: Invalid slot: ${slot}`);
-  return null;
+  return `${BASE_URL_AUGMENTS}${augFilename}`;
 }
 
 export function calcDuration(gameLength: number): string {
