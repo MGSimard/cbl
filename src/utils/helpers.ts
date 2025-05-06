@@ -31,11 +31,11 @@ export function rankFormatter(rankData: LeagueV4ByPuuid): string {
 
 const BASE_CHAMP_URL = `https://ddragon.leagueoflegends.com/cdn/${latestPatch}/img/champion/`;
 export function getChampImgUrl(champId: number): string | null {
-  // Consider pre-processing into a Map instead for micro optimization
   const fileName = Object.values(dsChampions).find((info) => info.key === champId.toString())?.image?.full;
   if (!fileName) {
-    console.log(`ERROR: Could not find champion with id ${champId} or its image path (image.full) is missing/empty.`);
+    console.log(`ERROR: Champion ID ${champId} or its image path (image.full) is missing/empty.`);
     return null;
+    // TODO: Placeholder champ image
   }
   return `${BASE_CHAMP_URL}${fileName}`;
 }
@@ -43,19 +43,12 @@ export function getChampImgUrl(champId: number): string | null {
 const BASE_ITEM_URL = `https://ddragon.leagueoflegends.com/cdn/${latestPatch}/img/item/`;
 export function getItemImgUrl(itemId: number): string | null {
   if (itemId === 0) return null;
-  const itemInfo = dsItems[itemId.toString() as keyof typeof dsItems];
-  if (itemInfo) {
-    const itemImage = itemInfo.image.full;
-    try {
-      return new URL(`${BASE_ITEM_URL}${itemImage}`);
-    } catch (error) {
-      console.log(`ERROR: Could not create URL for itemId ${itemId} (${itemImage}):`, error);
-      return "/assets/test.svg";
-    }
-  } else {
-    console.log(`ERROR: Could not find item with id ${itemId}.`);
-    return "/assets/test.svg";
+  const itemImage = dsItems[itemId.toString() as keyof typeof dsItems]?.image?.full;
+  if (!itemImage) {
+    console.log(`ERROR: Item ID ${itemId} or its image path (image.full) is missing/empty.`);
+    return "/assets/placeholder-item.svg";
   }
+  return `${BASE_ITEM_URL}${itemImage}`;
 }
 
 export function getItemName(itemId: number): string {
