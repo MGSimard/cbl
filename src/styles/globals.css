@@ -50,7 +50,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* outline: 1px solid red; */
 }
 html {
   font-size: 62.5%;
@@ -696,6 +695,7 @@ a.btn-primary-action {
 }
 .match-stats {
   flex-shrink: 0;
+  width: 21rem;
 }
 .items {
   display: grid;
@@ -704,8 +704,7 @@ a.btn-primary-action {
   border: 1px solid var(--clrBorderGoldIdle);
 }
 .items li {
-  width: 4rem;
-  height: 4rem;
+  aspect-ratio: 1/1;
   background: var(--clrBg);
 }
 .items li:not(:last-child) {
@@ -718,12 +717,24 @@ a.btn-primary-action {
 }
 .stats {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
+  grid-template-columns: 2fr 1fr 1.5fr;
+
   margin-top: 1rem;
   font-family: var(--fontBeaufort);
   font-weight: 700;
   text-transform: uppercase;
+  white-space: nowrap;
+}
+.stats > * {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.stats-kda {
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  overflow: hidden;
 }
 .stats-minions,
 .stats-gold {
@@ -734,6 +745,7 @@ a.btn-primary-action {
 .stats svg {
   width: 0.8em;
   height: 0.8em;
+  flex-shrink: 0;
 }
 .stats-gold {
   justify-content: flex-end;

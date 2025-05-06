@@ -69,8 +69,8 @@ export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
           })}
         </ul>
         <div className="stats">
-          <div>
-            {kills}/{deaths}/{assists}
+          <div className="stats-kda">
+            <span>{kills}</span>/<span>{deaths}</span>/<span>{assists}</span>
           </div>
           <div className="stats-minions">
             {totalMinionsKilled.toLocaleString()}
