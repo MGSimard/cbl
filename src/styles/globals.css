@@ -655,6 +655,8 @@ a.btn-primary-action {
   border: 1px solid var(--clrBorderGoldActive);
 }
 .match-context {
+  display: flex;
+  flex-direction: column;
   max-width: 20rem;
   width: 100%;
 }
@@ -672,12 +674,33 @@ a.btn-primary-action {
 .match-mode {
   font-size: 1.2rem;
 }
+.player-sumsRunesAugs {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: fit-content;
+  border: 1px solid var(--clrBorderGoldIdle);
+}
+.player-sumsRunesAugs .slot {
+  width: 2rem;
+  height: 2rem;
+  background: var(--clrBg);
+}
+.player-sumsRunesAugs .slot.rune-minor {
+  padding: 25%;
+}
+.player-sumsRunesAugs .slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .match-stats {
   flex-shrink: 0;
 }
 .items {
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-columns: repeat(7, 1fr);
+  width: fit-content;
   border: 1px solid var(--clrBorderGoldIdle);
 }
 .items li {
@@ -697,6 +720,7 @@ a.btn-primary-action {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
+  margin-top: 1rem;
   font-family: var(--fontBeaufort);
   font-weight: 700;
   text-transform: uppercase;

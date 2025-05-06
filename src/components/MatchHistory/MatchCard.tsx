@@ -6,6 +6,7 @@ import {
   getItemImgUrl,
   getItemName,
   getMapName,
+  getSumsRunesAugments,
   modeDictionary,
   timeSince,
 } from "@/utils/helpers";
@@ -47,6 +48,20 @@ export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
       <div className="match-context">
         <div className={`match-outcome ${win ? "match-win" : "match-loss"}`}>{win ? "Victory" : "Defeat"}</div>
         <div className="match-mode">{modeDictionary(queueId)}</div>
+        <div className="player-sumsRunesAugs">
+          <div className="slot">
+            <img src={`${getSumsRunesAugments(2, queueId, targetPlayerData)}`} alt="" />
+          </div>
+          <div className="slot">
+            <img src={`${getSumsRunesAugments(4, queueId, targetPlayerData)}`} alt="" />
+          </div>
+          <div className="slot">
+            <img src={`${getSumsRunesAugments(1, queueId, targetPlayerData)}`} alt="" />
+          </div>
+          <div className={`slot ${queueId !== 1700 && queueId !== 1710 ? "rune-minor" : ""}`}>
+            <img src={`${getSumsRunesAugments(3, queueId, targetPlayerData)}`} alt="" />
+          </div>
+        </div>
       </div>
       <div className="match-stats">
         <ul className="items">

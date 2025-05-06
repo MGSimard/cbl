@@ -1,13 +1,19 @@
-import type { LeagueV4ByPuuid } from "@/utils/riotApiTypes";
+import type { LeagueV4ByPuuid, ParticipantDto } from "@/utils/riotApiTypes";
 import versionsJson from "@/datasets/versions.json";
 import championsJson from "@/datasets/champion.json";
 import itemsJson from "@/datasets/item.json";
 import mapsJson from "@/datasets/maps.json";
+import sumSpellsJson from "@/datasets/summoner.json";
+import runesJson from "@/datasets/runesReforged.json";
+import arenaJson from "@/datasets/arena.json";
 
 const latestPatch = versionsJson[0];
 const dsChampions = championsJson.data;
 const dsItems = itemsJson.data;
 const dsMaps = mapsJson;
+const dsSumSpells = sumSpellsJson.data;
+const dsRunes = runesJson;
+const dsArena = arenaJson.augments;
 
 export function rankFormatter(rankData: LeagueV4ByPuuid): string {
   const soloQueueRank = rankData.find((r) => r.queueType === "RANKED_SOLO_5x5");
@@ -152,6 +158,28 @@ export function reverseRegionDictionary(platformId: string): string {
   const regionPrefix = REVERSE_REGIONS[lowerPlatformId];
   if (!regionPrefix) throw new Error(`Invalid Platform ID: ${platformId}`);
   return regionPrefix;
+}
+
+// const BASE_URL_RUNES = "https://ddragon.canisback.com/img/";
+// const BASE_URL_SUMS = https://ddragon.leagueoflegends.com/cdn/${latestPatch}/img/spell/${spellImage}
+export function getSumsRunesAugments(slot: number, queueId: number, targetPlayerData: ParticipantDto): string | null {
+  // Merging Summoners, Runes, Augments into a single function
+  // We have 4 slots (2 Summoner Spells, 2 Rune Pages)
+  // But in Arena, all 4 slots are Augments (Don't care about Summoner Spells there, no Runes)
+
+  // If Arena (queueId 1700, 1710) provide matching slot augment image URL
+  if (queueId === 1700 || queueId === 1710) {
+    const augId = targetPlayerData[`playerAugment${slot}` as keyof ParticipantDto];
+    const icon = dsArena.find((aug) => aug.id === augId)?.iconSmall;
+    if (!icon) return null;
+    return `https://raw.communitydragon.org/latest/game/${icon}`;
+  }
+
+  // If not Arena, provide matching slot Summoner Spell or Rune icon URL
+  // keystone Id (slot 1): targetPlayerData.perks.styles[0].selections[0].perk
+  // style Id (slot 3): targetPlayerData.perks.styles[1].style
+
+  return null; // Default return for non-Arena cases for now
 }
 
 export function modeDictionary(queueId: number): string {
