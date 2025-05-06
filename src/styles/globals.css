@@ -671,7 +671,7 @@ a.btn-primary-action {
 .match-context {
   display: flex;
   flex-direction: column;
-  max-width: 20rem;
+  max-width: 18rem;
   width: 100%;
 }
 .match-outcome {
@@ -768,6 +768,7 @@ a.btn-primary-action {
 }
 .match-metadata {
   flex-shrink: 0;
+  margin-left: 1.5rem;
   font-size: 1.2rem;
 }
 .dot {
