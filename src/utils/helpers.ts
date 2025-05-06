@@ -62,11 +62,12 @@ export function getItemName(itemId: number): string {
 }
 
 export function getMapName(mapId: number): string {
-  const mapInfo = dsMaps.find((map) => map.mapId === mapId);
-  if (mapInfo) {
-    return mapInfo.mapName;
+  const mapInfo = dsMaps.find((map) => map.mapId === mapId)?.mapName;
+  if (!mapInfo) {
+    console.log(`ERROR: Map ID ${mapId} or its name is missing/empty.`);
+    return "Unknown Map";
   }
-  return "Unknown Map";
+  return mapInfo;
 }
 
 export function calcDuration(gameLength: number): string {
