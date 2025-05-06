@@ -46,7 +46,7 @@ export function getItemImgUrl(itemId: number): string | null {
   const itemFilename = dsItems[itemId.toString() as keyof typeof dsItems]?.image?.full;
   if (!itemFilename) {
     console.log(`ERROR: Item ID ${itemId} or its image is missing/empty.`);
-    return "/assets/placeholder-item.svg";
+    return "/assets/placeholder-warning.svg";
   }
   return `${BASE_ITEM_URL}${itemFilename}`;
 }
@@ -71,27 +71,19 @@ export function getMapName(mapId: number): string {
 }
 
 const BASE_URL_SUMS = `https://ddragon.leagueoflegends.com/cdn/${latestPatch}/img/spell/`;
-export function getSumSpells(order: 1 | 2, targetPlayerData: ParticipantDto): string | null {
-  if (order !== 1 && order !== 2) {
-    console.log(`ERROR: Invalid order: ${order}`);
-    return null;
-  }
+export function getSumSpells(order: 1 | 2, targetPlayerData: ParticipantDto): string {
   const sumSpellId = targetPlayerData[`summoner${order}Id` as keyof ParticipantDto];
-  const sumSpellFilename = Object.values(dsSumSpells).find((spell) => spell.key === sumSpellId.toString())?.image?.full;
+  const sumSpellFilename = Object.values(dsSumSpells).find((spell) => spell.key === sumSpellId?.toString())?.image
+    ?.full;
   if (!sumSpellFilename) {
     console.log(`ERROR: Summoner Spell ID ${sumSpellId}  or its image is missing/empty.`);
-    // TODO: Placeholder spell image
-    return "/assets/placeholder-spell.svg";
+    return "/assets/placeholder-warning.svg";
   }
   return `${BASE_URL_SUMS}${sumSpellFilename}`;
 }
 
 const BASE_URL_RUNES = "https://ddragon.canisback.com/img/";
-export function getRunes(order: 1 | 2, targetPlayerData: ParticipantDto): string | null {
-  if (order !== 1 && order !== 2) {
-    console.log(`ERROR: Invalid order: ${order}`);
-    return null;
-  }
+export function getRunes(order: 1 | 2, targetPlayerData: ParticipantDto): string {
   // Keystone
   if (order === 1) {
     const keystoneId = targetPlayerData.perks?.styles?.[0]?.selections?.[0]?.perk;
@@ -100,29 +92,28 @@ export function getRunes(order: 1 | 2, targetPlayerData: ParticipantDto): string
       if (iconPath) return `${BASE_URL_RUNES}${iconPath}`;
     }
     console.log(`ERROR: Keystone ID ${keystoneId} or its image is missing/empty.`);
-    // TODO: Placeholder keystone image
-    return null;
-  } else {
+    return "/assets/placeholder-warning.svg";
+  }
+  if (order === 2) {
     // Secondary Style
     const styleId = targetPlayerData.perks.styles[1]?.style;
     const styleFilename = dsRunes.find((style) => style.id === styleId)?.icon;
     if (!styleFilename) {
       console.log(`ERROR: Style ID ${styleId} or its image is missing/empty.`);
-      // TODO: Placeholder style image
-      return null;
+      return "/assets/placeholder-warning.svg";
     }
     return `${BASE_URL_RUNES}${styleFilename}`;
   }
+  return "/assets/placeholder-warning.svg";
 }
 
 const BASE_URL_AUGMENTS = "https://raw.communitydragon.org/latest/game/";
-export function getAugments(slot: 1 | 2 | 3 | 4, targetPlayerData: ParticipantDto): string | null {
+export function getAugments(slot: 1 | 2 | 3 | 4, targetPlayerData: ParticipantDto): string {
   const augId = targetPlayerData[`playerAugment${slot}` as keyof ParticipantDto];
   const augFilename = dsArena.find((aug) => aug.id === augId)?.iconSmall;
   if (!augFilename) {
     console.log(`ERROR: Augment ID ${augId} or its image is missing/empty.`);
-    // TODO: Placeholder augment image
-    return null;
+    return "/assets/placeholder-warning.svg";
   }
   return `${BASE_URL_AUGMENTS}${augFilename}`;
 }
