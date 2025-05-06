@@ -71,7 +71,7 @@ export function getMapName(mapId: number): string {
 }
 
 const BASE_URL_AUGMENTS = "https://raw.communitydragon.org/latest/game/";
-// const BASE_URL_SUMS = https://ddragon.leagueoflegends.com/cdn/${latestPatch}/img/spell/${spellImage}
+const BASE_URL_SUMS = `https://ddragon.leagueoflegends.com/cdn/${latestPatch}/img/spell/`;
 const BASE_URL_RUNES = "https://ddragon.canisback.com/img/";
 export function getSumsRunesAugments(slot: number, queueId: number, targetPlayerData: ParticipantDto): string | null {
   // Merging Summoners, Runes, Augments into a single function
@@ -84,6 +84,7 @@ export function getSumsRunesAugments(slot: number, queueId: number, targetPlayer
     const icon = dsArena.find((aug) => aug.id === augId)?.iconSmall;
     if (!icon) {
       console.log(`ERROR: Augment ID ${augId} or its iconSmall is missing/empty.`);
+      // TODO: Placeholder augment image
       return null;
     }
     return `${BASE_URL_AUGMENTS}${icon}`;
@@ -92,6 +93,10 @@ export function getSumsRunesAugments(slot: number, queueId: number, targetPlayer
   // If not Arena, provide matching slot Summoner Spell or Rune icon URL
   // keystone Id (slot 1): targetPlayerData.perks.styles[0].selections[0].perk
   // style Id (slot 3): targetPlayerData.perks.styles[1].style
+
+  // If slot 1 (Keystone) -> https://ddragon.canisback.com/img/${keystoneFilename}
+  // If slot 3 (Secondary Style) -> https://ddragon.canisback.com/img/${styleFilename}
+  // If slot 2 (Summoner Spell 1, 2) -> https://ddragon.leagueoflegends.com/cdn/${patchVer}/img/spell/${spellImage}
 
   return null; // Default return for non-Arena cases for now
 }
