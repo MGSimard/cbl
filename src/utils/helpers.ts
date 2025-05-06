@@ -53,11 +53,12 @@ export function getItemImgUrl(itemId: number): string | null {
 
 export function getItemName(itemId: number): string {
   if (itemId === 0) return "Empty";
-  const itemInfo = dsItems[itemId.toString() as keyof typeof dsItems];
-  if (itemInfo) {
-    return itemInfo.name;
+  const itemName = dsItems[itemId.toString() as keyof typeof dsItems]?.name;
+  if (!itemName) {
+    console.log(`ERROR: Item ID ${itemId} or its name is missing/empty.`);
+    return "Unknown Item";
   }
-  return "Unknown Item";
+  return itemName;
 }
 
 export function getMapName(mapId: number): string {
