@@ -76,7 +76,7 @@ export function getSumSpells(order: 1 | 2, targetPlayerData: ParticipantDto): st
   const sumSpellFilename = Object.values(dsSumSpells).find((spell) => spell.key === sumSpellId?.toString())?.image
     ?.full;
   if (!sumSpellFilename) {
-    console.log(`ERROR: Summoner Spell ID ${sumSpellId}  or its image is missing/empty.`);
+    console.log(`ERROR: Summoner Spell ID ${sumSpellId} or its image is missing/empty.`);
     return "/assets/placeholder-warning.svg";
   }
   return `${BASE_URL_SUMS}${sumSpellFilename}`;
