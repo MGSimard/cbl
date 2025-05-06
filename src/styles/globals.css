@@ -687,7 +687,7 @@ a.btn-primary-action {
   background: var(--clrBg);
 }
 .player-sumsRunesAugs .slot.rune-minor {
-  padding: 25%;
+  padding: 15%;
 }
 .player-sumsRunesAugs .slot img {
   width: 100%;

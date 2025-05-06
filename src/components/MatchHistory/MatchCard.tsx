@@ -12,19 +12,12 @@ import {
 } from "@/utils/helpers";
 import { IconGold, IconMinion } from "@/components/Icons";
 
-/** ELEMENTS
- * - Summoner Spells
- * - Runes
- * - Player list (Both teams)
- *  */
+const ITEM_KEYS = ["item0", "item1", "item2", "item3", "item4", "item5", "item6"] as const;
 
 interface MatchCardProps {
   currentPlayer: string;
   matchData: MatchV5ByMatchId;
 }
-
-const ITEM_KEYS = ["item0", "item1", "item2", "item3", "item4", "item5", "item6"] as const;
-
 export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
   const { gameDuration, gameStartTimestamp, participants, platformId, queueId, mapId } = matchData.info;
   const targetPlayerData = participants.find((player) => player.puuid === currentPlayer);
@@ -58,7 +51,7 @@ export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
           <div className="slot">
             <img src={`${getSumsRunesAugments(1, queueId, targetPlayerData)}`} alt="" />
           </div>
-          <div className={`slot ${queueId !== 1700 && queueId !== 1710 ? "rune-minor" : ""}`}>
+          <div className={`slot ${queueId === 1700 || queueId === 1710 ? "" : "rune-minor"}`}>
             <img src={`${getSumsRunesAugments(3, queueId, targetPlayerData)}`} alt="" />
           </div>
         </div>

@@ -31,24 +31,24 @@ export function rankFormatter(rankData: LeagueV4ByPuuid): string {
 
 const BASE_CHAMP_URL = `https://ddragon.leagueoflegends.com/cdn/${latestPatch}/img/champion/`;
 export function getChampImgUrl(champId: number): string | null {
-  const fileName = Object.values(dsChampions).find((info) => info.key === champId.toString())?.image?.full;
-  if (!fileName) {
-    console.log(`ERROR: Champion ID ${champId} or its image path (image.full) is missing/empty.`);
+  const champFilename = Object.values(dsChampions).find((info) => info.key === champId.toString())?.image?.full;
+  if (!champFilename) {
+    console.log(`ERROR: Champion ID ${champId} or its image is missing/empty.`);
     return null;
     // TODO: Placeholder champ image
   }
-  return `${BASE_CHAMP_URL}${fileName}`;
+  return `${BASE_CHAMP_URL}${champFilename}`;
 }
 
 const BASE_ITEM_URL = `https://ddragon.leagueoflegends.com/cdn/${latestPatch}/img/item/`;
 export function getItemImgUrl(itemId: number): string | null {
   if (itemId === 0) return null;
-  const itemImage = dsItems[itemId.toString() as keyof typeof dsItems]?.image?.full;
-  if (!itemImage) {
-    console.log(`ERROR: Item ID ${itemId} or its image path (image.full) is missing/empty.`);
+  const itemFilename = dsItems[itemId.toString() as keyof typeof dsItems]?.image?.full;
+  if (!itemFilename) {
+    console.log(`ERROR: Item ID ${itemId} or its image is missing/empty.`);
     return "/assets/placeholder-item.svg";
   }
-  return `${BASE_ITEM_URL}${itemImage}`;
+  return `${BASE_ITEM_URL}${itemFilename}`;
 }
 
 export function getItemName(itemId: number): string {
@@ -77,28 +77,53 @@ export function getSumsRunesAugments(slot: number, queueId: number, targetPlayer
   // Merging Summoners, Runes, Augments into a single function
   // We have 4 slots (2 Summoner Spells, 2 Rune Pages)
   // But in Arena, all 4 slots are Augments (Don't care about Summoner Spells there, no Runes)
-
   // If Arena (queueId 1700, 1710) provide matching slot augment image URL
   if (queueId === 1700 || queueId === 1710) {
     const augId = targetPlayerData[`playerAugment${slot}` as keyof ParticipantDto];
-    const icon = dsArena.find((aug) => aug.id === augId)?.iconSmall;
-    if (!icon) {
-      console.log(`ERROR: Augment ID ${augId} or its iconSmall is missing/empty.`);
+    const augFilename = dsArena.find((aug) => aug.id === augId)?.iconSmall;
+    if (!augFilename) {
+      console.log(`ERROR: Augment ID ${augId} or its image is missing/empty.`);
       // TODO: Placeholder augment image
       return null;
     }
-    return `${BASE_URL_AUGMENTS}${icon}`;
+    return `${BASE_URL_AUGMENTS}${augFilename}`;
   }
-
-  // If not Arena, provide matching slot Summoner Spell or Rune icon URL
-  // keystone Id (slot 1): targetPlayerData.perks.styles[0].selections[0].perk
-  // style Id (slot 3): targetPlayerData.perks.styles[1].style
-
-  // If slot 1 (Keystone) -> https://ddragon.canisback.com/img/${keystoneFilename}
-  // If slot 3 (Secondary Style) -> https://ddragon.canisback.com/img/${styleFilename}
-  // If slot 2 (Summoner Spell 1, 2) -> https://ddragon.leagueoflegends.com/cdn/${patchVer}/img/spell/${spellImage}
-
-  return null; // Default return for non-Arena cases for now
+  // Keystone
+  if (slot === 1) {
+    const keystoneId = targetPlayerData.perks?.styles?.[0]?.selections?.[0]?.perk;
+    for (const runeTree of dsRunes) {
+      const iconPath = runeTree.slots?.[0]?.runes?.find((r) => r.id === keystoneId)?.icon;
+      if (iconPath) return `${BASE_URL_RUNES}${iconPath}`;
+    }
+    console.log(`ERROR: Keystone ID ${keystoneId} or its image is missing/empty.`);
+    // TODO: Placeholder keystone image
+    return null;
+  }
+  // Secondary Style
+  if (slot === 3) {
+    const styleId = targetPlayerData.perks.styles[1]?.style;
+    const styleFilename = dsRunes.find((style) => style.id === styleId)?.icon;
+    if (!styleFilename) {
+      console.log(`ERROR: Style ID ${styleId} or its image is missing/empty.`);
+      // TODO: Placeholder style image
+      return null;
+    }
+    return `${BASE_URL_RUNES}${styleFilename}`;
+  }
+  // Summoner Spells
+  if (slot === 2 || slot === 4) {
+    const sumSpellId = targetPlayerData[`summoner${slot / 2}Id` as keyof ParticipantDto];
+    const sumSpellFilename = Object.values(dsSumSpells).find((spell) => spell.key === sumSpellId.toString())?.image
+      ?.full;
+    if (!sumSpellFilename) {
+      console.log(`ERROR: Summoner Spell ID ${sumSpellId}  or its image is missing/empty.`);
+      // TODO: Placeholder spell image
+      return null;
+    }
+    return `${BASE_URL_SUMS}${sumSpellFilename}`;
+  }
+  console.log(`ERROR: Invalid slot: ${slot}`);
+  return null;
 }
 
 export function calcDuration(gameLength: number): string {
