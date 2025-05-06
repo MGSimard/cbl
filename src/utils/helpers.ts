@@ -30,25 +30,18 @@ export function rankFormatter(rankData: LeagueV4ByPuuid): string {
 }
 
 const BASE_CHAMP_URL = `https://ddragon.leagueoflegends.com/cdn/${latestPatch}/img/champion/`;
-export function champImgUrl(champId: number): URL | null {
+export function getChampImgUrl(champId: number): string | null {
   // Consider pre-processing into a Map instead for micro optimization
-  const championInfo = Object.values(dsChampions).find((info) => info.key === champId.toString());
-  if (championInfo) {
-    const fileName = championInfo.image.full;
-    try {
-      return new URL(`${BASE_CHAMP_URL}${fileName}`);
-    } catch (error) {
-      console.log(`ERROR: Could not create URL for champId ${champId} (${fileName}):`, error);
-      return null;
-    }
-  } else {
-    console.log(`ERROR: Could not find champion with id ${champId}.`);
+  const fileName = Object.values(dsChampions).find((info) => info.key === champId.toString())?.image?.full;
+  if (!fileName) {
+    console.log(`ERROR: Could not find champion with id ${champId} or its image path (image.full) is missing/empty.`);
     return null;
   }
+  return `${BASE_CHAMP_URL}${fileName}`;
 }
 
 const BASE_ITEM_URL = `https://ddragon.leagueoflegends.com/cdn/${latestPatch}/img/item/`;
-export function getItemImgUrl(itemId: number): URL | string | null {
+export function getItemImgUrl(itemId: number): string | null {
   if (itemId === 0) return null;
   const itemInfo = dsItems[itemId.toString() as keyof typeof dsItems];
   if (itemInfo) {

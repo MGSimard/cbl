@@ -2,7 +2,7 @@ import { PlayerListStandard, PlayerListArena } from "@/components/MatchHistory/P
 import type { MatchV5ByMatchId } from "@/utils/riotApiTypes";
 import {
   calcDuration,
-  champImgUrl,
+  getChampImgUrl,
   getItemImgUrl,
   getItemName,
   getMapName,
@@ -41,7 +41,7 @@ export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
       <div className="match-champ">
         {/* TODO: If return is null, render the placeholder src instead (not yet made) */}
         <div className="champ-icon-bandaid">
-          <img src={`${champImgUrl(championId)}`} alt={`cId:${championId}`} />
+          <img src={`${getChampImgUrl(championId)}`} alt={`cId:${championId}`} />
         </div>
         <span>{champLevel}</span>
       </div>
