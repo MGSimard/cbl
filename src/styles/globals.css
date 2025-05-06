@@ -606,7 +606,9 @@ a.btn-primary-action {
   padding: 0 1rem;
 }
 /* MATCH HISTORY */
-/* TODO: Match card hover effect? */
+#match-history {
+  animation: fade-in 0.5s both;
+}
 .match-card {
   display: flex;
   gap: 1.5rem;
