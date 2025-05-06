@@ -607,7 +607,6 @@ a.btn-primary-action {
   padding: 0 1rem;
 }
 /* MATCH HISTORY */
-/* Add a bit of a vignette to the background of match-history */
 #match-history {
   display: flex;
   flex-direction: column;
@@ -622,6 +621,8 @@ a.btn-primary-action {
 #match-history > ul {
   flex-grow: 1;
   overflow: hidden auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--clrGold5) transparent;
   animation: fade-in 0.5s both;
 }
 .match-card {
