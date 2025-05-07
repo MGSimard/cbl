@@ -644,7 +644,7 @@ a.btn-primary-action {
 }
 .champ-icon-bandaid {
   overflow: hidden;
-  background: red;
+  background: var(--clrBg);
   border-radius: 999rem;
 }
 .champ-icon-bandaid img {

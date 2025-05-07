@@ -30,12 +30,11 @@ export function rankFormatter(rankData: LeagueV4ByPuuid): string {
 }
 
 const BASE_CHAMP_URL = `https://ddragon.leagueoflegends.com/cdn/${latestPatch}/img/champion/`;
-export function getChampImgUrl(champId: number): string | null {
+export function getChampImgUrl(champId: number): string {
   const champFilename = Object.values(dsChampions).find((info) => info.key === champId.toString())?.image?.full;
   if (!champFilename) {
     console.log(`ERROR: Champion ID ${champId} or its image is missing/empty.`);
-    return null;
-    // TODO: Placeholder champ image
+    return "/assets/placeholder-warning.svg";
   }
   return `${BASE_CHAMP_URL}${champFilename}`;
 }
@@ -108,8 +107,9 @@ export function getRunes(order: 1 | 2, targetPlayerData: ParticipantDto): string
 }
 
 const BASE_URL_AUGMENTS = "https://raw.communitydragon.org/latest/game/";
-export function getAugments(slot: 1 | 2 | 3 | 4, targetPlayerData: ParticipantDto): string {
+export function getAugments(slot: 1 | 2 | 3 | 4, targetPlayerData: ParticipantDto): string | null {
   const augId = targetPlayerData[`playerAugment${slot}` as keyof ParticipantDto];
+  if (augId === 0) return null;
   const augFilename = dsArena.find((aug) => aug.id === augId)?.iconSmall;
   if (!augFilename) {
     console.log(`ERROR: Augment ID ${augId} or its image is missing/empty.`);

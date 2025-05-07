@@ -17,18 +17,10 @@ export function SumsRunesAugs({ queueId, targetPlayerData }: SumsRunesAugsProps)
 
   return (
     <div className="player-sumsRunesAugs">
-      <div className="slot">
-        <img src={`${slot1}`} alt="" />
-      </div>
-      <div className="slot">
-        <img src={`${slot2}`} alt="" />
-      </div>
-      <div className="slot">
-        <img src={`${slot3}`} alt="" />
-      </div>
-      <div className={`slot${isArena ? "" : " rune-minor"}`}>
-        <img src={`${slot4}`} alt="" />
-      </div>
+      <div className="slot">{slot1 && <img src={`${slot1}`} alt="" />}</div>
+      <div className="slot">{slot2 && <img src={`${slot2}`} alt="" />}</div>
+      <div className="slot">{slot3 && <img src={`${slot3}`} alt="" />}</div>
+      <div className={`slot${isArena ? "" : " rune-minor"}`}>{slot4 && <img src={`${slot4}`} alt="" />}</div>
     </div>
   );
 }
