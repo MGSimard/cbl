@@ -226,6 +226,10 @@ ul {
   -ms-user-select: none;
   user-select: none;
 }
+select:hover,
+option:hover {
+  cursor: pointer;
+}
 /**/
 /* ANIMATIONS*/
 @keyframes fade-in {
