@@ -210,6 +210,7 @@ ul {
   max-width: 60rem;
   color: var(--clrSubheading);
   margin-bottom: 4rem;
+  animation: reveal-center-x 1s both;
 }
 .link {
   color: var(--clrSubheading);
@@ -233,6 +234,18 @@ ul {
   }
   to {
     opacity: 1;
+  }
+}
+@keyframes reveal-center-x {
+  from {
+    clip-path: inset(0 50% 0 50%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    clip-path: inset(0 0 0 0);
   }
 }
 /**/
