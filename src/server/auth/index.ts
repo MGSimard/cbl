@@ -8,6 +8,17 @@ export const auth = betterAuth({
     provider: "pg",
     usePlural: true,
   }),
+  rateLimit: {
+    // https://www.better-auth.com/docs/concepts/rate-limit
+    enabled: true,
+    window: 10, // 10 seconds
+    max: 100, // 100 requests
+    storage: "database", // Use redis upstash memory later
+    modelName: "rateLimit",
+  },
+  plugins: [
+    admin(), // Administration docs: https://www.better-auth.com/docs/plugins/admin
+  ],
   socialProviders: {
     discord: {
       clientId: process.env.DISCORD_CLIENT_ID!,
@@ -18,11 +29,4 @@ export const auth = betterAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     },
   },
-  rateLimit: {
-    // https://www.better-auth.com/docs/reference/options#ratelimit
-    storage: "database", // Use redis upstash memory later
-  },
-  plugins: [
-    admin(), // Administration docs: https://www.better-auth.com/docs/plugins/admin
-  ],
 });

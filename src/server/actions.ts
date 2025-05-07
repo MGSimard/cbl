@@ -7,6 +7,8 @@ import type {
   MatchV5ByMatchId,
 } from "@/utils/riotApiTypes";
 import { regionDictionary } from "@/utils/helpers";
+import { REPORT_REASONS, type ReportReason, REPORT_STATUSES, type ReportStatus } from "@/utils/enums";
+import { z } from "zod";
 
 const API_KEY = process.env.RIOT_API_SECRET;
 
@@ -24,14 +26,12 @@ export async function getPlayerData(regionPrefix: string, summoner: string): Pro
   try {
     const [shard, cluster, fullRegion] = regionDictionary(regionPrefix); // e.g. ["NA1", "americas", "North America"]
     const [summonerName, summonerTag] = summoner.split("-");
-
     const targetIdentity = await fetch(
       `https://${cluster}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${summonerName}/${summonerTag}?api_key=${API_KEY}`
     ).then(async (res) => {
       if (!res.ok) throw new Error(`FETCH ERROR (ACCOUNT-V1): ${res.status}`);
       return (await res.json()) as AccountV1ByRiotId;
     });
-
     const [targetProfile, matchIdList] = await Promise.all([
       fetch(
         `https://${shard}.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${targetIdentity.puuid}?api_key=${API_KEY}`
@@ -46,14 +46,12 @@ export async function getPlayerData(regionPrefix: string, summoner: string): Pro
         return (await res.json()) as MatchV5ByPuuid;
       }),
     ]);
-
     const targetRank = await fetch(
       `https://${shard}.api.riotgames.com/lol/league/v4/entries/by-puuid/${targetProfile.puuid}?api_key=${API_KEY}`
     ).then(async (res) => {
       if (!res.ok) throw new Error(`FETCH ERROR (LEAGUE-V4): ${res.status}`);
       return (await res.json()) as LeagueV4ByPuuid;
     });
-
     return {
       data: {
         identity: targetIdentity,
@@ -76,7 +74,6 @@ interface GetMatchesDataReturnType {
 export async function getMatchesData(matchIds: string[], regionPrefix: string): Promise<GetMatchesDataReturnType> {
   try {
     const [_, cluster, __] = regionDictionary(regionPrefix);
-
     const matchesData = (
       await Promise.allSettled(
         matchIds.map((matchId) =>
@@ -91,7 +88,6 @@ export async function getMatchesData(matchIds: string[], regionPrefix: string): 
     )
       .filter((result): result is PromiseFulfilledResult<MatchV5ByMatchId> => result.status === "fulfilled")
       .map((result) => result.value);
-
     return {
       data: matchesData,
       message: `SUCCESS: Fetched ${matchesData.length}/${matchIds.length} matches.`,
@@ -100,3 +96,26 @@ export async function getMatchesData(matchIds: string[], regionPrefix: string): 
     return { message: err instanceof Error ? err.message : "UNKNOWN ERROR." };
   }
 }
+
+export async function getReportsByPuuid() {}
+
+const submitReportSchema = z.object({
+  puuid: z.string(),
+  reason: z.enum(REPORT_REASONS),
+  currentRiotId: z.string(),
+  file: z.instanceof(File),
+});
+export async function submitReport() {
+  // 1. Ratelimit
+  // 1. Validate input
+  // 2. Auth (Self-ratelimited)
+  // 3. Ratelimit
+  // 4. Execute
+  // 5. Return
+}
+
+export async function approveReport() {}
+
+export async function rejectReport() {}
+
+export async function cancelReport() {}
