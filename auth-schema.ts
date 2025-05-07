@@ -1,4 +1,4 @@
-import { pgTable, text, bigint, timestamp, boolean, integer } from "drizzle-orm/pg-core";
+import { pgTable, text, timestamp, boolean, integer } from "drizzle-orm/pg-core";
 
 export const users = pgTable("users", {
 					id: text('id').primaryKey(),
@@ -12,18 +12,6 @@ export const users = pgTable("users", {
  banned: boolean('banned'),
  banReason: text('ban_reason'),
  banExpires: timestamp('ban_expires')
-				});
-
-export const sessions = pgTable("sessions", {
-					id: text('id').primaryKey(),
-					expiresAt: timestamp('expires_at').notNull(),
- token: text('token').notNull().unique(),
- createdAt: timestamp('created_at').notNull(),
- updatedAt: timestamp('updated_at').notNull(),
- ipAddress: text('ip_address'),
- userAgent: text('user_agent'),
- userId: text('user_id').notNull().references(()=> users.id, { onDelete: 'cascade' }),
- impersonatedBy: text('impersonated_by')
 				});
 
 export const accounts = pgTable("accounts", {
@@ -49,11 +37,4 @@ export const verifications = pgTable("verifications", {
  expiresAt: timestamp('expires_at').notNull(),
  createdAt: timestamp('created_at'),
  updatedAt: timestamp('updated_at')
-				});
-
-export const rateLimits = pgTable("rate_limits", {
-					id: text('id').primaryKey(),
-					key: text('key'),
- count: integer('count'),
- lastRequest: bigint('last_request', { mode: 'number' })
 				});
