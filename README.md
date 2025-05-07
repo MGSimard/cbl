@@ -25,7 +25,7 @@
 - [ ] Account status (Placeholder)
 - [ ] Stats
 - [x] Match history
-- [ ] Make match history cards responsive
+- [x] Make match history cards responsive
 - [ ] Validation
 - [ ] Ratelimiting
 - [ ] Reporting feature (File upload, file scanning/sanitization)

@@ -695,8 +695,7 @@ a.btn-primary-action {
 .match-context {
   display: flex;
   flex-direction: column;
-  max-width: 18rem;
-  width: 100%;
+  width: 18rem;
 }
 .match-outcome {
   font-family: var(--fontBeaufort);
@@ -757,7 +756,6 @@ a.btn-primary-action {
 .stats {
   display: grid;
   grid-template-columns: 2fr 1fr 1.5fr;
-
   margin-top: 1rem;
   font-family: var(--fontBeaufort);
   font-weight: 700;
@@ -848,4 +846,39 @@ a.btn-primary-action {
   grid-template-columns: repeat(2, var(--colWidth));
   grid-column-gap: var(--colGap);
   grid-row-gap: var(--rowGap);
+}
+
+/* MEDIA QUERIES */
+@media only screen and (max-width: 1200px) {
+  .match-card {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .match-context {
+    flex-grow: 1;
+  }
+  .match-players {
+    margin-left: 0;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .match-card {
+    justify-content: unset;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .match-context {
+    flex-grow: unset;
+    align-items: center;
+  }
+  .match-players {
+    margin-left: 0;
+  }
+}
+@media only screen and (max-width: 592px) {
+  #sum-main {
+    grid-template-columns: 1fr;
+  }
 }
