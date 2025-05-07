@@ -44,3 +44,22 @@
 - [ ] Metadata
 - [ ] Deploy
 - [ ] Adjust OAuth vars & callback URLs
+
+## Stack
+
+<h2>Tech Stack</h2>
+
+- Next.js
+- React (Compiler Enabled)
+- TypeScript
+- Neon (PostgreSQL)
+- Redis (Sessions, Ratelimit)
+- Drizzle ORM
+- Better Auth
+- Zod
+- ESLint (Flat Config)
+- t3-oss/env
+- Node
+- pnpm
+- Vercel (Hosting)
+- React Scan (Perf Debugging)
