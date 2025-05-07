@@ -13,7 +13,7 @@
 - [x] Branding
 - [x] Metadata, icons, social media images etc
 - [x] 404
-- [ ] error page
+- [x] error page
 - [ ] Subtle animations
 - [x] Version dataset for images and stuff, unless I get my own assets instead of ddragon/cdragon links
 - [ ] ...
