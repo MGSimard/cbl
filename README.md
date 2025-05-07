@@ -32,6 +32,7 @@
 - [ ] Reporting feature (File upload, file scanning/sanitization)
 - [ ] Evidence panel
 - [ ] Search by UUID (Homepage)
+- [ ] Suspense loads
 - [ ] ...
 - [ ] RBAC
 - [ ] Admin dashboard
