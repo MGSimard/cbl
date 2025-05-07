@@ -20,7 +20,7 @@
 - [ ] Background/Banner preload
 - [ ] ...
 - [x] Player profiles
-- [ ] Copy icon on profile IDs
+- [x] Copy icon on profile IDs
 - [x] Identifiers (Past usernames later, pull from reports)
 - [ ] Account status (Placeholder)
 - [ ] Stats

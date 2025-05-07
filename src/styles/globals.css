@@ -480,6 +480,7 @@ a.btn-primary-action {
   display: flex;
   flex-direction: column;
   background: linear-gradient(var(--clrHextechBlack), var(--clrBlue6) 18%, var(--clrHextechBlack));
+  overflow: hidden;
 }
 #sum-info-header {
   display: flex;
@@ -543,14 +544,27 @@ a.btn-primary-action {
   overflow: hidden;
 }
 #sum-identity h1 {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
   font-size: 1.6rem;
   text-transform: none;
   text-overflow: ellipsis;
+  white-space: wrap;
+  word-break: break-word;
   overflow: hidden;
 }
-#sum-identity h1 span {
+#sum-identity #sum-tag {
   font-weight: 400;
   color: var(--clrTextMuted);
+}
+#sum-identity button {
+  flex-shrink: 0;
+  color: var(--clrTextMuted);
+  &:hover {
+    color: var(--clrText);
+  }
 }
 #sum-rank {
   font-size: 1.2rem;
@@ -582,8 +596,21 @@ a.btn-primary-action {
   text-transform: uppercase;
 }
 #id-table td {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+#id-table td > span {
+  display: inline-block;
+  width: 100%;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+#id-table td > button {
+  flex-shrink: 0;
+  &:hover {
+    background: var(--clrGreyCool);
+  }
 }
 .sum-accordion > button {
   display: flex;

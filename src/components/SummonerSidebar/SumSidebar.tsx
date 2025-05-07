@@ -1,6 +1,7 @@
 import type { AccountV1ByRiotId, LeagueV4ByPuuid, SummonerV4ByPuuid } from "@/utils/riotApiTypes";
 import { rankFormatter } from "@/utils/helpers";
 import { SumAccordion } from "@/components/SummonerSidebar/SumAccordion";
+import { CopyButton } from "@/components/SummonerSidebar/CopyButton";
 
 interface SumSidebarProps {
   identity: AccountV1ByRiotId;
@@ -23,8 +24,8 @@ export function SumSidebar({ identity, profile, rank }: SumSidebarProps) {
         </div>
         <div id="sum-identity">
           <h1 title={`${identity.gameName}#${identity.tagLine}`}>
-            {identity.gameName}
-            <span>#{identity.tagLine}</span>
+            <span>{identity.gameName}</span>
+            <span id="sum-tag">#{identity.tagLine}</span>
           </h1>
           <span id="sum-rank" title={rankFormatter(rank)}>
             {rankFormatter(rank)}
@@ -36,15 +37,24 @@ export function SumSidebar({ identity, profile, rank }: SumSidebarProps) {
           <tbody>
             <tr>
               <th>SummonerID</th>
-              <td title={profile.id}>{profile.id}</td>
+              <td title={profile.id}>
+                <span>{profile.id}</span>
+                <CopyButton toCopy={profile.id} />
+              </td>
             </tr>
             <tr>
               <th>AccountID</th>
-              <td title={profile.accountId}>{profile.accountId}</td>
+              <td title={profile.accountId}>
+                <span>{profile.accountId}</span>
+                <CopyButton toCopy={profile.accountId} />
+              </td>
             </tr>
             <tr>
               <th>PUUID</th>
-              <td title={profile.puuid}>{profile.puuid}</td>
+              <td title={profile.puuid}>
+                <span>{profile.puuid}</span>
+                <CopyButton toCopy={profile.puuid} />
+              </td>
             </tr>
           </tbody>
         </table>
