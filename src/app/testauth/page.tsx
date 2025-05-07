@@ -1,6 +1,8 @@
 import { SignIn } from "./SignIn";
 import { SignOut } from "./SignOut";
 import { User } from "./User";
+import { TestAction } from "./testAction";
+
 export default function PageTestAuth() {
   return (
     <main>
@@ -9,6 +11,7 @@ export default function PageTestAuth() {
       <SignOut />
       <hr />
       <User />
+      <TestAction />
     </main>
   );
 }

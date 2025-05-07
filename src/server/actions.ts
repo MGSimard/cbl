@@ -1,4 +1,9 @@
 "use server";
+import { headers } from "next/headers";
+import { auth } from "@/server/auth";
+import { z } from "zod";
+import { regionDictionary } from "@/utils/helpers";
+import { REPORT_REASONS, type ReportReason, REPORT_STATUSES, type ReportStatus } from "@/utils/enums";
 import type {
   AccountV1ByRiotId,
   LeagueV4ByPuuid,
@@ -6,9 +11,6 @@ import type {
   SummonerV4ByPuuid,
   MatchV5ByMatchId,
 } from "@/utils/riotApiTypes";
-import { regionDictionary } from "@/utils/helpers";
-import { REPORT_REASONS, type ReportReason, REPORT_STATUSES, type ReportStatus } from "@/utils/enums";
-import { z } from "zod";
 
 const API_KEY = process.env.RIOT_API_SECRET;
 
@@ -99,20 +101,27 @@ export async function getMatchesData(matchIds: string[], regionPrefix: string): 
 
 export async function getReportsByPuuid() {}
 
+export async function testAction() {
+  console.log("Test Action Triggered");
+  // BetterAuth ratelimits its own endpoints, we'll still need to ratelimit actions ourselves
+  const session = await auth.api.getSession({ headers: await headers() });
+  if (!session) return { success: false, message: "AUTH ERROR: Unauthorized." };
+
+  console.log("Ratelimit?");
+
+  console.log("Auth passed");
+
+  console.log("Action completed");
+  return "TestAction Return";
+}
+
 const submitReportSchema = z.object({
   puuid: z.string(),
   reason: z.enum(REPORT_REASONS),
   currentRiotId: z.string(),
   file: z.instanceof(File),
 });
-export async function submitReport() {
-  // 1. Ratelimit
-  // 1. Validate input
-  // 2. Auth (Self-ratelimited)
-  // 3. Ratelimit
-  // 4. Execute
-  // 5. Return
-}
+export async function submitReport() {}
 
 export async function approveReport() {}
 
