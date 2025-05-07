@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 
 export default function SumSearch() {
   const router = useRouter();
-  const [region, setRegion] = useState("na");
+  const [region, setRegion] = useState("");
   const [name, setName] = useState("");
   const [tag, setTag] = useState("");
 
@@ -48,6 +48,9 @@ export default function SumSearch() {
           required
           value={region}
           onChange={(e) => setRegion(e.target.value)}>
+          <option value="" disabled>
+            . . .
+          </option>
           {REGIONS.map((region) => (
             <option key={region.val} value={region.val}>
               {region.label}

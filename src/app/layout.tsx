@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${beaufortForLol.variable} ${spiegel.variable}`}>
-      <ReactScan />
+      {/* <ReactScan /> */}
       <body>
         {children}
         <Footer />
