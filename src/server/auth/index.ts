@@ -12,8 +12,8 @@ export const auth = betterAuth({
   // https://www.better-auth.com/docs/concepts/rate-limit
   rateLimit: {
     enabled: true,
-    window: 60, // Default
-    max: 100, // Default
+    window: 120, // Default
+    max: 5, // Default
     storage: "secondary-storage", // Redis
     modelName: "rateLimit", // Default
   },
