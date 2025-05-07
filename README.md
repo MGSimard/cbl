@@ -45,9 +45,7 @@
 - [ ] Deploy
 - [ ] Adjust OAuth vars & callback URLs
 
-## Stack
-
-<h2>Tech Stack</h2>
+## Tech Stack
 
 - Next.js
 - React (Compiler Enabled)
