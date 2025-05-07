@@ -440,6 +440,7 @@ a.btn-primary-action {
   gap: 2rem;
 }
 #not-found h1 {
+  font-size: max(6rem, 5vw);
   position: relative;
 }
 #nf-one {
