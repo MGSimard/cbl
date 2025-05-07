@@ -894,6 +894,17 @@ a.btn-primary-action {
   }
 }
 @media only screen and (max-width: 768px) {
+  #sum-search {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: stretch;
+  }
+  #sum-search button {
+    height: 4rem;
+  }
+  #region {
+    width: 100%;
+  }
   .match-card {
     justify-content: unset;
     flex-wrap: nowrap;
