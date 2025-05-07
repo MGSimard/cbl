@@ -3,11 +3,30 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function SumSearch() {
+  const router = useRouter();
   const [region, setRegion] = useState("na");
   const [name, setName] = useState("");
   const [tag, setTag] = useState("");
 
-  const router = useRouter();
+  const REGIONS = [
+    { val: "br", label: "Brazil" },
+    { val: "euw", label: "Europe West" },
+    { val: "lan", label: "Latin America North" },
+    { val: "las", label: "Latin America South" },
+    { val: "kr", label: "Korea" },
+    { val: "jp", label: "Japan" },
+    { val: "eun", label: "Europe Nordic & East" },
+    { val: "me", label: "Middle East" },
+    { val: "na", label: "North America" },
+    { val: "tr", label: "Türkiye" },
+    { val: "ru", label: "Russia" },
+    { val: "oce", label: "Oceania" },
+    { val: "sg", label: "Singapore" },
+    { val: "ph", label: "Phillippines" },
+    { val: "th", label: "Thailand" },
+    { val: "tw", label: "Taiwan" },
+    { val: "vn", label: "Vietnam" },
+  ];
 
   const isFormValid = region && name.trim() && tag.trim();
 
@@ -29,9 +48,11 @@ export default function SumSearch() {
           required
           value={region}
           onChange={(e) => setRegion(e.target.value)}>
-          <option value="na">NA</option>
-          <option value="euw">EUW</option>
-          <option value="kr">KR</option>
+          {REGIONS.map((region) => (
+            <option key={region.val} value={region.val}>
+              {region.label}
+            </option>
+          ))}
         </select>
       </label>
       <label htmlFor="name">
