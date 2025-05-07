@@ -542,6 +542,7 @@ a.btn-primary-action {
 }
 #sum-info-content {
   padding: 1rem 0;
+  border-bottom: 1px solid var(--clrBorderMuted);
 }
 #id-table {
   width: 100%;
@@ -554,6 +555,9 @@ a.btn-primary-action {
   display: flex;
   flex-direction: column;
   padding: 0 1rem;
+  &:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
 }
 #id-table th {
   font-family: var(--fontBeaufort);
