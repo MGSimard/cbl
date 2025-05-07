@@ -58,34 +58,36 @@ export default function SumSearch() {
           ))}
         </select>
       </label>
-      <label htmlFor="name">
-        <span>Name</span>
-        <input
-          type="text"
-          className="vis-target"
-          name="name"
-          placeholder="..."
-          size={16}
-          required
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </label>
-      <label htmlFor="tag">
-        <span>Tag</span>
-        <div id="tag-container" className="vis-target">
-          <span>#</span>
+      <div id="sum-namegroup">
+        <label htmlFor="name">
+          <span>Name</span>
           <input
             type="text"
-            name="tag"
+            className="vis-target"
+            name="name"
             placeholder="..."
-            size={5}
+            size={16}
             required
-            value={tag}
-            onChange={(e) => setTag(e.target.value)}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
-        </div>
-      </label>
+        </label>
+        <label htmlFor="tag">
+          <span>Tag</span>
+          <div id="tag-container" className="vis-target">
+            <span>#</span>
+            <input
+              type="text"
+              name="tag"
+              placeholder="..."
+              size={5}
+              required
+              value={tag}
+              onChange={(e) => setTag(e.target.value)}
+            />
+          </div>
+        </label>
+      </div>
       <button type="submit" className="btn-primary-action" disabled={!isFormValid}>
         <span>SEARCH</span>
       </button>

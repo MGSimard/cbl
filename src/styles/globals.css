@@ -143,7 +143,7 @@ h6 {
   text-transform: uppercase;
 }
 h1 {
-  font-size: 6rem;
+  font-size: clamp(5vw, 6rem, 6rem);
   letter-spacing: -0.01em;
   line-height: 1.08;
 }
@@ -309,11 +309,17 @@ option:hover {
 #hero > *:not(#hero-logo) {
   z-index: 1;
 }
+#hero h1 {
+  font-size: clamp(4.8rem, 5vw, 6rem);
+  text-align: center;
+  text-wrap: balance;
+}
 /**/
 /* SUMMONER SEARCH FORM */
 #sum-search {
   display: flex;
   align-items: center;
+  gap: 1rem;
   padding: 2rem;
 }
 #sum-search label {
@@ -331,9 +337,6 @@ option:hover {
   text-transform: uppercase;
   line-height: 1;
   color: var(--clrSubheading);
-}
-#region-label {
-  margin-right: 1rem;
 }
 .vis-target {
   padding: 0.5rem;
@@ -353,6 +356,10 @@ option:hover {
     border-color: var(--clrBorderGoldActive);
   }
 }
+#sum-namegroup {
+  display: flex;
+  align-items: center;
+}
 #tag-container {
   display: flex;
   align-items: center;
@@ -367,13 +374,12 @@ option:hover {
 .btn-primary-action {
   position: relative;
   align-self: stretch;
-  margin-left: 1rem;
+  padding: 0.2rem;
   font-family: var(--fontBeaufort);
   font-weight: 700;
   color: white;
   text-transform: uppercase;
   text-align: center;
-  padding: 0.2rem;
   transition: filter 0.2s ease, color 0.2s ease;
   outline: none;
   &:disabled {
@@ -547,7 +553,6 @@ a.btn-primary-action {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-
   font-size: 1.6rem;
   text-transform: none;
   text-overflow: ellipsis;
