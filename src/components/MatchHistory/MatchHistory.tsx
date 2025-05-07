@@ -11,7 +11,7 @@ export async function MatchHistory({ matchIds, currentPlayer, regionPrefix }: Ma
   const { data, message } = await getMatchesData(matchIds, regionPrefix);
 
   if (!data) {
-    return <main>{message}</main>;
+    return <main>PLACEHOLDER: {message}</main>;
   }
 
   return (

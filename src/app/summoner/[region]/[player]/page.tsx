@@ -14,7 +14,7 @@ export default async function PageSummoner({ params }: { params: Promise<{ regio
 
   if (!data) {
     // TODO
-    return <main>{message}</main>;
+    return <main>PLACEHOLDER: (Temporary 24h dev API key probably expired) - {message}</main>;
   }
 
   const { identity, profile, rank, matches, region } = data;
