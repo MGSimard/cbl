@@ -7,13 +7,41 @@ import sumSpellsJson from "@/datasets/summoner.json";
 import runesJson from "@/datasets/runesReforged.json";
 import arenaJson from "@/datasets/arena.json";
 
-const latestPatch = versionsJson[0];
-const dsChampions = championsJson.data;
-const dsItems = itemsJson.data;
-const dsMaps = mapsJson;
-const dsSumSpells = sumSpellsJson.data;
-const dsRunes = runesJson;
-const dsArena = arenaJson.augments;
+const LATEST_PATCH = versionsJson[0];
+
+// Pre-process datasets for faster lookups (O(n) once, then O(1) lookups)
+const championsMap = new Map<string, { key: string; image: { full: string }; [key: string]: any }>();
+Object.values(championsJson.data).forEach((champInfo) => {
+  championsMap.set(champInfo.key, champInfo);
+});
+const itemsMap = new Map<string, { name: string; image: { full: string }; [key: string]: any }>();
+Object.entries(itemsJson.data).forEach(([itemId, itemInfo]: [string, any]) => {
+  itemsMap.set(itemId, itemInfo);
+});
+const mapsMap = new Map<number, { mapId: number; mapName: string; [key: string]: any }>();
+mapsJson.forEach((mapInfo) => {
+  mapsMap.set(mapInfo.mapId, mapInfo);
+});
+const sumSpellsMap = new Map<string, { key: string; image: { full: string }; [key: string]: any }>();
+Object.values(sumSpellsJson.data).forEach((spellInfo) => {
+  sumSpellsMap.set(spellInfo.key, spellInfo);
+});
+const keystoneMap = new Map<number, string>();
+runesJson.forEach((runeTree) => {
+  runeTree.slots.forEach((slot) => {
+    slot.runes.forEach((rune) => {
+      keystoneMap.set(rune.id, rune.icon);
+    });
+  });
+});
+const secondaryRuneStylesMap = new Map<number, { id: number; icon: string; [key: string]: any }>();
+runesJson.forEach((runeTree) => {
+  secondaryRuneStylesMap.set(runeTree.id, runeTree);
+});
+const arenaAugmentsMap = new Map<number, { id: number; iconSmall: string; [key: string]: any }>();
+arenaJson.augments.forEach((augment: { id: number; iconSmall: string }) => {
+  arenaAugmentsMap.set(augment.id, augment);
+});
 
 export function rankFormatter(rankData: LeagueV4ByPuuid): string {
   const soloQueueRank = rankData.find((r) => r.queueType === "RANKED_SOLO_5x5");
@@ -29,9 +57,9 @@ export function rankFormatter(rankData: LeagueV4ByPuuid): string {
   return "UNRANKED";
 }
 
-const BASE_CHAMP_URL = `https://ddragon.leagueoflegends.com/cdn/${latestPatch}/img/champion/`;
+const BASE_CHAMP_URL = `https://ddragon.leagueoflegends.com/cdn/${LATEST_PATCH}/img/champion/`;
 export function getChampImgUrl(champId: number): string {
-  const champFilename = Object.values(dsChampions).find((info) => info.key === champId.toString())?.image?.full;
+  const champFilename = championsMap.get(champId.toString())?.image?.full;
   if (!champFilename) {
     console.log(`ERROR: Champion ID ${champId} or its image is missing/empty.`);
     return "/assets/placeholder-warning.svg";
@@ -39,10 +67,10 @@ export function getChampImgUrl(champId: number): string {
   return `${BASE_CHAMP_URL}${champFilename}`;
 }
 
-const BASE_ITEM_URL = `https://ddragon.leagueoflegends.com/cdn/${latestPatch}/img/item/`;
+const BASE_ITEM_URL = `https://ddragon.leagueoflegends.com/cdn/${LATEST_PATCH}/img/item/`;
 export function getItemImgUrl(itemId: number): string | null {
   if (itemId === 0) return null;
-  const itemFilename = dsItems[itemId.toString() as keyof typeof dsItems]?.image?.full;
+  const itemFilename = itemsMap.get(itemId.toString())?.image?.full;
   if (!itemFilename) {
     console.log(`ERROR: Item ID ${itemId} or its image is missing/empty.`);
     return "/assets/placeholder-warning.svg";
@@ -52,7 +80,7 @@ export function getItemImgUrl(itemId: number): string | null {
 
 export function getItemName(itemId: number): string {
   if (itemId === 0) return "Empty";
-  const itemName = dsItems[itemId.toString() as keyof typeof dsItems]?.name;
+  const itemName = itemsMap.get(itemId.toString())?.name;
   if (!itemName) {
     console.log(`ERROR: Item ID ${itemId} or its name is missing/empty.`);
     return "Unknown Item";
@@ -61,7 +89,7 @@ export function getItemName(itemId: number): string {
 }
 
 export function getMapName(mapId: number): string {
-  const mapInfo = dsMaps.find((map) => map.mapId === mapId)?.mapName;
+  const mapInfo = mapsMap.get(mapId)?.mapName;
   if (!mapInfo) {
     console.log(`ERROR: Map ID ${mapId} or its name is missing/empty.`);
     return "Unknown Map";
@@ -69,11 +97,10 @@ export function getMapName(mapId: number): string {
   return mapInfo;
 }
 
-const BASE_URL_SUMS = `https://ddragon.leagueoflegends.com/cdn/${latestPatch}/img/spell/`;
+const BASE_URL_SUMS = `https://ddragon.leagueoflegends.com/cdn/${LATEST_PATCH}/img/spell/`;
 export function getSumSpells(order: 1 | 2, targetPlayerData: ParticipantDto): string {
   const sumSpellId = targetPlayerData[`summoner${order}Id` as keyof ParticipantDto];
-  const sumSpellFilename = Object.values(dsSumSpells).find((spell) => spell.key === sumSpellId?.toString())?.image
-    ?.full;
+  const sumSpellFilename = sumSpellsMap.get(sumSpellId?.toString())?.image?.full;
   if (!sumSpellFilename) {
     console.log(`ERROR: Summoner Spell ID ${sumSpellId} or its image is missing/empty.`);
     return "/assets/placeholder-warning.svg";
@@ -86,22 +113,22 @@ export function getRunes(order: 1 | 2, targetPlayerData: ParticipantDto): string
   // Keystone
   if (order === 1) {
     const keystoneId = targetPlayerData.perks?.styles?.[0]?.selections?.[0]?.perk;
-    for (const runeTree of dsRunes) {
-      const iconPath = runeTree.slots?.[0]?.runes?.find((r) => r.id === keystoneId)?.icon;
-      if (iconPath) return `${BASE_URL_RUNES}${iconPath}`;
+    const keystoneFileName = keystoneMap.get(keystoneId as number);
+    if (!keystoneFileName) {
+      console.log(`ERROR: Keystone ID ${keystoneId} or its image is missing/empty.`);
+      return "/assets/placeholder-warning.svg";
     }
-    console.log(`ERROR: Keystone ID ${keystoneId} or its image is missing/empty.`);
-    return "/assets/placeholder-warning.svg";
+    return `${BASE_URL_RUNES}${keystoneFileName}`;
   }
   if (order === 2) {
     // Secondary Style
     const styleId = targetPlayerData.perks.styles[1]?.style;
-    const styleFilename = dsRunes.find((style) => style.id === styleId)?.icon;
-    if (!styleFilename) {
+    const styleFileName = secondaryRuneStylesMap.get(styleId as number)?.icon;
+    if (!styleFileName) {
       console.log(`ERROR: Style ID ${styleId} or its image is missing/empty.`);
       return "/assets/placeholder-warning.svg";
     }
-    return `${BASE_URL_RUNES}${styleFilename}`;
+    return `${BASE_URL_RUNES}${styleFileName}`;
   }
   return "/assets/placeholder-warning.svg";
 }
@@ -110,12 +137,12 @@ const BASE_URL_AUGMENTS = "https://raw.communitydragon.org/latest/game/";
 export function getAugments(slot: 1 | 2 | 3 | 4, targetPlayerData: ParticipantDto): string | null {
   const augId = targetPlayerData[`playerAugment${slot}` as keyof ParticipantDto];
   if (augId === 0) return null;
-  const augFilename = dsArena.find((aug) => aug.id === augId)?.iconSmall;
-  if (!augFilename) {
+  const augFileName = arenaAugmentsMap.get(augId as number)?.iconSmall;
+  if (!augFileName) {
     console.log(`ERROR: Augment ID ${augId} or its image is missing/empty.`);
     return "/assets/placeholder-warning.svg";
   }
-  return `${BASE_URL_AUGMENTS}${augFilename}`;
+  return `${BASE_URL_AUGMENTS}${augFileName}`;
 }
 
 export function calcDuration(gameLength: number): string {
