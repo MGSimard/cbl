@@ -6,6 +6,8 @@ export interface RedisCommands {
   get: (key: string) => Promise<string | null>;
   set: (key: string, value: string, ttl?: number) => Promise<void>;
   delete: (key: string) => Promise<void>;
+  incr: (key: string) => Promise<number>;
+  expire: (key: string, seconds: number) => Promise<number>;
 }
 
 export const rd: RedisCommands = {
@@ -19,5 +21,11 @@ export const rd: RedisCommands = {
   },
   delete: async (key) => {
     await redis.del(key);
+  },
+  incr: async (key) => {
+    return await redis.incr(key);
+  },
+  expire: async (key, seconds) => {
+    return await redis.expire(key, seconds);
   },
 };

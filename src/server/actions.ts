@@ -11,6 +11,8 @@ import type {
   SummonerV4ByPuuid,
   MatchV5ByMatchId,
 } from "@/utils/riotApiTypes";
+import { rateLimit } from "./rate-limit";
+import { getClientIP } from "./utils/server-helpers";
 
 const API_KEY = process.env.RIOT_API_SECRET;
 
@@ -105,9 +107,11 @@ export async function testAction() {
   console.log("Test Action Triggered");
   // BetterAuth ratelimits its own endpoints, we'll still need to ratelimit actions ourselves
   const session = await auth.api.getSession({ headers: await headers() });
-  if (!session) return { success: false, message: "AUTH ERROR: Unauthorized." };
+  // if (!session) return { success: false, message: "AUTH ERROR: Unauthorized." };
 
   console.log("Ratelimit?");
+  const rateLimitResult = await rateLimit("mutate", session?.user.id ?? (await getClientIP()));
+  if (!rateLimitResult.success) return { success: false, message: rateLimitResult.message };
 
   console.log("Auth passed");
 
