@@ -13,8 +13,6 @@
   "keywords": [
     "cbl",
     "community ban list",
-    "nextgen",
-    "next.js",
     "typescript",
     "better-auth",
     "drizzle"
@@ -24,13 +22,6 @@
   },
   "homepage": "https://github.com/MGSimard/cbl#readme",
   "scripts": {
-    "build": "next build",
-    "check": "next lint && tsc --noEmit",
-    "dev": "next dev --turbopack",
-    "lint": "next lint",
-    "lint:fix": "next lint --fix",
-    "preview": "next build && next start",
-    "start": "next start",
     "typecheck": "tsc --noEmit",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
@@ -39,16 +30,13 @@
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.0",
-    "@t3-oss/env-nextjs": "^0.13.4",
     "better-auth": "^1.2.7",
     "drizzle-orm": "^0.43.1",
-    "next": "15.4.0-canary.24",
     "postgres": "^3.4.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-scan": "^0.3.3",
     "redis": "^5.0.1",
-    "sonner": "^2.0.3",
     "zod": "^3.24.4"
   },
   "devDependencies": {
@@ -62,7 +50,6 @@
     "babel-plugin-react-compiler": "19.1.0-rc.1",
     "drizzle-kit": "^0.31.1",
     "eslint": "^9.26.0",
-    "eslint-config-next": "15.4.0-canary.17",
     "eslint-plugin-drizzle": "^0.2.3",
     "eslint-plugin-react-hooks": "6.0.0-rc.1",
     "typescript": "^5.8.3",

@@ -1,18 +1,8 @@
 /* https://aka.ms/tsconfig */
 {
-  "include": [
-    "eslint.config.mjs",
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.cjs",
-    "**/*.js",
-    ".next/types/**/*.ts"
-  ],
+  "include": ["eslint.config.mjs", "**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.js"],
   "exclude": ["node_modules"],
   "compilerOptions": {
-    "plugins": [{ "name": "next" }],
-
     /* Projects */
     "incremental": true /* Save .tsbuildinfo files to allow for incremental compilation of projects. */,
 

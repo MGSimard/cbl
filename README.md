@@ -2,6 +2,8 @@
 
 ## Task List
 
+- [ ] Fuck Next, migrating to TanStack Start.
+
 - [x] Finish scaffolding
 - [x] Basic OAuth
 - [x] Color palettes (Dark & Light - Dark Default)

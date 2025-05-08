@@ -1,4 +1,4 @@
-import localFont from "next/font/local";
+// MIGRATION TODO: Replace with font-face and manual preloads
 
 export const beaufortForLol = localFont({
   variable: "--fontBeaufort",

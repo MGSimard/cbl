@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { siteMetadata } from "@/utils/siteMetadata";
 import { ReactScan } from "@/components/ReactScan";
-import { PreloadForce } from "@/components/PreloadForce";
 import { Footer } from "@/components/Footer";
 import { beaufortForLol, spiegel } from "@/utils/localFonts";
 import "@/styles/globals.css";
@@ -23,7 +22,6 @@ export default function RootLayout({
     <html lang="en" className={`${beaufortForLol.variable} ${spiegel.variable}`}>
       {/* <ReactScan /> */}
       <body>
-        <PreloadForce />
         {children}
         <Footer />
       </body>

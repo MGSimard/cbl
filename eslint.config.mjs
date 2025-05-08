@@ -12,7 +12,6 @@ export default tseslint.config(
   tseslint.configs.recommendedTypeChecked,
   tseslint.configs.stylisticTypeChecked,
   reactHooks.configs.recommended,
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     plugins: { drizzle },
     languageOptions: {
