@@ -20,14 +20,13 @@ export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
   }
 
   const { championId, champLevel, totalMinionsKilled, goldEarned, kills, deaths, assists, win } = targetPlayerData;
-
   const champ = getChamp(championId);
-  // TODO: label/title/alt -> champion name
+
   return (
     <li className="match-card">
       <div className="match-champ">
         <div className="champ-icon-bandaid">
-          <img src={`${champ?.url}`} alt={champ?.label} title={champ?.label} />
+          <img src={`${champ.url}`} alt={champ.label} title={champ.label} />
         </div>
         <span>{champLevel}</span>
       </div>
