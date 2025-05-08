@@ -879,7 +879,6 @@ a.btn-primary-action {
   grid-column-gap: var(--colGap);
   grid-row-gap: var(--rowGap);
 }
-
 /* MEDIA QUERIES */
 @media only screen and (max-width: 1200px) {
   .match-card {
