@@ -45,6 +45,9 @@
 - [ ] Deploy
 - [ ] Adjust OAuth vars & callback URLs
 
+- [ ] Download old clients to view old replays (https://replays.xyz/old-clients)
+- [ ] Download ReplayBook (https://www.fraxiinus.dev/ReplayBook/)
+
 ## Tech Stack
 
 - Next.js
