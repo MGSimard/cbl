@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@tanstack/react-router";
 
 export default function SumSearch() {
   const router = useRouter();
@@ -33,7 +33,7 @@ export default function SumSearch() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isFormValid) {
-      router.push(`/summoner/${region}/${name.trim()}-${tag.trim()}`);
+      router.navigate({ to: `/summoner/${region}/${name.trim()}-${tag.trim()}` });
     }
   };
 

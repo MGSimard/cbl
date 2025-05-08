@@ -1,37 +1,12 @@
-"use client";
-import { useRouter } from "next/navigation";
-import { authClient } from "@/server/auth/auth-client";
-import { reddit } from "better-auth/social-providers";
-import SumSearch from "@/components/SumSearch";
-import { IconCBL } from "@/components/Icons";
+import { createFileRoute } from "@tanstack/react-router";
+import SumSearch from "@/_components/SumSearch";
+import { IconCBL } from "@/_components/Icons";
 
-export default function PageHome() {
-  const router = useRouter();
+export const Route = createFileRoute("/")({
+  component: Home,
+});
 
-  const signInGoogle = async () => {
-    await authClient.signIn.social({
-      provider: "google",
-      callbackURL: "/",
-    });
-  };
-
-  const signInDiscord = async () => {
-    await authClient.signIn.social({
-      provider: "discord",
-      callbackURL: "/",
-    });
-  };
-
-  const signout = async () => {
-    await authClient.signOut({
-      fetchOptions: {
-        onSuccess: () => {
-          router.push("/");
-        },
-      },
-    });
-  };
-
+function Home() {
   return (
     <main id="hero">
       <IconCBL id="hero-logo" className="no-select" />
