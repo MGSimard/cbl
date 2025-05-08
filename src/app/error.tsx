@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Error",
 };
 
-export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
+export default function Error({ error }: { error: Error & { digest?: string } }) {
   useEffect(() => {
     console.error(error);
   }, [error]);
