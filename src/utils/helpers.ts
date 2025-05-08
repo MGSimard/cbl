@@ -8,6 +8,7 @@ import runesJson from "@/datasets/runesReforged.json";
 import arenaJson from "@/datasets/arena.json";
 
 const LATEST_PATCH = versionsJson[0];
+const PLACEHOLDER_IMG = "/assets/placeholder-warning.svg";
 
 // Pre-process datasets for faster lookups (O(n) once, then O(1) lookups)
 const championsMap = new Map<string, { key: string; image: { full: string }; [key: string]: any }>();
@@ -60,13 +61,15 @@ export function rankFormatter(rankData: LeagueV4ByPuuid): string {
 const BASE_CHAMP_URL = `https://ddragon.leagueoflegends.com/cdn/${LATEST_PATCH}/img/champion/`;
 export function getChamp(champId: number): { url: string; label: string } {
   const champ = championsMap.get(champId.toString());
-  const champFilename = champ?.image?.full;
+  const champFileName = champ?.image?.full;
   const champName = champ?.name;
-  if (!champFilename || !champName) {
+  if (!champFileName || !champName) {
     console.warn(`ERROR: Champion ID ${champId} or its image is missing/empty.`);
-    return { url: "/assets/placeholder-warning.svg", label: "Unknown Champion" };
   }
-  return { url: `${BASE_CHAMP_URL}${champFilename}`, label: champName };
+  return {
+    url: champFileName ? `${BASE_CHAMP_URL}${champFileName}` : PLACEHOLDER_IMG,
+    label: champName ?? "Unknown Champion",
+  };
 }
 
 const BASE_ITEM_URL = `https://ddragon.leagueoflegends.com/cdn/${LATEST_PATCH}/img/item/`;
@@ -77,9 +80,11 @@ export function getItem(itemId: number): { url: string; label: string } | null {
   const itemName = item?.name;
   if (!itemFilename || !itemName) {
     console.warn(`ERROR: Item ID ${itemId} or its image is missing/empty.`);
-    return { url: "/assets/placeholder-warning.svg", label: "Unknown Item" };
   }
-  return { url: `${BASE_ITEM_URL}${itemFilename}`, label: itemName };
+  return {
+    url: itemFilename ? `${BASE_ITEM_URL}${itemFilename}` : PLACEHOLDER_IMG,
+    label: itemName ?? "Unknown Item",
+  };
 }
 
 export function getMapName(mapId: number): string {
@@ -98,9 +103,11 @@ export function getSumSpells(order: 1 | 2, targetPlayerData: ParticipantDto): { 
   const sumSpellName = sumSpellsMap.get(sumSpellId?.toString())?.name;
   if (!sumSpellFilename) {
     console.warn(`ERROR: Summoner Spell ID ${sumSpellId} or its image is missing/empty.`);
-    return { url: "/assets/placeholder-warning.svg", label: "Unknown Summoner Spell" };
   }
-  return { url: `${BASE_URL_SUMS}${sumSpellFilename}`, label: sumSpellName };
+  return {
+    url: sumSpellFilename ? `${BASE_URL_SUMS}${sumSpellFilename}` : PLACEHOLDER_IMG,
+    label: sumSpellName ?? "Unknown Summoner Spell",
+  };
 }
 
 const BASE_URL_RUNES = "https://ddragon.canisback.com/img/";
@@ -113,9 +120,11 @@ export function getRunes(order: 1 | 2, targetPlayerData: ParticipantDto): { url:
     const keystoneName = keystone?.name;
     if (!keystoneFileName || !keystoneName) {
       console.warn(`ERROR: Keystone ID ${keystoneId} or its image is missing/empty.`);
-      return { url: "/assets/placeholder-warning.svg", label: "Unknown Keystone" };
     }
-    return { url: `${BASE_URL_RUNES}${keystoneFileName}`, label: keystoneName };
+    return {
+      url: keystoneFileName ? `${BASE_URL_RUNES}${keystoneFileName}` : PLACEHOLDER_IMG,
+      label: keystoneName ?? "Unknown Keystone",
+    };
   }
   if (order === 2) {
     // Secondary Style
@@ -125,11 +134,13 @@ export function getRunes(order: 1 | 2, targetPlayerData: ParticipantDto): { url:
     const styleName = style?.name;
     if (!styleFileName || !styleName) {
       console.warn(`ERROR: Style ID ${styleId} or its image is missing/empty.`);
-      return { url: "/assets/placeholder-warning.svg", label: "Unknown Style" };
     }
-    return { url: `${BASE_URL_RUNES}${styleFileName}`, label: styleName };
+    return {
+      url: styleFileName ? `${BASE_URL_RUNES}${styleFileName}` : PLACEHOLDER_IMG,
+      label: styleName ?? "Unknown Style",
+    };
   }
-  return { url: "/assets/placeholder-warning.svg", label: "Unknown Rune" };
+  return { url: PLACEHOLDER_IMG, label: "Unknown Rune" };
 }
 
 const BASE_URL_AUGMENTS = "https://raw.communitydragon.org/latest/game/";
@@ -144,9 +155,11 @@ export function getAugments(
   const augName = aug?.name;
   if (!augFileName || !augName) {
     console.warn(`ERROR: Augment ID ${augId} or its image is missing/empty.`);
-    return { url: "/assets/placeholder-warning.svg", label: "Unknown Augment" };
   }
-  return { url: `${BASE_URL_AUGMENTS}${augFileName}`, label: augName };
+  return {
+    url: augFileName ? `${BASE_URL_AUGMENTS}${augFileName}` : PLACEHOLDER_IMG,
+    label: augName ?? "Unknown Augment",
+  };
 }
 
 export function calcDuration(gameLength: number): string {
