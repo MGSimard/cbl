@@ -61,6 +61,14 @@ html {
     scroll-behavior: auto;
   }
 }
+.preload-force {
+  display: none;
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -9999rem;
+  pointer-events: none;
+}
 body {
   display: flex;
   flex-direction: column;

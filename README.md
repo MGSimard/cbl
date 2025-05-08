@@ -9,7 +9,7 @@
 - [x] Implement fonts (BeaufortForLOL, Spiegel)
 - [x] Font Preloads
 - [ ] Better decorators/dividers (SVG)
-- [ ] Animate the decorator line on render/in-view (left and right expand, clip-path?)
+- [x] Animate the decorator line on render/in-view (left and right expand, clip-path?)
 - [x] Branding
 - [x] Metadata, icons, social media images etc
 - [x] 404
