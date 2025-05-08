@@ -1,7 +1,7 @@
 import { PlayerListStandard, PlayerListArena } from "@/components/MatchHistory/PlayerList";
 import { SumsRunesAugs } from "@/components/MatchHistory/SumsRunesAugs";
 import type { MatchV5ByMatchId } from "@/utils/riotApiTypes";
-import { calcDuration, getChampImgUrl, getItem, getMapName, modeDictionary, timeSince } from "@/utils/helpers";
+import { calcDuration, getChamp, getItem, getMapName, modeDictionary, timeSince } from "@/utils/helpers";
 import { IconGold, IconMinion } from "@/components/Icons";
 
 const ITEM_KEYS = ["item0", "item1", "item2", "item3", "item4", "item5", "item6"] as const;
@@ -21,16 +21,13 @@ export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
 
   const { championId, champLevel, totalMinionsKilled, goldEarned, kills, deaths, assists, win } = targetPlayerData;
 
+  const champ = getChamp(championId);
   // TODO: label/title/alt -> champion name
-  // TODO: label/title/alt -> rune name
-  // TODO: label/title/alt -> summoner spell name
-  // TODO: label/title/alt -> augment name
-  // Item name done
   return (
     <li className="match-card">
       <div className="match-champ">
         <div className="champ-icon-bandaid">
-          <img src={`${getChampImgUrl(championId)}`} alt={`cId:${championId}`} />
+          <img src={`${champ?.url}`} alt={champ?.label} title={champ?.label} />
         </div>
         <span>{champLevel}</span>
       </div>
@@ -42,7 +39,7 @@ export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
       <div className="match-stats">
         <ul className="items">
           {ITEM_KEYS.map((key) => {
-            const itemId = targetPlayerData[key as keyof typeof targetPlayerData] as number;
+            const itemId = targetPlayerData[key];
             const item = getItem(itemId);
             return <li key={key}>{item && <img src={`${item.url}`} alt={item.label} title={item.label} />}</li>;
           })}

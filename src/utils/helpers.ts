@@ -58,13 +58,15 @@ export function rankFormatter(rankData: LeagueV4ByPuuid): string {
 }
 
 const BASE_CHAMP_URL = `https://ddragon.leagueoflegends.com/cdn/${LATEST_PATCH}/img/champion/`;
-export function getChampImgUrl(champId: number): string {
-  const champFilename = championsMap.get(champId.toString())?.image?.full;
-  if (!champFilename) {
+export function getChamp(champId: number): { url: string; label: string } {
+  const champ = championsMap.get(champId.toString());
+  const champFilename = champ?.image?.full;
+  const champName = champ?.name;
+  if (!champFilename || !champName) {
     console.warn(`ERROR: Champion ID ${champId} or its image is missing/empty.`);
-    return "/assets/placeholder-warning.svg";
+    return { url: "/assets/placeholder-warning.svg", label: "Unknown Champion" };
   }
-  return `${BASE_CHAMP_URL}${champFilename}`;
+  return { url: `${BASE_CHAMP_URL}${champFilename}`, label: champName };
 }
 
 const BASE_ITEM_URL = `https://ddragon.leagueoflegends.com/cdn/${LATEST_PATCH}/img/item/`;

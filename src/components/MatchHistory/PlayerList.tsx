@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ParticipantDto } from "@/utils/riotApiTypes";
-import { getChampImgUrl, reverseRegionDictionary } from "@/utils/helpers";
+import { getChamp, reverseRegionDictionary } from "@/utils/helpers";
 
 export function PlayerListStandard({ players, platformId }: { players: ParticipantDto[]; platformId: string }) {
   const teamOne = players.filter((player) => player.teamId === 100);
@@ -34,11 +34,13 @@ export function PlayerListArena({ players, platformId }: { players: ParticipantD
 }
 
 function PlayerItem({ player, platformId }: { player: ParticipantDto; platformId: string }) {
+  const champ = getChamp(player.championId);
+
   return (
     <li key={player.summonerId}>
       <Link href={`/summoner/${reverseRegionDictionary(platformId)}/${player.riotIdGameName}-${player.riotIdTagline}`}>
         <div className="list-img-wrapper">
-          <img src={`${getChampImgUrl(player.championId)}`} alt="img" />
+          <img src={`${champ.url}`} alt={champ.label} title={champ.label} />
         </div>
         <span>{player.riotIdGameName}</span>
       </Link>
