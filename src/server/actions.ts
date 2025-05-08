@@ -17,6 +17,7 @@ import { getClientIP } from "./utils/server-helpers";
 const API_KEY = process.env.RIOT_API_SECRET;
 
 interface GetPlayerDataReturnType {
+  success: boolean;
   data?: {
     identity: AccountV1ByRiotId;
     profile: SummonerV4ByPuuid;
@@ -27,6 +28,11 @@ interface GetPlayerDataReturnType {
   message: string;
 }
 export async function getPlayerData(regionPrefix: string, summoner: string): Promise<GetPlayerDataReturnType> {
+  const session = await auth.api.getSession({ headers: await headers() });
+
+  const rateLimitResult = await rateLimit("query", session?.user.id ?? (await getClientIP()));
+  if (!rateLimitResult.success) return { success: false, message: rateLimitResult.message };
+
   try {
     const [shard, cluster, fullRegion] = regionDictionary(regionPrefix); // e.g. ["NA1", "americas", "North America"]
     const [summonerName, summonerTag] = summoner.split("-");
@@ -57,6 +63,7 @@ export async function getPlayerData(regionPrefix: string, summoner: string): Pro
       return (await res.json()) as LeagueV4ByPuuid;
     });
     return {
+      success: true,
       data: {
         identity: targetIdentity,
         profile: targetProfile,
@@ -67,15 +74,21 @@ export async function getPlayerData(regionPrefix: string, summoner: string): Pro
       message: "SUCCESS: Profile data fetched.",
     };
   } catch (err: unknown) {
-    return { message: err instanceof Error ? err.message : "UNKNOWN ERROR." };
+    return { success: false, message: err instanceof Error ? err.message : "UNKNOWN ERROR." };
   }
 }
 
 interface GetMatchesDataReturnType {
+  success: boolean;
   data?: MatchV5ByMatchId[];
   message: string;
 }
 export async function getMatchesData(matchIds: string[], regionPrefix: string): Promise<GetMatchesDataReturnType> {
+  const session = await auth.api.getSession({ headers: await headers() });
+
+  const rateLimitResult = await rateLimit("query", session?.user.id ?? (await getClientIP()));
+  if (!rateLimitResult.success) return { success: false, message: rateLimitResult.message };
+
   try {
     const [_, cluster, __] = regionDictionary(regionPrefix);
     const matchesData = (
@@ -93,31 +106,16 @@ export async function getMatchesData(matchIds: string[], regionPrefix: string): 
       .filter((result): result is PromiseFulfilledResult<MatchV5ByMatchId> => result.status === "fulfilled")
       .map((result) => result.value);
     return {
+      success: true,
       data: matchesData,
       message: `SUCCESS: Fetched ${matchesData.length}/${matchIds.length} matches.`,
     };
   } catch (err: unknown) {
-    return { message: err instanceof Error ? err.message : "UNKNOWN ERROR." };
+    return { success: false, message: err instanceof Error ? err.message : "UNKNOWN ERROR." };
   }
 }
 
 export async function getReportsByPuuid() {}
-
-export async function testAction() {
-  console.log("Test Action Triggered");
-  // BetterAuth ratelimits its own endpoints, we'll still need to ratelimit actions ourselves
-  const session = await auth.api.getSession({ headers: await headers() });
-  // if (!session) return { success: false, message: "AUTH ERROR: Unauthorized." };
-
-  console.log("Ratelimit?");
-  const rateLimitResult = await rateLimit("mutate", session?.user.id ?? (await getClientIP()));
-  if (!rateLimitResult.success) return { success: false, message: rateLimitResult.message };
-
-  console.log("Auth passed");
-
-  console.log("Action completed");
-  return "TestAction Return";
-}
 
 const submitReportSchema = z.object({
   puuid: z.string(),
@@ -132,3 +130,22 @@ export async function approveReport() {}
 export async function rejectReport() {}
 
 export async function cancelReport() {}
+
+export async function testAction() {
+  // Auth
+  const session = await auth.api.getSession({ headers: await headers() });
+  if (!session) return { success: false, message: "AUTH ERROR: Unauthorized." };
+
+  // Ratelimit
+  const rateLimitResult = await rateLimit("mutate", session?.user.id ?? (await getClientIP()));
+  if (!rateLimitResult.success) return { success: false, message: rateLimitResult.message };
+
+  // Validate
+
+  // Action
+  try {
+  } catch (err: unknown) {
+    return { success: false, message: err instanceof Error ? err.message : "UNKNOWN ERROR." };
+  }
+  return { success: true, message: "SUCCESS: Test action completed." };
+}
