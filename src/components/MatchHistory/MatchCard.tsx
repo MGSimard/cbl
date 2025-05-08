@@ -1,15 +1,7 @@
 import { PlayerListStandard, PlayerListArena } from "@/components/MatchHistory/PlayerList";
 import { SumsRunesAugs } from "@/components/MatchHistory/SumsRunesAugs";
 import type { MatchV5ByMatchId } from "@/utils/riotApiTypes";
-import {
-  calcDuration,
-  getChampImgUrl,
-  getItemImgUrl,
-  getItemName,
-  getMapName,
-  modeDictionary,
-  timeSince,
-} from "@/utils/helpers";
+import { calcDuration, getChampImgUrl, getItem, getMapName, modeDictionary, timeSince } from "@/utils/helpers";
 import { IconGold, IconMinion } from "@/components/Icons";
 
 const ITEM_KEYS = ["item0", "item1", "item2", "item3", "item4", "item5", "item6"] as const;
@@ -49,14 +41,10 @@ export function MatchCard({ currentPlayer, matchData }: MatchCardProps) {
       </div>
       <div className="match-stats">
         <ul className="items">
-          {ITEM_KEYS.map((itemKey) => {
-            const itemId = targetPlayerData[itemKey as keyof typeof targetPlayerData] as number;
-            const itemName = getItemName(itemId);
-            return (
-              <li key={itemKey} aria-label={itemName} title={itemName}>
-                {itemId !== 0 && <img src={`${getItemImgUrl(itemId)}`} alt="" />}
-              </li>
-            );
+          {ITEM_KEYS.map((key) => {
+            const itemId = targetPlayerData[key as keyof typeof targetPlayerData] as number;
+            const item = getItem(itemId);
+            return <li key={key}>{item && <img src={`${item.url}`} alt={item.label} title={item.label} />}</li>;
           })}
         </ul>
         <div className="stats">

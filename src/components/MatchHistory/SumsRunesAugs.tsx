@@ -17,17 +17,11 @@ export function SumsRunesAugs({ queueId, targetPlayerData }: SumsRunesAugsProps)
 
   return (
     <div className="player-sumsRunesAugs">
-      <div className="slot" aria-label={slot1.label} title={slot1.label}>
-        {slot1 && <img src={`${slot1.url}`} alt="" />}
-      </div>
-      <div className="slot" aria-label={slot2.label} title={slot2.label}>
-        {slot2 && <img src={`${slot2.url}`} alt="" />}
-      </div>
-      <div className="slot" aria-label={slot3.label} title={slot3.label}>
-        {slot3 && <img src={`${slot3.url}`} alt="" />}
-      </div>
-      <div className={`slot${isArena ? "" : " rune-minor"}`} aria-label={slot4.label} title={slot4.label}>
-        {slot4 && <img src={`${slot4.url}`} alt="" />}
+      <div className="slot">{slot1 && <img src={`${slot1.url}`} alt={slot1.label} title={slot1.label} />}</div>
+      <div className="slot">{slot2 && <img src={`${slot2.url}`} alt={slot2.label} title={slot2.label} />}</div>
+      <div className="slot">{slot3 && <img src={`${slot3.url}`} alt={slot3.label} title={slot3.label} />}</div>
+      <div className={`slot${isArena ? "" : " rune-minor"}`}>
+        {slot4 && <img src={`${slot4.url}`} alt={slot4.label} title={slot4.label} />}
       </div>
     </div>
   );

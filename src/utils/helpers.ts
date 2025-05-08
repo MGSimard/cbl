@@ -61,37 +61,29 @@ const BASE_CHAMP_URL = `https://ddragon.leagueoflegends.com/cdn/${LATEST_PATCH}/
 export function getChampImgUrl(champId: number): string {
   const champFilename = championsMap.get(champId.toString())?.image?.full;
   if (!champFilename) {
-    console.log(`ERROR: Champion ID ${champId} or its image is missing/empty.`);
+    console.warn(`ERROR: Champion ID ${champId} or its image is missing/empty.`);
     return "/assets/placeholder-warning.svg";
   }
   return `${BASE_CHAMP_URL}${champFilename}`;
 }
 
 const BASE_ITEM_URL = `https://ddragon.leagueoflegends.com/cdn/${LATEST_PATCH}/img/item/`;
-export function getItemImgUrl(itemId: number): string | null {
+export function getItem(itemId: number): { url: string; label: string } | null {
   if (itemId === 0) return null;
-  const itemFilename = itemsMap.get(itemId.toString())?.image?.full;
-  if (!itemFilename) {
-    console.log(`ERROR: Item ID ${itemId} or its image is missing/empty.`);
-    return "/assets/placeholder-warning.svg";
+  const item = itemsMap.get(itemId.toString());
+  const itemFilename = item?.image?.full;
+  const itemName = item?.name;
+  if (!itemFilename || !itemName) {
+    console.warn(`ERROR: Item ID ${itemId} or its image is missing/empty.`);
+    return { url: "/assets/placeholder-warning.svg", label: "Unknown Item" };
   }
-  return `${BASE_ITEM_URL}${itemFilename}`;
-}
-
-export function getItemName(itemId: number): string {
-  if (itemId === 0) return "Empty";
-  const itemName = itemsMap.get(itemId.toString())?.name;
-  if (!itemName) {
-    console.log(`ERROR: Item ID ${itemId} or its name is missing/empty.`);
-    return "Unknown Item";
-  }
-  return itemName;
+  return { url: `${BASE_ITEM_URL}${itemFilename}`, label: itemName };
 }
 
 export function getMapName(mapId: number): string {
   const mapInfo = mapsMap.get(mapId)?.mapName;
   if (!mapInfo) {
-    console.log(`ERROR: Map ID ${mapId} or its name is missing/empty.`);
+    console.warn(`ERROR: Map ID ${mapId} or its name is missing/empty.`);
     return "Unknown Map";
   }
   return mapInfo;
@@ -103,7 +95,7 @@ export function getSumSpells(order: 1 | 2, targetPlayerData: ParticipantDto): { 
   const sumSpellFilename = sumSpellsMap.get(sumSpellId?.toString())?.image?.full;
   const sumSpellName = sumSpellsMap.get(sumSpellId?.toString())?.name;
   if (!sumSpellFilename) {
-    console.log(`ERROR: Summoner Spell ID ${sumSpellId} or its image is missing/empty.`);
+    console.warn(`ERROR: Summoner Spell ID ${sumSpellId} or its image is missing/empty.`);
     return { url: "/assets/placeholder-warning.svg", label: "Unknown Summoner Spell" };
   }
   return { url: `${BASE_URL_SUMS}${sumSpellFilename}`, label: sumSpellName };
@@ -118,7 +110,7 @@ export function getRunes(order: 1 | 2, targetPlayerData: ParticipantDto): { url:
     const keystoneFileName = keystone?.icon;
     const keystoneName = keystone?.name;
     if (!keystoneFileName || !keystoneName) {
-      console.log(`ERROR: Keystone ID ${keystoneId} or its image is missing/empty.`);
+      console.warn(`ERROR: Keystone ID ${keystoneId} or its image is missing/empty.`);
       return { url: "/assets/placeholder-warning.svg", label: "Unknown Keystone" };
     }
     return { url: `${BASE_URL_RUNES}${keystoneFileName}`, label: keystoneName };
@@ -130,7 +122,7 @@ export function getRunes(order: 1 | 2, targetPlayerData: ParticipantDto): { url:
     const styleFileName = style?.icon;
     const styleName = style?.name;
     if (!styleFileName || !styleName) {
-      console.log(`ERROR: Style ID ${styleId} or its image is missing/empty.`);
+      console.warn(`ERROR: Style ID ${styleId} or its image is missing/empty.`);
       return { url: "/assets/placeholder-warning.svg", label: "Unknown Style" };
     }
     return { url: `${BASE_URL_RUNES}${styleFileName}`, label: styleName };
@@ -139,14 +131,17 @@ export function getRunes(order: 1 | 2, targetPlayerData: ParticipantDto): { url:
 }
 
 const BASE_URL_AUGMENTS = "https://raw.communitydragon.org/latest/game/";
-export function getAugments(slot: 1 | 2 | 3 | 4, targetPlayerData: ParticipantDto): { url: string; label: string } {
+export function getAugments(
+  slot: 1 | 2 | 3 | 4,
+  targetPlayerData: ParticipantDto
+): { url: string; label: string } | null {
   const augId = targetPlayerData[`playerAugment${slot}` as keyof ParticipantDto];
-  if (augId === 0) return { url: "/assets/placeholder-warning.svg", label: "Unknown Augment" };
+  if (augId === 0) return null;
   const aug = arenaAugmentsMap.get(augId as number);
   const augFileName = aug?.iconSmall;
   const augName = aug?.name;
   if (!augFileName || !augName) {
-    console.log(`ERROR: Augment ID ${augId} or its image is missing/empty.`);
+    console.warn(`ERROR: Augment ID ${augId} or its image is missing/empty.`);
     return { url: "/assets/placeholder-warning.svg", label: "Unknown Augment" };
   }
   return { url: `${BASE_URL_AUGMENTS}${augFileName}`, label: augName };
