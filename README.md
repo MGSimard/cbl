@@ -26,8 +26,9 @@
 - [ ] Stats
 - [x] Match history
 - [x] Make match history cards responsive
+- [ ] Set up .rofl file sanitation
 - [ ] Validation
-- [ ] Ratelimiting
+- [x] Ratelimiting
 - [ ] Reporting feature (File upload, file scanning/sanitization)
 - [ ] Evidence panel
 - [ ] Search by UUID (Homepage)
