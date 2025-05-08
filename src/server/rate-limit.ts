@@ -4,7 +4,7 @@ import { type RateLimitAction } from "@/server/utils/server-enums";
 
 const ratelimitConfig: Record<RateLimitAction, { limit: number; windowSeconds: number }> = {
   mutate: { limit: 5, windowSeconds: 60 }, // 5 requests per 60 seconds
-  query: { limit: 20, windowSeconds: 10 }, // 20 requests per 10 seconds
+  query: { limit: 20, windowSeconds: 60 }, // 20 requests per 60 seconds
 };
 
 interface RateLimitResponse {
