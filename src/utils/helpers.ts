@@ -175,7 +175,6 @@ const DAY = 24 * HOUR;
 const WEEK = 7 * DAY;
 const MONTH = 30 * DAY;
 const YEAR = 12 * MONTH;
-
 const timeUnits: { threshold: number; singular: string; plural: string }[] = [
   { threshold: YEAR, singular: "year", plural: "years" },
   { threshold: MONTH, singular: "month", plural: "months" },
@@ -184,7 +183,6 @@ const timeUnits: { threshold: number; singular: string; plural: string }[] = [
   { threshold: HOUR, singular: "hour", plural: "hours" },
   { threshold: MINUTE, singular: "minute", plural: "minutes" },
 ];
-
 export function timeSince(startUnix: number, gameLength: number): string {
   const currentUnix = Math.floor(new Date().getTime() / 1000);
   const gameStartUnix = Math.floor(startUnix / 1000);
