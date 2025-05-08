@@ -2,6 +2,9 @@
 :root {
   --siteMaxWidth: 1440px;
   --sitePadding: 2rem;
+  --fontBeaufort: "Beaufort For LOL", "Times New Roman", "Georgia", "Garamond", "Times", "serif";
+  --fontSpiegel: "Spiegel", "-apple-system", "BlinkMacSystemFont", "avenir next", "avenir", "segoe ui", "helvetica neue",
+    "helvetica", "Cantarell", "Ubuntu", "roboto", "noto", "arial", "sans-serif";
 
   /* Palette */
   --clrBlue1: hsl(180, 82%, 89%);
