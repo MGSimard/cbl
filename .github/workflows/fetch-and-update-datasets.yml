@@ -21,12 +21,12 @@ jobs:
 
       - name: Fetch Datasets
         run: |
-          mkdir -p src/datasets  # Create the datasets directory if it doesn't exist
+          mkdir -p src/_datasets  # Create the datasets directory if it doesn't exist
           set -e  # Exit immediately if a command exits with a non-zero status
 
           echo "Fetching versions..."
-          curl -fs "https://ddragon.leagueoflegends.com/api/versions.json" | jq '.' > src/datasets/versions.json
-          patchVer=$(jq -r '.[0]' src/datasets/versions.json)  # Extract the latest version
+          curl -fs "https://ddragon.leagueoflegends.com/api/versions.json" | jq '.' > src/_datasets/versions.json
+          patchVer=$(jq -r '.[0]' src/_datasets/versions.json)  # Extract the latest version
           echo "patchVer=$patchVer" >> $GITHUB_ENV # Export patchVer for subsequent steps
 
           if [ -z "$patchVer" ]; then
@@ -35,24 +35,24 @@ jobs:
           fi
 
           echo "Fetching champion dataset..."
-          curl -fs "https://ddragon.leagueoflegends.com/cdn/${patchVer}/data/en_US/champion.json" | jq '.' > src/datasets/champion.json
+          curl -fs "https://ddragon.leagueoflegends.com/cdn/${patchVer}/data/en_US/champion.json" | jq '.' > src/_datasets/champion.json
           echo "Fetching runes dataset..."
-          curl -fs "https://ddragon.leagueoflegends.com/cdn/${patchVer}/data/en_US/runesReforged.json" | jq '.' > src/datasets/runesReforged.json
+          curl -fs "https://ddragon.leagueoflegends.com/cdn/${patchVer}/data/en_US/runesReforged.json" | jq '.' > src/_datasets/runesReforged.json
           echo "Fetching summoner spells dataset..."
-          curl -fs "https://ddragon.leagueoflegends.com/cdn/${patchVer}/data/en_US/summoner.json" | jq '.' > src/datasets/summoner.json
+          curl -fs "https://ddragon.leagueoflegends.com/cdn/${patchVer}/data/en_US/summoner.json" | jq '.' > src/_datasets/summoner.json
           echo "Fetching items dataset..."
-          curl -fs "https://ddragon.leagueoflegends.com/cdn/${patchVer}/data/en_US/item.json" | jq '.' > src/datasets/item.json
+          curl -fs "https://ddragon.leagueoflegends.com/cdn/${patchVer}/data/en_US/item.json" | jq '.' > src/_datasets/item.json
           echo "Fetching queues dataset..."
-          curl -fs "https://static.developer.riotgames.com/docs/lol/queues.json" | jq '.' > src/datasets/queues.json
+          curl -fs "https://static.developer.riotgames.com/docs/lol/queues.json" | jq '.' > src/_datasets/queues.json
           echo "Fetching maps dataset..."
-          curl -fs "https://static.developer.riotgames.com/docs/lol/maps.json" | jq '.' > src/datasets/maps.json
+          curl -fs "https://static.developer.riotgames.com/docs/lol/maps.json" | jq '.' > src/_datasets/maps.json
           echo "Fetching arena dataset..."
-          curl -fs "https://raw.communitydragon.org/latest/cdragon/arena/en_us.json" | jq '.' > src/datasets/arena.json
+          curl -fs "https://raw.communitydragon.org/latest/cdragon/arena/en_us.json" | jq '.' > src/_datasets/arena.json
 
       - name: Commit and Push Changes
         run: |
           git config --local user.name "GitHub Action"
           git config --local user.email "action@github.com"
-          git add src/datasets/*.json  # Add all JSON files
+          git add src/_datasets/*.json  # Add all JSON files
           git commit -m "GHA: Update datasets (v${{ env.patchVer }})" || echo "No changes to commit"
           git push
