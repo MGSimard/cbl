@@ -30,45 +30,43 @@ interface GetPlayerDataReturnType {
 export const getPlayerData = createServerFn({ method: "GET" })
   .validator((input: { regionPrefix: string; riotId: string }) => input)
   .handler(async ({ data }): Promise<GetPlayerDataReturnType> => {
-    const { regionPrefix, riotId } = data;
-
-    console.log("HELLO????", regionPrefix, riotId);
-
-    const req = getWebRequest();
-    if (!req) return { success: false, message: "ERROR: Invalid request." };
-    const session = await auth.api.getSession({ headers: req.headers });
-    // Session is optional, just using for ratelimit identifier
-
-    const rateLimitResult = await rateLimit("query", session?.user.id ?? (await getClientIP()));
-    if (!rateLimitResult.success) return { success: false, message: rateLimitResult.message };
-
     try {
+      const { regionPrefix, riotId } = data;
+
+      const req = getWebRequest();
+      if (!req) throw new Error("ERROR: Invalid request.");
+      const session = await auth.api.getSession({ headers: req.headers });
+      // Session is optional, just using for ratelimit identifier
+
+      const rateLimitResult = await rateLimit("query", session?.user.id ?? (await getClientIP()));
+      if (!rateLimitResult.success) throw new Error(rateLimitResult.message);
+
       const [shard, cluster, fullRegion] = regionDictionary(regionPrefix); // e.g. ["NA1", "americas", "North America"]
       const [summonerName, summonerTag] = riotId.split("-");
       const targetIdentity = await fetch(
         `https://${cluster}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${summonerName}/${summonerTag}?api_key=${API_KEY}`
       ).then(async (res) => {
-        if (!res.ok) throw new Error(`FETCH ERROR (ACCOUNT-V1): ${res.status}`);
+        if (!res.ok) throw new Error(`ERROR (ACCOUNT-V1): ${res.status}`);
         return (await res.json()) as AccountV1ByRiotId;
       });
       const [targetProfile, matchIdList] = await Promise.all([
         fetch(
           `https://${shard}.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${targetIdentity.puuid}?api_key=${API_KEY}`
         ).then(async (res) => {
-          if (!res.ok) throw new Error(`FETCH ERROR (SUMMONER-V4): ${res.status}`);
+          if (!res.ok) throw new Error(`ERROR (SUMMONER-V4): ${res.status}`);
           return (await res.json()) as SummonerV4ByPuuid;
         }),
         fetch(
           `https://${cluster}.api.riotgames.com/lol/match/v5/matches/by-puuid/${targetIdentity.puuid}/ids?start=0&count=20&api_key=${API_KEY}`
         ).then(async (res) => {
-          if (!res.ok) throw new Error(`FETCH ERROR (MATCH-V5): ${res.status}`);
+          if (!res.ok) throw new Error(`ERROR (MATCH-V5): ${res.status}`);
           return (await res.json()) as MatchV5ByPuuid;
         }),
       ]);
       const targetRank = await fetch(
         `https://${shard}.api.riotgames.com/lol/league/v4/entries/by-puuid/${targetProfile.puuid}?api_key=${API_KEY}`
       ).then(async (res) => {
-        if (!res.ok) throw new Error(`FETCH ERROR (LEAGUE-V4): ${res.status}`);
+        if (!res.ok) throw new Error(`ERROR (LEAGUE-V4): ${res.status}`);
         return (await res.json()) as LeagueV4ByPuuid;
       });
 
@@ -113,7 +111,7 @@ export const getMatchesData = createServerFn({ method: "GET" })
           matchIds.map((matchId) =>
             fetch(`https://${cluster}.api.riotgames.com/lol/match/v5/matches/${matchId}?api_key=${API_KEY}`).then(
               async (res) => {
-                if (!res.ok) throw new Error(`FETCH ERROR (MATCH-V5, MATCH ID: ${matchId}): ${res.status}`);
+                if (!res.ok) throw new Error(`ERROR (MATCH-V5, MATCH ID: ${matchId}): ${res.status}`);
                 return (await res.json()) as MatchV5ByMatchId;
               }
             )
