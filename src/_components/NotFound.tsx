@@ -1,11 +1,6 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+import { Link } from "@tanstack/react-router";
 
-export const metadata: Metadata = {
-  title: "Not Found",
-};
-
-export default function NotFound() {
+export function NotFound() {
   return (
     <main id="not-found">
       <h1>
@@ -14,7 +9,7 @@ export default function NotFound() {
         </span>
         <span id="nf-two">NOT FOUND</span>
       </h1>
-      <Link href="/" className="btn-primary-action">
+      <Link to="/" className="btn-primary-action">
         <span>RETURN HOME</span>
       </Link>
     </main>

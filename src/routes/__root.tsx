@@ -1,9 +1,13 @@
 import type { ReactNode } from "react";
 import { Outlet, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { NotFound } from "@/_components/NotFound";
+import { Error } from "@/_components/Error";
 import "@/_styles/globals.css";
 import "@/_styles/fonts.css";
 
 export const Route = createRootRoute({
+  errorComponent: Error,
+  notFoundComponent: NotFound,
   // https://tanstack.com/router/latest/docs/framework/react/guide/document-head-management
   head: () => ({
     meta: [
