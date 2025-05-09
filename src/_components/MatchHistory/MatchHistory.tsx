@@ -32,7 +32,11 @@ function MatchList({ matchIds, currentPlayer, regionPrefix }: MatchHistoryProps)
   });
 
   if (!data.success || !data.data) {
-    return <main>PLACEHOLDER: {data.message}</main>;
+    return (
+      <div id="match-list-loading">
+        <p>{data.message}</p>
+      </div>
+    );
   }
 
   return (
