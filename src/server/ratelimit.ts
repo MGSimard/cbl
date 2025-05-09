@@ -1,4 +1,3 @@
-"use server";
 import { rd } from "@/server/rd";
 import { type RateLimitAction } from "@/server/utils/server-enums";
 

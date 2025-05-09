@@ -1,8 +1,9 @@
-import { headers } from "next/headers";
+import { createServerFn } from "@tanstack/react-start";
+import { getHeaders } from "@tanstack/react-start/server";
 
-export async function getClientIP() {
-  const headrs = await headers();
-  const forwardedFor = headrs.get("x-forwarded-for");
-  const realIP = headrs.get("x-real-ip");
+export const getClientIP = createServerFn({ method: "GET" }).handler(async () => {
+  const headrs = getHeaders();
+  const forwardedFor = headrs["x-forwarded-for"];
+  const realIP = headrs["x-real-ip"];
   return forwardedFor?.split(",")[0]?.trim() || realIP?.trim() || "0.0.0.0";
-}
+});

@@ -12,12 +12,19 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as SummonerRegionRiotIdImport } from './routes/summoner/$region.$riotId'
 
 // Create/Update Routes
 
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const SummonerRegionRiotIdRoute = SummonerRegionRiotIdImport.update({
+  id: '/summoner/$region/$riotId',
+  path: '/summoner/$region/$riotId',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -32,6 +39,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/summoner/$region/$riotId': {
+      id: '/summoner/$region/$riotId'
+      path: '/summoner/$region/$riotId'
+      fullPath: '/summoner/$region/$riotId'
+      preLoaderRoute: typeof SummonerRegionRiotIdImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -39,32 +53,37 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/summoner/$region/$riotId': typeof SummonerRegionRiotIdRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/summoner/$region/$riotId': typeof SummonerRegionRiotIdRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/summoner/$region/$riotId': typeof SummonerRegionRiotIdRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/summoner/$region/$riotId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/summoner/$region/$riotId'
+  id: '__root__' | '/' | '/summoner/$region/$riotId'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SummonerRegionRiotIdRoute: typeof SummonerRegionRiotIdRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SummonerRegionRiotIdRoute: SummonerRegionRiotIdRoute,
 }
 
 export const routeTree = rootRoute
@@ -77,11 +96,15 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/"
+        "/",
+        "/summoner/$region/$riotId"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/summoner/$region/$riotId": {
+      "filePath": "summoner/$region.$riotId.tsx"
     }
   }
 }

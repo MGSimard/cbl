@@ -23,7 +23,7 @@ export const Route = createRootRoute({
         title: "Community Ban List",
       },
       { description: "A community-driven effort to identify and track disruptive players in League of Legends." },
-      { applicationName: "Community Ban List" },
+      { name: "application-name", content: "Community Ban List" },
       { name: "apple-mobile-web-app-title", content: "Community Ban List" },
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
