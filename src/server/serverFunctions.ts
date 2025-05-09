@@ -37,7 +37,9 @@ export const getPlayerData = createServerFn({ method: "GET" })
       const session = await auth.api.getSession({ headers: req.headers });
       // Session is optional, just using for ratelimit identifier
 
-      const rateLimitResult = await rateLimit("query", session?.user.id ?? (await getClientIP()));
+      const rateLimitResult = await rateLimit({
+        data: { actionType: "query", identifier: session?.user.id ?? (await getClientIP()) },
+      });
       if (!rateLimitResult.success) throw new Error(rateLimitResult.message);
 
       const [shard, cluster, fullRegion] = regionDictionary(regionPrefix); // e.g. ["NA1", "americas", "North America"]
@@ -101,7 +103,9 @@ export const getMatchesData = createServerFn({ method: "GET" })
       const session = await auth.api.getSession({ headers: req.headers });
       // Session is optional, just using for ratelimit identifier
 
-      const rateLimitResult = await rateLimit("query", session?.user.id ?? (await getClientIP()));
+      const rateLimitResult = await rateLimit({
+        data: { actionType: "query", identifier: session?.user.id ?? (await getClientIP()) },
+      });
       if (!rateLimitResult.success) throw new Error(rateLimitResult.message);
 
       const [_, cluster, __] = regionDictionary(regionPrefix);
