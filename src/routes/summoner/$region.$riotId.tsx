@@ -1,5 +1,6 @@
 import { MatchHistory } from "@/_components/MatchHistory/MatchHistory";
 import { SumSidebar } from "@/_components/SummonerSidebar/SumSidebar";
+import { useParams } from "@tanstack/react-router";
 import { getPlayerData } from "@/server/serverFunctions";
 import { createFileRoute } from "@tanstack/react-router";
 
@@ -13,6 +14,7 @@ export const Route = createFileRoute("/summoner/$region/$riotId")({
 });
 
 function RouteComponent() {
+  const { region: regionPrefix } = useParams({ from: Route.id });
   const data = Route.useLoaderData();
 
   if (!data.data) {
@@ -24,7 +26,7 @@ function RouteComponent() {
   return (
     <main id="sum-main">
       <SumSidebar identity={identity} profile={profile} rank={rank} />
-      <MatchHistory matchIds={matches} currentPlayer={profile.puuid} regionPrefix={region} />
+      <MatchHistory matchIds={matches} currentPlayer={profile.puuid} regionPrefix={regionPrefix} />
     </main>
   );
 }
