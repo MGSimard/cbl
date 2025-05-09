@@ -2,7 +2,7 @@
 
 ## Task List
 
-- [ ] Fuck Next, migrating to TanStack Start.
+- [x] Fuck Next, migrating to TanStack Start.
 
 - [x] Finish scaffolding
 - [x] Basic OAuth
