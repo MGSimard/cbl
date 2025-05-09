@@ -5,6 +5,7 @@ import { NotFound } from "@/_components/NotFound";
 import { Error } from "@/_components/Error";
 import globalCss from "@/_styles/globals.css?url";
 import fontsCss from "@/_styles/fonts.css?url";
+import { Footer } from "@/_components/Footer";
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   errorComponent: Error,
@@ -103,6 +104,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
       </head>
       <body>
         {children}
+        <Footer />
         <Scripts />
       </body>
     </html>
