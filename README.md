@@ -8,7 +8,7 @@
 - [x] Utility Routes (404, Error Page)
 - [x] Datasets
 - [ ] Homepage
-  - [ ] Summoner Search (Riot ID)
+  - [x] Summoner Search (Riot ID)
   - [ ] Search by PUUID
 - [x] Summoner Profiles
   - [x] Sidebar
@@ -21,7 +21,6 @@
   - [ ] Appeal system
 - [x] Ratelimiting
 - [x] Migrate to TanStack Start
-- [ ] Animation pass
 - [ ] Report feature
   - [ ] Dialog Form (PUUID, Current Username, Offense, Evidence, Message, Report Author)
   - [ ] Server Function (Auth, Rate limit, Validation, DB write, Stale Cache)
@@ -34,6 +33,7 @@
 - [ ] ...
 - [ ] Check React Compiler compatibility with TanStack Start
 - [ ] ...
+- [ ] Animation pass
 - [ ] Reserve domain
 - [ ] Twitter OAuth
 - [ ] Microsoft OAuth
