@@ -11,8 +11,9 @@ import {
   LeagueV4ByPuuid,
   MatchV5ByPuuid,
 } from "@/_utils/riotApiTypes";
+import { env } from "@/env";
 
-const API_KEY = process.env.RIOT_API_SECRET;
+const API_KEY = env.RIOT_API_SECRET;
 
 interface GetPlayerDataReturnType {
   success: boolean;
@@ -30,6 +31,8 @@ export const getPlayerData = createServerFn({ method: "GET" })
   .validator((input: { regionPrefix: string; riotId: string }) => input)
   .handler(async ({ data }): Promise<GetPlayerDataReturnType> => {
     const { regionPrefix, riotId } = data;
+
+    console.log("HELLO????", regionPrefix, riotId);
 
     const req = getWebRequest();
     if (!req) return { success: false, message: "ERROR: Invalid request." };
@@ -68,6 +71,7 @@ export const getPlayerData = createServerFn({ method: "GET" })
         if (!res.ok) throw new Error(`FETCH ERROR (LEAGUE-V4): ${res.status}`);
         return (await res.json()) as LeagueV4ByPuuid;
       });
+
       return {
         success: true,
         data: {
