@@ -5,7 +5,7 @@ import { getPlayerData } from "@/server/serverFunctions";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/summoner/$region/$riotId")({
-  component: RouteComponent,
+  component: PageSummoner,
   loader: async ({ params }) => {
     const { region: regionPrefix, riotId } = params;
     const data = await getPlayerData({ data: { regionPrefix, riotId } });
@@ -13,7 +13,7 @@ export const Route = createFileRoute("/summoner/$region/$riotId")({
   },
 });
 
-function RouteComponent() {
+function PageSummoner() {
   const data = Route.useLoaderData();
   const { region: regionPrefix } = useParams({ from: Route.id });
 

@@ -3,10 +3,10 @@ import SumSearch from "@/_components/SumSearch";
 import { IconCBL } from "@/_components/Icons";
 
 export const Route = createFileRoute("/")({
-  component: Home,
+  component: PageHome,
 });
 
-function Home() {
+function PageHome() {
   return (
     <main id="hero">
       <IconCBL id="hero-logo" className="no-select" />
