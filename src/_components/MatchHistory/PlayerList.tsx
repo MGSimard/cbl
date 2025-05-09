@@ -38,7 +38,7 @@ function PlayerItem({ player, platformId }: { player: ParticipantDto; platformId
   const champ = getChamp(player.championId);
 
   return (
-    <li key={player.summonerId}>
+    <li>
       <Link
         to="/summoner/$region/$riotId"
         params={{
