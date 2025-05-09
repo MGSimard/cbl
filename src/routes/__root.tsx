@@ -3,9 +3,9 @@ import { createRootRouteWithContext, HeadContent, Outlet, Scripts } from "@tanst
 import type { QueryClient } from "@tanstack/react-query";
 import { NotFound } from "@/_components/NotFound";
 import { Error } from "@/_components/Error";
+import { Footer } from "@/_components/Footer";
 import globalCss from "@/_styles/globals.css?url";
 import fontsCss from "@/_styles/fonts.css?url";
-import { Footer } from "@/_components/Footer";
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   errorComponent: Error,

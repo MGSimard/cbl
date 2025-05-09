@@ -1,4 +1,3 @@
-import type { LeagueV4ByPuuid, ParticipantDto } from "@/_utils/riotApiTypes";
 import versionsJson from "@/_datasets/versions.json";
 import championsJson from "@/_datasets/champion.json";
 import itemsJson from "@/_datasets/item.json";
@@ -6,6 +5,7 @@ import mapsJson from "@/_datasets/maps.json";
 import sumSpellsJson from "@/_datasets/summoner.json";
 import runesJson from "@/_datasets/runesReforged.json";
 import arenaJson from "@/_datasets/arena.json";
+import type { LeagueV4ByPuuid, ParticipantDto } from "@/_utils/riotApiTypes";
 
 const LATEST_PATCH = versionsJson[0];
 const PLACEHOLDER_IMG = "/assets/placeholder-warning.svg";

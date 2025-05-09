@@ -1,8 +1,7 @@
+import { createFileRoute, useParams } from "@tanstack/react-router";
+import { getPlayerData } from "@/server/serverFunctions";
 import { MatchHistory } from "@/_components/MatchHistory/MatchHistory";
 import { SumSidebar } from "@/_components/SummonerSidebar/SumSidebar";
-import { useParams } from "@tanstack/react-router";
-import { getPlayerData } from "@/server/serverFunctions";
-import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/summoner/$region/$riotId")({
   component: PageSummoner,

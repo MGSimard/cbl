@@ -1,6 +1,6 @@
-import { MatchCard } from "@/_components/MatchHistory/MatchCard";
-import { getMatchesData } from "@/server/serverFunctions";
 import { useSuspenseQuery } from "@tanstack/react-query";
+import { getMatchesData } from "@/server/serverFunctions";
+import { MatchCard } from "@/_components/MatchHistory/MatchCard";
 
 interface MatchHistoryProps {
   matchIds: string[];

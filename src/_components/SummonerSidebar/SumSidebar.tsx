@@ -1,7 +1,7 @@
-import type { AccountV1ByRiotId, LeagueV4ByPuuid, SummonerV4ByPuuid } from "@/_utils/riotApiTypes";
 import { rankFormatter } from "@/_utils/helpers";
 import { SumAccordion } from "@/_components/SummonerSidebar/SumAccordion";
 import { CopyButton } from "@/_components/SummonerSidebar/CopyButton";
+import type { AccountV1ByRiotId, LeagueV4ByPuuid, SummonerV4ByPuuid } from "@/_utils/riotApiTypes";
 
 interface SumSidebarProps {
   identity: AccountV1ByRiotId;

@@ -1,7 +1,4 @@
-import { getSumSpells } from "@/_utils/helpers";
-import { getRunes } from "@/_utils/helpers";
-import { getAugments } from "@/_utils/helpers";
-
+import { getAugments, getRunes, getSumSpells } from "@/_utils/helpers";
 import type { ParticipantDto } from "@/_utils/riotApiTypes";
 
 interface SumsRunesAugsProps {
