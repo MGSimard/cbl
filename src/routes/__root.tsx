@@ -25,7 +25,7 @@ export const Route = createRootRoute({
       { description: "A community-driven effort to identify and track disruptive players in League of Legends." },
       { name: "application-name", content: "Community Ban List" },
       { name: "apple-mobile-web-app-title", content: "Community Ban List" },
-      { name: "apple-mobile-web-app-capable", content: "yes" },
+      { name: "mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
       { name: "theme-color", content: "#c89c3c" },
       { name: "msapplication-TileColor", content: "#c89c3c" },
