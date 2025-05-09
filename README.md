@@ -40,6 +40,7 @@
 - [ ] Admin dashboard
 - [ ] Profile status appeal system
 - [ ] ...
+- [ ] Check React Compiler compatibility with TanStack Start
 - [ ] Reserve domain
 - [ ] Custom cursor(s)?
 - [ ] Twitter OAuth
