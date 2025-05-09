@@ -1,5 +1,5 @@
 import { rd } from "@/server/rd";
-import { type RateLimitAction } from "@/server/utils/server-enums";
+import { type RateLimitAction } from "@/server/utils/serverEnums";
 
 const ratelimitConfig: Record<RateLimitAction, { limit: number; windowSeconds: number }> = {
   mutate: { limit: 5, windowSeconds: 60 }, // 5 requests per 60 seconds

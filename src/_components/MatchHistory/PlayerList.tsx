@@ -34,16 +34,22 @@ export function PlayerListArena({ players, platformId }: { players: ParticipantD
 }
 
 function PlayerItem({ player, platformId }: { player: ParticipantDto; platformId: string }) {
+  const region = reverseRegionDictionary(platformId);
   const champ = getChamp(player.championId);
 
   return (
     <li key={player.summonerId}>
-      {/* <Link to={`/summoner/${reverseRegionDictionary(platformId)}/${player.riotIdGameName}-${player.riotIdTagline}`}>
+      <Link
+        to="/summoner/$region/$riotId"
+        params={{
+          region,
+          riotId: `${player.riotIdGameName}-${player.riotIdTagline}`,
+        }}>
         <div className="list-img-wrapper">
           <img src={`${champ.url}`} alt={champ.label} title={champ.label} />
         </div>
         <span>{player.riotIdGameName}</span>
-      </Link> */}
+      </Link>
     </li>
   );
 }

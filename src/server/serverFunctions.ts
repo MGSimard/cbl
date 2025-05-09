@@ -3,7 +3,7 @@ import { createServerFn } from "@tanstack/react-start";
 import { rateLimit } from "@/server/ratelimit";
 import { auth } from "@/server/auth";
 import { getWebRequest } from "@tanstack/react-start/server";
-import { getClientIP } from "@/server/utils/server-helpers";
+import { getClientIP } from "@/server/utils/serverHelpers";
 import {
   MatchV5ByMatchId,
   AccountV1ByRiotId,
@@ -45,6 +45,7 @@ export const getPlayerData = createServerFn({ method: "GET" })
       const targetIdentity = await fetch(
         `https://${cluster}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${summonerName}/${summonerTag}?api_key=${API_KEY}`
       ).then(async (res) => {
+        console.log(res);
         if (!res.ok) throw new Error(`ERROR (ACCOUNT-V1): ${res.status}`);
         return (await res.json()) as AccountV1ByRiotId;
       });
