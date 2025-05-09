@@ -19,7 +19,7 @@
 - [ ] Subtle animations
 - [x] Version dataset for images and stuff, unless I get my own assets instead of ddragon/cdragon links
 - [ ] ...
-- [ ] Background/Banner preload
+- [x] Background/Banner preload
 - [ ] ...
 - [x] Player profiles
 - [x] Copy icon on profile IDs
