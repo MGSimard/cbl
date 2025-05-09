@@ -1,4 +1,3 @@
-"use client";
 import { useState } from "react";
 
 interface SumAccordionProps {
@@ -6,7 +5,6 @@ interface SumAccordionProps {
   count: number;
   children?: React.ReactNode;
 }
-
 export function SumAccordion({ label, count, children }: SumAccordionProps) {
   const [isOpen, setIsOpen] = useState(false);
 

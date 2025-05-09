@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { ParticipantDto } from "@/utils/riotApiTypes";
-import { getChamp, reverseRegionDictionary } from "@/utils/helpers";
+import { Link } from "@tanstack/react-router";
+import { getChamp, reverseRegionDictionary } from "@/_utils/helpers";
+import type { ParticipantDto } from "@/_utils/riotApiTypes";
 
 export function PlayerListStandard({ players, platformId }: { players: ParticipantDto[]; platformId: string }) {
   const teamOne = players.filter((player) => player.teamId === 100);
@@ -38,12 +38,12 @@ function PlayerItem({ player, platformId }: { player: ParticipantDto; platformId
 
   return (
     <li key={player.summonerId}>
-      <Link href={`/summoner/${reverseRegionDictionary(platformId)}/${player.riotIdGameName}-${player.riotIdTagline}`}>
+      {/* <Link to={`/summoner/${reverseRegionDictionary(platformId)}/${player.riotIdGameName}-${player.riotIdTagline}`}>
         <div className="list-img-wrapper">
           <img src={`${champ.url}`} alt={champ.label} title={champ.label} />
         </div>
         <span>{player.riotIdGameName}</span>
-      </Link>
+      </Link> */}
     </li>
   );
 }

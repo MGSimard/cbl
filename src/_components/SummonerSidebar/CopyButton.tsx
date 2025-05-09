@@ -1,5 +1,4 @@
-"use client";
-import { IconClipboard } from "@/components/Icons";
+import { IconClipboard } from "@/_components/Icons";
 
 export function CopyButton({ toCopy }: { toCopy: string }) {
   return (

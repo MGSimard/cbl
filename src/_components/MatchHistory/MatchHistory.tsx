@@ -1,5 +1,5 @@
-import { MatchCard } from "@/components/MatchHistory/MatchCard";
-import { getMatchesData } from "@/server/actions";
+import { MatchCard } from "@/_components/MatchHistory/MatchCard";
+import { getMatchesData } from "@/server/serverFunctions";
 
 interface MatchHistoryProps {
   matchIds: string[];
@@ -8,7 +8,7 @@ interface MatchHistoryProps {
 }
 
 export async function MatchHistory({ matchIds, currentPlayer, regionPrefix }: MatchHistoryProps) {
-  const { data, message } = await getMatchesData(matchIds, regionPrefix);
+  const { data, message } = await getMatchesData({ data: { matchIds, regionPrefix } });
 
   if (!data) {
     return <main>PLACEHOLDER: {message}</main>;

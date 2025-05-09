@@ -11,8 +11,8 @@ import {
   LeagueV4ByPuuid,
   MatchV5ByPuuid,
 } from "@/_utils/riotApiTypes";
-// TODO: Import API_KEY from your config or environment
-const API_KEY = process.env.RIOT_API_KEY as string; // Temporary placeholder, replace as needed
+
+const API_KEY = process.env.RIOT_API_SECRET;
 
 interface GetPlayerDataReturnType {
   success: boolean;
@@ -27,9 +27,9 @@ interface GetPlayerDataReturnType {
 }
 
 export const getPlayerData = createServerFn({ method: "GET" })
-  .validator((input: { regionPrefix: string; summoner: string }) => input)
+  .validator((input: { regionPrefix: string; riotId: string }) => input)
   .handler(async ({ data }): Promise<GetPlayerDataReturnType> => {
-    const { regionPrefix, summoner } = data;
+    const { regionPrefix, riotId } = data;
 
     const req = getWebRequest();
     if (!req) return { success: false, message: "ERROR: Invalid request." };
@@ -41,7 +41,7 @@ export const getPlayerData = createServerFn({ method: "GET" })
 
     try {
       const [shard, cluster, fullRegion] = regionDictionary(regionPrefix); // e.g. ["NA1", "americas", "North America"]
-      const [summonerName, summonerTag] = summoner.split("-");
+      const [summonerName, summonerTag] = riotId.split("-");
       const targetIdentity = await fetch(
         `https://${cluster}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${summonerName}/${summonerTag}?api_key=${API_KEY}`
       ).then(async (res) => {
