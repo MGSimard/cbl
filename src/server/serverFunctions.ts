@@ -94,17 +94,17 @@ interface GetMatchesDataReturnType {
 export const getMatchesData = createServerFn({ method: "GET" })
   .validator((input: { matchIds: string[]; regionPrefix: string }) => input)
   .handler(async ({ data }): Promise<GetMatchesDataReturnType> => {
-    const { matchIds, regionPrefix } = data;
-
-    const req = getWebRequest();
-    if (!req) return { success: false, message: "ERROR: Invalid request." };
-    const session = await auth.api.getSession({ headers: req.headers });
-    // Session is optional, just using for ratelimit identifier
-
-    const rateLimitResult = await rateLimit("query", session?.user.id ?? (await getClientIP()));
-    if (!rateLimitResult.success) return { success: false, message: rateLimitResult.message };
-
     try {
+      const { matchIds, regionPrefix } = data;
+
+      const req = getWebRequest();
+      if (!req) throw new Error("ERROR: Invalid request.");
+      const session = await auth.api.getSession({ headers: req.headers });
+      // Session is optional, just using for ratelimit identifier
+
+      const rateLimitResult = await rateLimit("query", session?.user.id ?? (await getClientIP()));
+      if (!rateLimitResult.success) throw new Error(rateLimitResult.message);
+
       const [_, cluster, __] = regionDictionary(regionPrefix);
       const matchesData = (
         await Promise.allSettled(
