@@ -1,6 +1,7 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { getMatchesData } from "@/server/serverFunctions";
 import { MatchCard } from "@/_components/MatchHistory/MatchCard";
+import { Suspense } from "react";
 
 interface MatchHistoryProps {
   matchIds: string[];
@@ -12,7 +13,14 @@ export function MatchHistory({ matchIds, currentPlayer, regionPrefix }: MatchHis
   return (
     <section id="match-history">
       <h2>Recent games (Last 20 played)</h2>
-      <MatchList matchIds={matchIds} currentPlayer={currentPlayer} regionPrefix={regionPrefix} />
+      <Suspense
+        fallback={
+          <div id="match-list-loading">
+            <div className="spinner"></div>
+          </div>
+        }>
+        <MatchList matchIds={matchIds} currentPlayer={currentPlayer} regionPrefix={regionPrefix} />
+      </Suspense>
     </section>
   );
 }

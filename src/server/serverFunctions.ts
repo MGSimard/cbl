@@ -2,7 +2,7 @@ import { env } from "@/env";
 import { createServerFn } from "@tanstack/react-start";
 import { getWebRequest } from "@tanstack/react-start/server";
 import { auth } from "@/server/auth";
-import { rateLimit } from "@/server/ratelimit";
+import { rateLimit } from "@/server/rateLimit";
 import { getClientIP } from "@/server/utils/serverHelpers";
 import { regionDictionary } from "@/_utils/helpers";
 import type {
@@ -56,7 +56,7 @@ export const getPlayerData = createServerFn({ method: "GET" })
           return (await res.json()) as SummonerV4ByPuuid;
         }),
         fetch(
-          `https://${cluster}.api.riotgames.com/lol/match/v5/matches/by-puuid/${targetIdentity.puuid}/ids?start=0&count=20&api_key=${API_KEY}`
+          `https://${cluster}.api.riotgames.com/lol/match/v5/matches/by-puuid/${targetIdentity.puuid}/ids?start=0&count=3&api_key=${API_KEY}`
         ).then(async (res) => {
           if (!res.ok) throw new Error(`ERROR (MATCH-V5): ${res.status}`);
           return (await res.json()) as MatchV5ByPuuid;

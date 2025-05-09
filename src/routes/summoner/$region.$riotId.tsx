@@ -16,9 +16,7 @@ function PageSummoner() {
   const data = Route.useLoaderData();
   const { region: regionPrefix } = useParams({ from: Route.id });
 
-  if (!data.data) {
-    return <main>PLACEHOLDER: (Temporary 24h dev API key probably expired) - {data.message}</main>;
-  }
+  if (!data.data) throw new Error(data.message);
 
   const { identity, profile, rank, matches, region } = data.data;
 
