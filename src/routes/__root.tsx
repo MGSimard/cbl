@@ -2,8 +2,8 @@ import type { ReactNode } from "react";
 import { Outlet, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { NotFound } from "@/_components/NotFound";
 import { Error } from "@/_components/Error";
-import "@/_styles/globals.css";
-import "@/_styles/fonts.css";
+import globalCss from "@/_styles/globals.css?url";
+import fontsCss from "@/_styles/fonts.css?url";
 
 export const Route = createRootRoute({
   errorComponent: Error,
@@ -53,6 +53,8 @@ export const Route = createRootRoute({
       { name: "twitter:image", content: "https://cbl-ten.vercel.app/metadata/twitter-image.png" },
     ],
     links: [
+      { rel: "stylesheet", href: globalCss },
+      { rel: "stylesheet", href: fontsCss },
       { rel: "canonical", href: "https://cbl-ten.vercel.app/" },
       { rel: "manifest", href: "/metadata/manifest.webmanifest" },
       { rel: "shortcut icon", href: "/metadata/favicon.ico" },
