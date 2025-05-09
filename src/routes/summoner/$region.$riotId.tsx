@@ -14,8 +14,8 @@ export const Route = createFileRoute("/summoner/$region/$riotId")({
 });
 
 function RouteComponent() {
-  const { region: regionPrefix } = useParams({ from: Route.id });
   const data = Route.useLoaderData();
+  const { region: regionPrefix } = useParams({ from: Route.id });
 
   if (!data.data) {
     return <main>PLACEHOLDER: (Temporary 24h dev API key probably expired) - {data.message}</main>;

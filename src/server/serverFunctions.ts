@@ -26,7 +26,6 @@ interface GetPlayerDataReturnType {
   };
   message: string;
 }
-
 export const getPlayerData = createServerFn({ method: "GET" })
   .validator((input: { regionPrefix: string; riotId: string }) => input)
   .handler(async ({ data }): Promise<GetPlayerDataReturnType> => {
@@ -129,3 +128,13 @@ export const getMatchesData = createServerFn({ method: "GET" })
       return { success: false, message: err instanceof Error ? err.message : "UNKNOWN ERROR." };
     }
   });
+
+// getReportsByPuuid
+
+// submitReport
+
+// approveReport
+
+// rejectReport
+
+// cancelReport
