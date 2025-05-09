@@ -242,13 +242,13 @@ option:hover {
   cursor: pointer;
 }
 .spinner {
-  width: 10rem;
-  height: 10rem;
+  width: 8rem;
+  height: 8rem;
   border-radius: 999rem;
   background: conic-gradient(transparent, var(--clrBlue2));
-  mask: radial-gradient(circle at 50% 50%, transparent 40%, black 41%);
-  -webkit-mask: radial-gradient(circle at 50% 50%, transparent 40%, black 41%);
-  animation: spin 5s linear infinite;
+  mask: radial-gradient(circle at 50% 50%, transparent 48%, black 49%);
+  -webkit-mask: radial-gradient(circle at 50% 50%, transparent 48%, black 49%);
+  animation: spin 6s linear infinite;
 }
 /**/
 /* ANIMATIONS*/
