@@ -1,9 +1,9 @@
 import type { ReactNode } from "react";
 import { createRootRouteWithContext, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 import type { QueryClient } from "@tanstack/react-query";
-import { NotFound } from "@/_components/NotFound";
-import { Error } from "@/_components/Error";
-import { Footer } from "@/_components/Footer";
+import { NotFound } from "@/_components/Core/NotFound";
+import { Error } from "@/_components/Core/Error";
+import { Footer } from "@/_components/Core/Footer";
 import globalCss from "@/_styles/globals.css?url";
 import fontsCss from "@/_styles/fonts.css?url";
 
