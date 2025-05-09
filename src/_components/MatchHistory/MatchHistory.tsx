@@ -1,5 +1,6 @@
 import { MatchCard } from "@/_components/MatchHistory/MatchCard";
 import { getMatchesData } from "@/server/serverFunctions";
+import { useSuspenseQuery } from "@tanstack/react-query";
 
 interface MatchHistoryProps {
   matchIds: string[];
@@ -7,21 +8,30 @@ interface MatchHistoryProps {
   regionPrefix: string;
 }
 
-export async function MatchHistory({ matchIds, currentPlayer, regionPrefix }: MatchHistoryProps) {
-  const { data, message } = await getMatchesData({ data: { matchIds, regionPrefix } });
+export function MatchHistory({ matchIds, currentPlayer, regionPrefix }: MatchHistoryProps) {
+  return (
+    <section id="match-history">
+      <h2>Recent games (Last 20 played)</h2>
+      <MatchList matchIds={matchIds} currentPlayer={currentPlayer} regionPrefix={regionPrefix} />
+    </section>
+  );
+}
 
-  if (!data) {
-    return <main>PLACEHOLDER: {message}</main>;
+function MatchList({ matchIds, currentPlayer, regionPrefix }: MatchHistoryProps) {
+  const { data } = useSuspenseQuery({
+    queryKey: ["matches", matchIds, currentPlayer],
+    queryFn: () => getMatchesData({ data: { matchIds, regionPrefix } }),
+  });
+
+  if (!data.success || !data.data) {
+    return <main>PLACEHOLDER: {data.message}</main>;
   }
 
   return (
-    <section id="match-history">
-      <h2>Recent games (Last {data.length} played)</h2>
-      <ul>
-        {data.map((match) => (
-          <MatchCard key={match.metadata.matchId} currentPlayer={currentPlayer} matchData={match} />
-        ))}
-      </ul>
-    </section>
+    <ul>
+      {data.data.map((match) => (
+        <MatchCard key={match.metadata.matchId} currentPlayer={currentPlayer} matchData={match} />
+      ))}
+    </ul>
   );
 }

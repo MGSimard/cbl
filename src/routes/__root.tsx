@@ -1,11 +1,12 @@
 import type { ReactNode } from "react";
-import { Outlet, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { createRootRouteWithContext, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
+import type { QueryClient } from "@tanstack/react-query";
 import { NotFound } from "@/_components/NotFound";
 import { Error } from "@/_components/Error";
 import globalCss from "@/_styles/globals.css?url";
 import fontsCss from "@/_styles/fonts.css?url";
 
-export const Route = createRootRoute({
+export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   errorComponent: Error,
   notFoundComponent: NotFound,
   // https://tanstack.com/router/latest/docs/framework/react/guide/document-head-management

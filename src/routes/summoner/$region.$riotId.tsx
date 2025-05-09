@@ -24,7 +24,7 @@ function RouteComponent() {
   return (
     <main id="sum-main">
       <SumSidebar identity={identity} profile={profile} rank={rank} />
-      {/* <MatchHistory matchIds={matches} currentPlayer={profile.puuid} regionPrefix={region} /> */}
+      <MatchHistory matchIds={matches} currentPlayer={profile.puuid} regionPrefix={region} />
     </main>
   );
 }
