@@ -265,7 +265,7 @@ option:hover {
 }
 /**/
 /* THEME TOGGLE */
-#theme-toggle {
+/* #theme-toggle {
   all: unset;
   position: fixed;
   top: var(--sitePadding);
@@ -299,7 +299,7 @@ option:hover {
   &:checked::before {
     transform: translateX(100%);
   }
-}
+} */
 /**/
 /* HOMEPAGE */
 #hero {
