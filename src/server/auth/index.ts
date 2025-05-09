@@ -1,6 +1,8 @@
 import { betterAuth } from "better-auth";
-import { admin } from "better-auth/plugins";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
+import { reactStartCookies } from "better-auth/react-start";
+import { admin } from "better-auth/plugins";
+
 import { db } from "@/server/db";
 import { rd } from "@/server/rd";
 
@@ -19,6 +21,7 @@ export const auth = betterAuth({
   },
   secondaryStorage: rd,
   plugins: [
+    reactStartCookies(),
     admin(), // Administration docs: https://www.better-auth.com/docs/plugins/admin
   ],
   socialProviders: {
