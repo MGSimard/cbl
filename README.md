@@ -54,7 +54,7 @@
 
 ## Tech Stack
 
-- Next.js
+- TanStack Start (TSRouter, TSQuery)
 - React (Compiler Enabled)
 - TypeScript
 - Neon (PostgreSQL)
@@ -66,5 +66,4 @@
 - t3-oss/env
 - Node
 - pnpm
-- Vercel (Hosting)
-- React Scan (Perf Debugging)
+- Netlify (Hosting)
