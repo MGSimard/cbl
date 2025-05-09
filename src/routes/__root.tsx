@@ -68,7 +68,7 @@ export const Route = createRootRoute({
         as: "font",
         type: "font/woff2",
         crossOrigin: "anonymous",
-        priority: "high",
+        fetchPriority: "high",
       },
       {
         rel: "preload",
@@ -76,7 +76,7 @@ export const Route = createRootRoute({
         as: "font",
         type: "font/woff2",
         crossOrigin: "anonymous",
-        priority: "high",
+        fetchPriority: "high",
       },
     ],
     scripts: [],
