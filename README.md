@@ -2,53 +2,45 @@
 
 ## Task List
 
-- [x] Fuck Next, migrating to TanStack Start.
-
-- [x] Finish scaffolding
+- [x] Scaffolding
 - [x] Basic OAuth
-- [x] Color palettes (Dark & Light - Dark Default)
-- [x] Theme switch
-- [x] Implement fonts (BeaufortForLOL, Spiegel)
-- [x] Font Preloads
-- [ ] Better decorators/dividers (SVG)
-- [x] Animate the decorator line on render/in-view (left and right expand, clip-path?)
-- [x] Branding
-- [x] Metadata, icons, social media images etc
-- [x] 404
-- [x] error page
-- [ ] Subtle animations
-- [x] Version dataset for images and stuff, unless I get my own assets instead of ddragon/cdragon links
-- [ ] ...
-- [x] Background/Banner preload
-- [ ] ...
-- [x] Player profiles
-- [x] Copy icon on profile IDs
-- [x] Identifiers (Past usernames later, pull from reports)
-- [ ] Account status (Placeholder)
-- [ ] Stats
-- [x] Match history
-- [x] Make match history cards responsive
-- [ ] Set up .rofl file sanitation
-- [ ] Validation
+- [x] Identity (Color Palette, Logos, Metadata, Fonts, etc)
+- [x] Utility Routes (404, Error Page)
+- [x] Datasets
+- [ ] Homepage
+  - [ ] Summoner Search (Riot ID)
+  - [ ] Search by PUUID
+- [x] Summoner Profiles
+  - [x] Sidebar
+  - [x] Match History (Match data, Cards, etc)
+  - [x] Copy identifer functionality
+  - [ ] Account status
+  - [ ] Refresh button
+  - [ ] Potentially other stats
+  - [ ] Evidence panel (Approved Reports)
+  - [ ] Appeal system
 - [x] Ratelimiting
-- [ ] Reporting feature (File upload, file scanning/sanitization)
-- [ ] Evidence panel
-- [ ] Search by UUID (Homepage)
-- [ ] Suspense loads
-- [ ] ...
-- [ ] RBAC
-- [ ] Admin dashboard
-- [ ] Profile status appeal system
+- [x] Migrate to TanStack Start
+- [ ] Animation pass
+- [ ] Report feature
+  - [ ] Dialog Form (PUUID, Current Username, Offense, Evidence, Message, Report Author)
+  - [ ] Server Function (Auth, Rate limit, Validation, DB write, Stale Cache)
+  - [ ] .ROFL file sanitation
+- [ ] Admin Dashboard
+  - [ ] RBAC
+  - [ ] Table of offenders
+  - [ ] Reports panel, stats, etc
+  - [ ] Approve/Deny reports, cancel evidence, ban false reporters
 - [ ] ...
 - [ ] Check React Compiler compatibility with TanStack Start
+- [ ] ...
 - [ ] Reserve domain
-- [ ] Custom cursor(s)?
 - [ ] Twitter OAuth
 - [ ] Microsoft OAuth
-- [ ] Metadata
-- [ ] Deploy
+- [ ] Metadata pass
 - [ ] Adjust OAuth vars & callback URLs
-
+- [ ] Deploy
+- [ ] ...
 - [ ] Download old clients to view old replays (https://replays.xyz/old-clients)
 - [ ] Download ReplayBook (https://www.fraxiinus.dev/ReplayBook/)
 
