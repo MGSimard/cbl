@@ -8,8 +8,14 @@ import globalCss from "@/_styles/globals.css?url";
 import fontsCss from "@/_styles/fonts.css?url";
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  errorComponent: Error,
-  notFoundComponent: NotFound,
+  errorComponent: (props) => {
+    return (
+      <RootDocument>
+        <Error {...props} />
+      </RootDocument>
+    );
+  },
+  notFoundComponent: () => <NotFound />,
   // https://tanstack.com/router/latest/docs/framework/react/guide/document-head-management
   head: () => ({
     meta: [
