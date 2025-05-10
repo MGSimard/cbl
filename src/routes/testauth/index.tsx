@@ -7,7 +7,6 @@ export const Route = createFileRoute("/testauth/")({
 
 function RouteComponent() {
   const { data: session } = authClient.useSession();
-  console.log(session);
 
   return (
     <main>
