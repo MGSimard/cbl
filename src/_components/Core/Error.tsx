@@ -1,6 +1,7 @@
-import { Link } from "@tanstack/react-router";
+import { Link, ErrorComponent } from "@tanstack/react-router";
+import type { ErrorComponentProps } from "@tanstack/react-router";
 
-export function Error({ error }: { error: Error }) {
+export function Error({ error }: ErrorComponentProps) {
   return (
     <main id="not-found">
       <h1>
@@ -9,7 +10,7 @@ export function Error({ error }: { error: Error }) {
         </span>
         <span id="nf-two">AN ERROR OCCURRED</span>
       </h1>
-      <p id="error-message">{error.message}</p>
+      <ErrorComponent error={error} />
       <Link to="/" className="btn-primary-action">
         <span>RETURN HOME</span>
       </Link>

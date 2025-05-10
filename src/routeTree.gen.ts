@@ -12,6 +12,7 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as ThrowerrorIndexImport } from './routes/throwerror/index'
 import { Route as TestauthIndexImport } from './routes/testauth/index'
 import { Route as SummonerRegionRiotIdImport } from './routes/summoner/$region.$riotId'
 
@@ -20,6 +21,12 @@ import { Route as SummonerRegionRiotIdImport } from './routes/summoner/$region.$
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ThrowerrorIndexRoute = ThrowerrorIndexImport.update({
+  id: '/throwerror/',
+  path: '/throwerror/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -53,6 +60,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TestauthIndexImport
       parentRoute: typeof rootRoute
     }
+    '/throwerror/': {
+      id: '/throwerror/'
+      path: '/throwerror'
+      fullPath: '/throwerror'
+      preLoaderRoute: typeof ThrowerrorIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/summoner/$region/$riotId': {
       id: '/summoner/$region/$riotId'
       path: '/summoner/$region/$riotId'
@@ -68,12 +82,14 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/testauth': typeof TestauthIndexRoute
+  '/throwerror': typeof ThrowerrorIndexRoute
   '/summoner/$region/$riotId': typeof SummonerRegionRiotIdRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/testauth': typeof TestauthIndexRoute
+  '/throwerror': typeof ThrowerrorIndexRoute
   '/summoner/$region/$riotId': typeof SummonerRegionRiotIdRoute
 }
 
@@ -81,27 +97,35 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/testauth/': typeof TestauthIndexRoute
+  '/throwerror/': typeof ThrowerrorIndexRoute
   '/summoner/$region/$riotId': typeof SummonerRegionRiotIdRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/testauth' | '/summoner/$region/$riotId'
+  fullPaths: '/' | '/testauth' | '/throwerror' | '/summoner/$region/$riotId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/testauth' | '/summoner/$region/$riotId'
-  id: '__root__' | '/' | '/testauth/' | '/summoner/$region/$riotId'
+  to: '/' | '/testauth' | '/throwerror' | '/summoner/$region/$riotId'
+  id:
+    | '__root__'
+    | '/'
+    | '/testauth/'
+    | '/throwerror/'
+    | '/summoner/$region/$riotId'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   TestauthIndexRoute: typeof TestauthIndexRoute
+  ThrowerrorIndexRoute: typeof ThrowerrorIndexRoute
   SummonerRegionRiotIdRoute: typeof SummonerRegionRiotIdRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   TestauthIndexRoute: TestauthIndexRoute,
+  ThrowerrorIndexRoute: ThrowerrorIndexRoute,
   SummonerRegionRiotIdRoute: SummonerRegionRiotIdRoute,
 }
 
@@ -117,6 +141,7 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/testauth/",
+        "/throwerror/",
         "/summoner/$region/$riotId"
       ]
     },
@@ -125,6 +150,9 @@ export const routeTree = rootRoute
     },
     "/testauth/": {
       "filePath": "testauth/index.tsx"
+    },
+    "/throwerror/": {
+      "filePath": "throwerror/index.tsx"
     },
     "/summoner/$region/$riotId": {
       "filePath": "summoner/$region.$riotId.tsx"
