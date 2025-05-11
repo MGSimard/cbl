@@ -1,6 +1,6 @@
 /* THEME */
 :root {
-  --siteMaxWidth: 1440px;
+  /* --siteMaxWidth: 1440px; */
   --sitePadding: 2rem;
   --fontBeaufort: "Beaufort For LOL", "Times New Roman", "Georgia", "Garamond", "Times", "serif";
   --fontSpiegel: "Spiegel", "-apple-system", "BlinkMacSystemFont", "avenir next", "avenir", "segoe ui", "helvetica neue",
@@ -53,6 +53,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  outline: 1px solid red;
 }
 html {
   font-size: 62.5%;
@@ -64,21 +65,12 @@ html {
     scroll-behavior: auto;
   }
 }
-.preload-force {
-  display: none;
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: -9999rem;
-  pointer-events: none;
-}
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100dvh;
-  padding: 0 var(--sitePadding);
   font-family: var(--fontSpiegel);
   font-size: 1.6rem;
   color: var(--clrText);
@@ -117,7 +109,6 @@ body > * {
 header,
 main,
 footer {
-  max-width: var(--siteMaxWidth);
   width: 100%;
   margin: 0 auto;
 }
@@ -130,12 +121,10 @@ header {
 }
 main {
   flex-grow: 1;
-  padding: 6rem 0;
 }
 section {
 }
 footer {
-  padding: 2rem 0;
   font-size: 1.2rem;
   color: var(--clrTextMuted);
   text-align: center;
@@ -317,6 +306,9 @@ option:hover {
     transform: translateX(100%);
   }
 } */
+/**/
+/* NAVBAR */
+
 /**/
 /* HOMEPAGE */
 #hero {
