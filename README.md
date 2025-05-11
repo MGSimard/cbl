@@ -31,6 +31,7 @@
   - [ ] Reports panel, stats, etc
   - [ ] Approve/Deny reports, cancel evidence, ban false reporters
 - [ ] ...
+- [ ] ISR with caching headers
 - [ ] Check React Compiler compatibility with TanStack Start
 - [ ] ...
 - [ ] Animation pass

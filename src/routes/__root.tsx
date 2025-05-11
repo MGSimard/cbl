@@ -89,7 +89,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         fetchPriority: "high",
       },
     ],
-    scripts: [],
   }),
   component: RootComponent,
 });
