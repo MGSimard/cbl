@@ -9,7 +9,7 @@ export function Nav() {
   const isMobile = useIsMobile();
 
   return (
-    <nav id="nav">
+    <nav id="nav" data-expanded={isExpanded}>
       <div id="nav-left">
         <img id="nav-logo" alt="CBL Logo" />
         {!isExpanded && <NavTrigger />}

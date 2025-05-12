@@ -884,11 +884,8 @@ a.btn-primary-action {
   .nav-trigger {
     display: block;
   }
-  #nav {
+  #nav[data-expanded="false"] {
     grid-template-columns: auto 0;
-  }
-  #nav:has(#nav-right[inert]) {
-    grid-template-columns: auto 30rem;
   }
   main {
     padding: calc(var(--sitePadding) + var(--navHeaderHeight)) var(--sitePadding) var(--sitePadding) var(--sitePadding);
