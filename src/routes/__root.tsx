@@ -78,7 +78,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         as: "image",
         type: "image/webp",
         fetchPriority: "high",
-        crossOrigin: "anonymous",
       },
       {
         rel: "preload",
@@ -86,7 +85,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         as: "image",
         type: "image/svg+xml",
         fetchPriority: "high",
-        crossOrigin: "anonymous",
       },
       {
         rel: "preload",
