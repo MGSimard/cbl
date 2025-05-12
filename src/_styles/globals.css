@@ -1008,6 +1008,9 @@ a.btn-primary-action {
     flex-grow: unset;
     align-items: center;
   }
+  .match-metadata {
+    margin-left: 0;
+  }
   .match-players {
     margin-left: 0;
   }
