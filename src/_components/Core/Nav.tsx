@@ -2,9 +2,6 @@ import { authClient } from "@/server/auth/auth-client";
 import { NavGroup } from "./NavGroup";
 
 export function Nav() {
-  const session = authClient.useSession();
-  console.log(session);
-
   return (
     <nav id="nav">
       <div id="nav-left">
@@ -20,10 +17,8 @@ export function Nav() {
             </span>
           </div>
           <div id="nav-identity">
-            <span id="nav-email" title={session.data?.user?.email ?? "-"}>
-              {session.data?.user?.email ?? "-"}
-            </span>
-            <span id="nav-rank">{session.data?.user?.role ?? "Guest"}</span>
+            <span id="nav-email">-</span>
+            <span id="nav-rank">-</span>
           </div>
         </div>
         <NavGroup label="Aliases" count={1}>
