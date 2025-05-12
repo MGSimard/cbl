@@ -284,6 +284,10 @@ option:hover {
   display: none;
   margin-left: auto;
 }
+.nav-trigger svg {
+  width: 3rem;
+  height: 3rem;
+}
 #nav {
   position: fixed;
   inset: 0;
@@ -880,8 +884,11 @@ a.btn-primary-action {
   .nav-trigger {
     display: block;
   }
-  #nav:has(#nav-right[inert]) {
+  #nav {
     grid-template-columns: auto 0;
+  }
+  #nav:has(#nav-right[inert]) {
+    grid-template-columns: auto 30rem;
   }
   main {
     padding: calc(var(--sitePadding) + var(--navHeaderHeight)) var(--sitePadding) var(--sitePadding) var(--sitePadding);
