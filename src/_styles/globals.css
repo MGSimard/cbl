@@ -58,7 +58,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  outline: 1px solid red;
+  /* outline: 1px solid red; */
 }
 html {
   font-size: 62.5%;
@@ -648,6 +648,86 @@ a.btn-primary-action {
   backdrop-filter: blur(0.5rem);
   overflow: hidden;
 }
+/* SUMMONER PROFILE HEADER */
+#sum-header {
+  display: flex;
+  gap: 1rem;
+  white-space: nowrap;
+  padding: var(--sitePadding) 0;
+}
+#sum-avatar {
+  --borderWidth: 0.2rem;
+  flex-shrink: 0;
+  position: relative;
+  width: 6rem;
+  height: 6rem;
+  padding: var(--borderWidth);
+  background: var(--clrBorderRadial);
+  border-radius: 999rem;
+}
+#sum-avatar::after {
+  content: "";
+  position: absolute;
+  inset: var(--borderWidth);
+  background: radial-gradient(circle, transparent 60%, rgba(0, 0, 0, 0.7) 70%);
+  border-radius: 999rem;
+  pointer-events: none;
+}
+#sum-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 999rem;
+}
+#sum-level {
+  position: absolute;
+  left: 50%;
+  bottom: -1ch;
+  display: block;
+  min-width: 2em;
+  min-height: 1em;
+  padding: 0.1rem;
+  line-height: 1;
+  font-family: var(--fontBeaufort);
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+  background: var(--clrBorderRadial);
+  transform: translateX(-50%);
+  clip-path: polygon(0.7rem 0, calc(100% - 0.7rem) 0, 100% 50%, calc(100% - 0.7rem) 100%, 0.7rem 100%, 0 50%);
+  z-index: 1;
+}
+#sum-level span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0.2rem 0.7rem;
+  clip-path: polygon(0.65rem 0, calc(100% - 0.65rem) 0, 100% 50%, calc(100% - 0.65rem) 100%, 0.65rem 100%, 0 50%);
+  background: var(--clrGreyCool);
+}
+#sum-identity {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+#sum-name {
+  font-family: var(--fontBeaufort);
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+#sum-tag {
+  color: var(--clrTextMuted);
+  font-weight: 400;
+}
+#sum-rank {
+  font-size: 1.2rem;
+  color: var(--clrSubheading);
+  text-overflow: ellipsis;
+  text-transform: capitalize;
+  overflow: hidden;
+}
 /* MATCH HISTORY */
 #match-history {
   display: flex;
@@ -656,7 +736,7 @@ a.btn-primary-action {
   overflow: hidden;
 }
 #match-history > h2 {
-  padding: 1.5rem;
+  padding: 1.5rem 0;
   font-size: 1.6rem;
 }
 #match-list-loading {
@@ -676,7 +756,7 @@ a.btn-primary-action {
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  padding: 1.5rem;
+  padding: 1.5rem 1.5rem 1.5rem 0;
   &:not(:last-child) {
     border-bottom: 1px solid var(--clrBorderMuted);
   }

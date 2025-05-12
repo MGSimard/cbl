@@ -1,7 +1,7 @@
 import { createFileRoute, useParams } from "@tanstack/react-router";
 import { getPlayerData } from "@/server/serverFunctions";
 import { MatchHistory } from "@/_components/MatchHistory/MatchHistory";
-import { SumSidebar } from "@/_components/SummonerSidebar/SumSidebar";
+import { rankFormatter } from "@/_utils/helpers";
 
 export const Route = createFileRoute("/summoner/$region/$riotId")({
   component: PageSummoner,
@@ -22,7 +22,27 @@ function PageSummoner() {
 
   return (
     <main id="summoner-profile">
-      {/* <SumSidebar identity={identity} profile={profile} rank={rank} /> */}
+      <div id="sum-header">
+        <div id="sum-avatar">
+          <img
+            alt="Icon"
+            src={`https://ddragon.leagueoflegends.com/cdn/15.9.1/img/profileicon/${profile.profileIconId}.png`}
+          />
+          <span id="sum-level">
+            <span>{profile.summonerLevel}</span>
+          </span>
+        </div>
+        <div id="sum-identity">
+          <span id="sum-name" title={identity.gameName}>
+            {identity.gameName}
+            <span id="sum-tag">#{identity.tagLine}</span>
+          </span>
+          <span id="sum-rank">{rankFormatter(rank)}</span>
+          <span id="sum-region">
+            <span>{region}</span>
+          </span>
+        </div>
+      </div>
       <MatchHistory matchIds={matches} currentPlayer={profile.puuid} regionPrefix={regionPrefix} />
     </main>
   );
