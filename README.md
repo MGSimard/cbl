@@ -19,6 +19,7 @@
   - [ ] Potentially other stats
   - [ ] Evidence panel (Approved Reports)
   - [ ] Appeal system
+  - [ ] Rework match card layout in responsive states
 - [x] Ratelimiting
 - [x] Migrate to TanStack Start
 - [ ] Report feature
