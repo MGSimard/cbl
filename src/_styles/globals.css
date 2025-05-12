@@ -410,7 +410,7 @@ option:hover {
   border-bottom: 1px solid var(--clrBorderMuted);
   scrollbar-width: thin;
   scrollbar-color: var(--clrGold5) transparent;
-  overflow: hidden scroll;
+  overflow: hidden auto;
 }
 .nav-group > button {
   display: flex;
