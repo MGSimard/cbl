@@ -322,6 +322,8 @@ option:hover {
 }
 #nav-right {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
   background: linear-gradient(var(--clrHextechBlack), var(--clrBlue6) 18%, var(--clrHextechBlack));
   overflow: hidden;
   pointer-events: auto;
@@ -403,8 +405,12 @@ option:hover {
   overflow: hidden;
 }
 #nav-content {
+  flex-grow: 1;
   padding: var(--navPadding) 0;
   border-bottom: 1px solid var(--clrBorderMuted);
+  scrollbar-width: thin;
+  scrollbar-color: var(--clrGold5) transparent;
+  overflow: hidden scroll;
 }
 .nav-group > button {
   display: flex;
