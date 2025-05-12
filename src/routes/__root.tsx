@@ -7,8 +7,6 @@ import { Nav } from "@/_components/Nav/Nav";
 import { Footer } from "@/_components/Core/Footer";
 import globalCss from "@/_styles/globals.css?url";
 import fontsCss from "@/_styles/fonts.css?url";
-import { scan } from "react-scan";
-import { useEffect } from "react";
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   errorComponent: (props) => {
@@ -105,13 +103,6 @@ function RootComponent() {
 }
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
-  useEffect(() => {
-    // Make sure to run this only after hydration
-    scan({
-      enabled: true,
-    });
-  }, []);
-
   return (
     <html>
       <head>
