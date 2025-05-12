@@ -91,7 +91,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "/fonts/BeaufortForLOL/BFL-bold.woff2",
         as: "font",
         type: "font/woff2",
-        crossOrigin: "anonymous",
         fetchPriority: "high",
       },
       {
@@ -99,7 +98,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "/fonts/Spiegel/spiegel-regular.woff2",
         as: "font",
         type: "font/woff2",
-        crossOrigin: "anonymous",
         fetchPriority: "high",
       },
     ],
