@@ -1,11 +1,13 @@
 import { useNavState } from "@/_components/Nav/NavContextProvider";
 import { NavGroup } from "@/_components/Nav/NavGroup";
+import { useIsMobile } from "@/_hooks/useIsMobile";
 
 export function NavRight() {
   const { isExpanded } = useNavState();
+  const isMobile = useIsMobile();
 
   return (
-    <div id="nav-right" inert={!isExpanded}>
+    <div id="nav-right" inert={!isExpanded && isMobile}>
       <div id="nav-header">
         <div id="nav-avatar">
           <img alt="Icon" />
