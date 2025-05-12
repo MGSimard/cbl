@@ -9,7 +9,7 @@ export function Nav() {
     <nav id="nav">
       <div id="nav-left">
         <img id="nav-logo" alt="CBL Logo" />
-        <span> test</span>
+        <span>test</span>
       </div>
       <div id="nav-right">
         <div id="nav-header">
