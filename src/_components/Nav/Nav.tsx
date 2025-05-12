@@ -4,12 +4,13 @@ import { useNavState } from "@/_components/Nav/NavContextProvider";
 import { NavTrigger } from "@/_components/Nav/NavTrigger";
 import { NavGroup } from "@/_components/Nav/NavGroup";
 import { useIsMobile } from "@/_hooks/useIsMobile";
+import { SignIn } from "@/_components/Nav/SignIn";
+import { SignOut } from "@/_components/Nav/SignOut";
 
 export function Nav() {
   const { isExpanded } = useNavState();
   const isMobile = useIsMobile();
   const { data: session, isPending, error, refetch } = authClient.useSession();
-  console.log(session);
 
   const handleFailingAvatar = (e: React.SyntheticEvent<HTMLImageElement>) => {
     e.currentTarget.onerror = null;
@@ -35,6 +36,7 @@ export function Nav() {
           <div id="nav-identity">
             <span id="nav-email">{session?.user?.email ?? "Guest"}</span>
             <span id="nav-rank">{session?.user?.role ?? "-"}</span>
+            {session?.user ? <SignOut /> : <SignIn />}
           </div>
           {isExpanded && <NavTrigger />}
         </div>
