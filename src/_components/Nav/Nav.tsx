@@ -14,7 +14,7 @@ export function Nav() {
         <img id="nav-logo" alt="CBL Logo" />
         {!isExpanded && <NavTrigger />}
       </div>
-      <div id="nav-right" inert={!isExpanded && isMobile}>
+      <div id="nav-right" inert={!isExpanded && isMobile.mounted && isMobile.isMobile}>
         <div id="nav-header">
           <div id="nav-avatar">
             <img alt="Icon" />
