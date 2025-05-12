@@ -3,7 +3,7 @@ import { createRootRouteWithContext, HeadContent, Outlet, Scripts } from "@tanst
 import type { QueryClient } from "@tanstack/react-query";
 import { Error } from "@/_components/Core/Error";
 import { NotFound } from "@/_components/Core/NotFound";
-import { Nav } from "@/_components/Core/Nav";
+import { Nav } from "@/_components/Nav/Nav";
 import { Footer } from "@/_components/Core/Footer";
 import globalCss from "@/_styles/globals.css?url";
 import fontsCss from "@/_styles/fonts.css?url";
