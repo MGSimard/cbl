@@ -402,6 +402,7 @@ option:hover {
   font-weight: 700;
   text-transform: uppercase;
   text-align: left;
+  white-space: nowrap;
   &:not(:disabled):hover {
     background: var(--clrGreyCool);
   }
