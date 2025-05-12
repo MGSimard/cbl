@@ -1,8 +1,8 @@
-import { NavTrigger } from "@/_components/Nav/NavTrigger";
-
 import { useNavState } from "@/_components/Nav/NavContextProvider";
+import { NavTrigger } from "@/_components/Nav/NavTrigger";
 import { NavGroup } from "@/_components/Nav/NavGroup";
 import { useIsMobile } from "@/_hooks/useIsMobile";
+import { Link } from "@tanstack/react-router";
 
 export function Nav() {
   const { isExpanded } = useNavState();
@@ -11,7 +11,9 @@ export function Nav() {
   return (
     <nav id="nav" data-expanded={isExpanded}>
       <div id="nav-left">
-        <img id="nav-logo" alt="CBL Logo" />
+        <Link to="/" id="nav-logo">
+          <img src="/metadata/icon.svg" alt="CBL Logo" />
+        </Link>
         {!isExpanded && <NavTrigger />}
       </div>
       <div id="nav-right" inert={!isExpanded && isMobile.mounted && isMobile.isMobile}>

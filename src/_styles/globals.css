@@ -58,7 +58,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* outline: 1px solid red; */
+  outline: 1px solid red;
 }
 html {
   font-size: 62.5%;
@@ -311,6 +311,14 @@ option:hover {
   overflow: hidden;
   pointer-events: auto;
   border-bottom: 1px solid var(--clrBorderMuted);
+}
+#nav-logo {
+  display: block;
+  height: 100%;
+}
+#nav-logo img {
+  height: 100%;
+  width: auto;
 }
 #nav-right {
   min-width: 0;
