@@ -853,6 +853,17 @@ a.btn-primary-action {
 }
 /* MEDIA QUERIES */
 @media only screen and (max-width: 1200px) {
+  #sum-search {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: stretch;
+  }
+  #sum-search button {
+    height: 4rem;
+  }
+  #region {
+    width: 100%;
+  }
   .match-card {
     flex-wrap: wrap;
     justify-content: space-between;
@@ -879,17 +890,6 @@ a.btn-primary-action {
   }
   #summoner-profile {
     padding: var(--navHeaderHeight) var(--sitePadding) 0 var(--sitePadding);
-  }
-  #sum-search {
-    flex-direction: column;
-    gap: 2rem;
-    align-items: stretch;
-  }
-  #sum-search button {
-    height: 4rem;
-  }
-  #region {
-    width: 100%;
   }
   .match-card {
     justify-content: unset;
