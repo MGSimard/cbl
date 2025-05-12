@@ -84,7 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       {
         rel: "preload",
-        href: "/fonts/Spiegel/Spiegel-Regular.woff2",
+        href: "/fonts/Spiegel/spiegel-regular.woff2",
         as: "font",
         type: "font/woff2",
         crossOrigin: "anonymous",

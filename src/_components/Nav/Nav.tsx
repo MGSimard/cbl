@@ -1,12 +1,14 @@
+import { Link } from "@tanstack/react-router";
+import { authClient } from "@/server/auth/auth-client";
 import { useNavState } from "@/_components/Nav/NavContextProvider";
 import { NavTrigger } from "@/_components/Nav/NavTrigger";
 import { NavGroup } from "@/_components/Nav/NavGroup";
 import { useIsMobile } from "@/_hooks/useIsMobile";
-import { Link } from "@tanstack/react-router";
 
 export function Nav() {
   const { isExpanded } = useNavState();
   const isMobile = useIsMobile();
+  const session = authClient.getSession();
 
   return (
     <nav id="nav" data-expanded={isExpanded}>
