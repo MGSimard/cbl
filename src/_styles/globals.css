@@ -874,6 +874,9 @@ a.btn-primary-action {
   main {
     padding: calc(var(--sitePadding) + var(--navHeaderHeight)) var(--sitePadding) var(--sitePadding) var(--sitePadding);
   }
+  footer {
+    padding: var(--sitePadding);
+  }
   #summoner-profile {
     padding: var(--navHeaderHeight) var(--sitePadding) 0 var(--sitePadding);
   }
