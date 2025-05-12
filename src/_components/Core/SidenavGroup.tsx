@@ -1,19 +1,19 @@
 import { useState } from "react";
 
-interface NavbarGroupProps {
+interface SidenavGroupProps {
   label: string;
   count: number;
   children?: React.ReactNode;
 }
-export function NavbarGroup({ label, count, children }: NavbarGroupProps) {
+export function SidenavGroup({ label, count, children }: SidenavGroupProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="nav-accordion">
+    <div className="sidenav-group">
       <button
         type="button"
         aria-expanded={children ? isOpen : undefined}
-        aria-controls={children ? `ss-${label}` : undefined}
+        aria-controls={children ? `sidenav-${label}` : undefined}
         onClick={() => setIsOpen(!isOpen)}
         disabled={!children}>
         <span>&#9658;</span>
@@ -21,7 +21,7 @@ export function NavbarGroup({ label, count, children }: NavbarGroupProps) {
         {` (${count})`}
       </button>
       {children && (
-        <div id={`nav-${label}`} inert={!isOpen}>
+        <div id={`sidenav-${label}`} inert={!isOpen}>
           {children}
         </div>
       )}

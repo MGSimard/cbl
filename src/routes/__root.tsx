@@ -1,8 +1,9 @@
 import type { ReactNode } from "react";
 import { createRootRouteWithContext, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 import type { QueryClient } from "@tanstack/react-query";
-import { NotFound } from "@/_components/Core/NotFound";
 import { Error } from "@/_components/Core/Error";
+import { NotFound } from "@/_components/Core/NotFound";
+import { Sidenav } from "@/_components/Core/Sidenav";
 import { Footer } from "@/_components/Core/Footer";
 import globalCss from "@/_styles/globals.css?url";
 import fontsCss from "@/_styles/fonts.css?url";
@@ -108,6 +109,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
         <HeadContent />
       </head>
       <body>
+        <Sidenav />
         {children}
         <Footer />
         <Scripts />

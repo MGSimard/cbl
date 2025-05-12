@@ -21,8 +21,8 @@ function PageSummoner() {
   const { identity, profile, rank, matches, region } = data.data;
 
   return (
-    <main id="sum-main">
-      <SumSidebar identity={identity} profile={profile} rank={rank} />
+    <main id="summoner-profile">
+      {/* <SumSidebar identity={identity} profile={profile} rank={rank} /> */}
       <MatchHistory matchIds={matches} currentPlayer={profile.puuid} regionPrefix={regionPrefix} />
     </main>
   );
