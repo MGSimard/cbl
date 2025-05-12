@@ -8,7 +8,13 @@ import { useIsMobile } from "@/_hooks/useIsMobile";
 export function Nav() {
   const { isExpanded } = useNavState();
   const isMobile = useIsMobile();
-  const session = authClient.getSession();
+  const { data: session, isPending, error, refetch } = authClient.useSession();
+  console.log(session);
+
+  const handleFailingAvatar = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    e.currentTarget.onerror = null;
+    e.currentTarget.src = "/assets/placeholder-warning.svg";
+  };
 
   return (
     <nav id="nav" data-expanded={isExpanded}>
@@ -21,14 +27,14 @@ export function Nav() {
       <div id="nav-right" inert={!isExpanded && isMobile.mounted && isMobile.isMobile}>
         <div id="nav-header">
           <div id="nav-avatar">
-            <img alt="Icon" />
+            <img alt="Icon" src={session?.user?.image ?? "/assets/avatar-default.png"} onError={handleFailingAvatar} />
             <span id="nav-level">
               <span>0</span>
             </span>
           </div>
           <div id="nav-identity">
-            <span id="nav-email">-</span>
-            <span id="nav-rank">-</span>
+            <span id="nav-email">{session?.user?.email ?? "Guest"}</span>
+            <span id="nav-rank">{session?.user?.role ?? "-"}</span>
           </div>
           {isExpanded && <NavTrigger />}
         </div>
