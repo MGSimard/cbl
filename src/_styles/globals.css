@@ -643,6 +643,8 @@ a.btn-primary-action {
 /**/
 /* SUMMONER PROFILE */
 #summoner-profile {
+  display: flex;
+  flex-direction: column;
   padding: var(--navHeaderHeight) calc(var(--navWidth) + var(--sitePadding)) 0 var(--sitePadding);
   background: radial-gradient(ellipse at center, hsla(from var(--clrBg) h s l / 0.5) 15%, var(--clrBg) 70%);
   backdrop-filter: blur(0.5rem);
@@ -740,10 +742,10 @@ a.btn-primary-action {
   font-size: 1.6rem;
 }
 #match-list-loading {
+  flex-grow: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-grow: 1;
 }
 #match-history > ul {
   flex-grow: 1;
