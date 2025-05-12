@@ -305,7 +305,7 @@ option:hover {
   align-items: center;
   gap: 2rem;
   height: var(--navHeaderHeight);
-  padding: var(--navPadding);
+  padding: var(--navPadding) var(--sitePadding);
   background: none;
   white-space: nowrap;
   overflow: hidden;
