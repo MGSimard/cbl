@@ -6,7 +6,7 @@ export function NavTrigger() {
 
   return (
     <button
-      id="nav-trigger"
+      className="nav-trigger"
       aria-label="Toggle Sidebar"
       title="Toggle Sidebar"
       aria-expanded={isExpanded}

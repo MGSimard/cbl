@@ -280,7 +280,7 @@ option:hover {
 }
 /**/
 /* NAVBAR */
-#nav-trigger {
+.nav-trigger {
   display: none;
   margin-left: auto;
 }
@@ -877,7 +877,7 @@ a.btn-primary-action {
   }
 }
 @media only screen and (max-width: 768px) {
-  #nav-trigger {
+  .nav-trigger {
     display: block;
   }
   #nav:has(#nav-right[inert]) {

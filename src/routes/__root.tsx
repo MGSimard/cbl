@@ -3,6 +3,7 @@ import { createRootRouteWithContext, HeadContent, Outlet, Scripts } from "@tanst
 import type { QueryClient } from "@tanstack/react-query";
 import { Error } from "@/_components/Core/Error";
 import { NotFound } from "@/_components/Core/NotFound";
+import { NavStateContextProvider } from "@/_components/Nav/NavContextProvider";
 import { Nav } from "@/_components/Nav/Nav";
 import { Footer } from "@/_components/Core/Footer";
 import globalCss from "@/_styles/globals.css?url";
@@ -109,7 +110,9 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
         <HeadContent />
       </head>
       <body>
-        <Nav />
+        <NavStateContextProvider>
+          <Nav />
+        </NavStateContextProvider>
         {children}
         <Footer />
         <Scripts />
