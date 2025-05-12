@@ -859,6 +859,15 @@ a.btn-primary-action {
   }
 }
 @media only screen and (max-width: 768px) {
+  #nav {
+    grid-template-columns: auto 0;
+  }
+  main {
+    padding: calc(var(--sitePadding) + var(--navHeaderHeight)) var(--sitePadding) var(--sitePadding) var(--sitePadding);
+  }
+  #summoner-profile {
+    padding: var(--navHeaderHeight) var(--sitePadding) 0 var(--sitePadding);
+  }
   #sum-search {
     flex-direction: column;
     gap: 2rem;
