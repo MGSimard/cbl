@@ -2,6 +2,7 @@ import { createFileRoute, useParams } from "@tanstack/react-router";
 import { getPlayerData } from "@/server/serverFunctions";
 import { MatchHistory } from "@/_components/MatchHistory/MatchHistory";
 import { rankFormatter } from "@/_utils/helpers";
+import SumIdentityCard from "@/_components/SumIdentityCard";
 
 export const Route = createFileRoute("/summoner/$region/$riotId")({
   component: PageSummoner,
@@ -41,6 +42,7 @@ function PageSummoner() {
           <span id="sum-region">
             <span>{region}</span>
           </span>
+          {/* <SumIdentityCard identity={identity} profile={profile} /> */}
         </div>
       </div>
       <MatchHistory matchIds={matches} currentPlayer={profile.puuid} regionPrefix={regionPrefix} />

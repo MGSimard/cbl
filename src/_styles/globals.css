@@ -58,7 +58,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* outline: 1px solid red; */
+  outline: 1px solid red;
 }
 html {
   font-size: 62.5%;
@@ -719,7 +719,6 @@ a.btn-primary-action {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  overflow: hidden;
 }
 #sum-name {
   font-family: var(--fontBeaufort);
@@ -739,6 +738,16 @@ a.btn-primary-action {
   text-transform: capitalize;
   overflow: hidden;
 }
+/* SUMMONER IDENTITY POPOVER */
+#sum-popover-wrapper {
+  position: relative;
+}
+#sum-popup {
+  position: absolute;
+  display: block;
+  overflow: hidden;
+}
+
 /* MATCH HISTORY */
 #match-history {
   display: flex;
