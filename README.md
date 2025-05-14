@@ -1,5 +1,7 @@
 # Community Ban List (CBL)
 
+Just having fun with 24h renewable keys, can't launch this as an actual fully-fledged product since Riot disallows alternate reporting platforms and applications that look like Riot products.
+
 ## Task List
 
 - [x] Scaffolding
