@@ -12,11 +12,6 @@ export function Nav() {
   const isMobile = useIsMobile();
   const { data: session, isPending, error, refetch } = authClient.useSession();
 
-  const handleFailingAvatar = (e: React.SyntheticEvent<HTMLImageElement>) => {
-    e.currentTarget.onerror = null;
-    e.currentTarget.src = "/assets/placeholder-warning.svg";
-  };
-
   return (
     <nav id="nav" data-expanded={isExpanded}>
       <div id="nav-left">
@@ -28,7 +23,7 @@ export function Nav() {
       <div id="nav-right" inert={!isExpanded && isMobile.mounted && isMobile.isMobile}>
         <div id="nav-header">
           <div id="nav-avatar">
-            <img alt="Icon" src={session?.user?.image ?? "/assets/avatar-default.png"} onError={handleFailingAvatar} />
+            <img alt="Icon" src={session?.user?.image ?? "/assets/avatar-default.png"} />
           </div>
           <div id="nav-identity">
             <span id="nav-email">{session?.user?.email ?? "Guest"}</span>
