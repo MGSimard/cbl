@@ -63,3 +63,16 @@ Just having fun with 24h renewable keys, can't launch this as an actual fully-fl
 - Node
 - pnpm
 - Netlify (Hosting)
+
+---
+
+## Contact
+
+MGSimard  
+X: [@MGSimard](https://x.com/MGSimard)  
+GitHub: [@MGSimard](https://github.com/MGSimard)  
+Mail: [mgsimard.dev@gmail.com](mailto:mgsimard.dev@gmail.com)
+
+For more info, view my portfolio at [mgsimard.dev](https://mgsimard.dev).
+
+---
