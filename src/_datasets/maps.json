@@ -78,5 +78,10 @@
     "mapId": 30,
     "mapName": "Rings of Wrath",
     "notes": "Arena map"
+  },
+  {
+    "mapId": 35,
+    "mapName": "The Bandlewood",
+    "notes": "Map for Brawl (`BRAWL`). Work together with your team to escort minions into the enemy portal. No roles, no lanes, no pressure. Just a five-on-five brawl."
   }
 ]
